@@ -31,3 +31,4 @@ bin
 .vagrant
 web/app/.DS_Store
 web/app/themes/.DS_Store
+.DS_Store
