@@ -30,6 +30,35 @@ function get_excerpt( $post, $length=15, $force_content=false ) {
 }
 
 /**
+ * Send a string to javascript console (for debugging)
+ */
+function console( $string ) {
+  echo "<script>console.log('".$string."');</script>";
+}
+
+
+/**
+ * Get li's of post tags
+ */
+function get_tag_list( $post ) {
+  $output = '';
+  $tags=get_the_tags($post->ID);
+  if ( has_tag(null,$post) ) {
+    console("we have tags");
+    $tags=get_the_tags($post->ID);
+    foreach ($tags as $tag) {
+      $tag_link = get_tag_link( $tag->term_id );
+      $tag_name = $tag->name;
+      $output .= '<li><a href="'.$tag_link.'">'.$tag_name.'</a></li>';
+    }
+    return $output;
+  } else{
+    return false;
+  }
+  
+}
+
+/**
  * Get top ancestor for post
  */
 function get_top_ancestor($post){

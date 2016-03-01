@@ -27,6 +27,8 @@ $firebelly_includes = [
   'lib/cmb2-custom-fields.php',        // Custom CMB2
   'lib/page-meta-boxes.php',           // Various tweaks for multiple post types
   'lib/post-meta-boxes.php',           // Various tweaks for multiple post types
+  'lib/carousel-post-type.php',        // Carousels
+  'lib/person-post-type.php'           // Person
 ];
 
 $sage_includes = array_merge($sage_includes, $firebelly_includes);

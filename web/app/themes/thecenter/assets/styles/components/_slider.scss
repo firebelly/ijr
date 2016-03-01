@@ -1,0 +1,66 @@
+// Slider
+
+.slider {
+  .slide-item {
+    float: left;
+  }
+  .slider-content {
+    position: relative;
+  }
+}
+
+// Vendor mods
+.slick-slider {
+  margin-bottom: 0;
+}
+// .slick-next, .slick-prev {
+//   top: 50%;
+//   z-index: 1;
+//   position: absolute;
+//   transform: translateY(-50%);
+// }
+// .slick-next {
+//   right: -46px;
+// }
+// .slick-prev {
+//   left: -46px;
+// }
+// Those dots
+// .slick-dots {
+//   bottom: 0;
+//   margin: 18px 0;
+//   padding: 0 41px;
+//   text-align: left;
+//   li {
+//     width: 15px;
+//     height: 15px;
+//     vertical-align: top;
+//     &:hover, &:focus, &:active, &.slick-active {
+//       button {
+//         background: $brand-secondary;
+//       }
+//     }
+//     button {
+//       top: 50%;
+//       width: 7px;
+//       padding: 0;
+//       height: 7px;
+//       margin: 0 auto;
+//       background: none;
+//       border-radius: 50%;
+//       position: relative;
+//       transform: translateY(-50%);
+//       transition: opacity .1s ease-out;
+//       border: 1px solid $brand-secondary;      
+//       &:before {
+//         display: none;
+//       }
+//     }
+//   }
+// }
+// hide the ajax loader - not needed
+.slick-list {
+    .slick-loading & {
+        background: none;
+    }
+}
