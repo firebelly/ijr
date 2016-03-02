@@ -28,6 +28,7 @@ $firebelly_includes = [
   'lib/page-meta-boxes.php',           // Various tweaks for multiple post types
   'lib/post-meta-boxes.php',           // Various tweaks for multiple post types
   'lib/carousel-post-type.php',        // Carousels
+  'lib/partners-post-type.php',        // Partners
   'lib/person-post-type.php'           // Person
 ];
 

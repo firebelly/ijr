@@ -1,13 +1,13 @@
 <?php
 /**
- * Person post type
+ * Partner post type
  */
 
-namespace Firebelly\PostTypes\Person;
+namespace Firebelly\PostTypes\Partners;
 use Firebelly\Utils;
 
 // Custom image size for post type?
-// add_image_size( 'people-thumb', 300, 300, true );
+// add_image_size( 'partners-thumb', 300, 300, true );
 
 /**
  * Register Custom Post Type
@@ -15,17 +15,17 @@ use Firebelly\Utils;
 function post_type() {
 
   $labels = array(
-    'name'                => 'People',
-    'singular_name'       => 'Person',
-    'menu_name'           => 'Staff',
+    'name'                => 'Partners',
+    'singular_name'       => 'Partner',
+    'menu_name'           => 'Partners',
     'parent_item_colon'   => '',
-    'all_items'           => 'All People',
-    'view_item'           => 'View Person',
-    'add_new_item'        => 'Add New Person',
+    'all_items'           => 'All Partners',
+    'view_item'           => 'View Partner',
+    'add_new_item'        => 'Add New Partner',
     'add_new'             => 'Add New',
-    'edit_item'           => 'Edit Person',
-    'update_item'         => 'Update Person',
-    'search_items'        => 'Search People',
+    'edit_item'           => 'Edit Partner',
+    'update_item'         => 'Update Partner',
+    'search_items'        => 'Search Partners',
     'not_found'           => 'Not found',
     'not_found_in_trash'  => 'Not found in Trash',
   );
@@ -36,10 +36,10 @@ function post_type() {
     'feeds'               => false,
   );
   $args = array(
-    'label'               => 'person',
+    'label'               => 'partner',
     'description'         => 'Staff',
     'labels'              => $labels,
-    'supports'            => array( 'title', 'editor', 'thumbnail', ),
+    'supports'            => array( 'title', 'thumbnail', ),
     'hierarchical'        => false,
     'public'              => true,
     'show_ui'             => true,
@@ -54,7 +54,7 @@ function post_type() {
     'publicly_queryable'  => true,
     'rewrite'             => $rewrite,
   );
-  register_post_type( 'person', $args );
+  register_post_type( 'partner', $args );
 
 }
 add_action( 'init', __NAMESPACE__ . '\post_type', 0 );
@@ -72,11 +72,11 @@ function edit_columns($columns){
   );
   return $columns;
 }
-add_filter('manage_person_posts_columns', __NAMESPACE__ . '\edit_columns');
+add_filter('manage_partner_posts_columns', __NAMESPACE__ . '\edit_columns');
 
 function custom_columns($column){
   global $post;
-  if ( $post->post_type == 'person' ) {
+  if ( $post->post_type == 'partner' ) {
     if ( $column == 'featured_image' )
       echo the_post_thumbnail('thumbnail');
     elseif ( $column == 'content' )
@@ -94,18 +94,18 @@ add_action('manage_posts_custom_column',  __NAMESPACE__ . '\custom_columns');
 function metaboxes( array $meta_boxes ) {
   $prefix = '_cmb2_'; // Start with underscore to hide from custom fields list
 
-  $meta_boxes['person_metabox'] = array(
-    'id'            => 'person_metabox',
-    'title'         => __( 'Person Details', 'cmb2' ),
-    'object_types'  => array( 'person', ), // Post type
+  $meta_boxes['partner_metabox'] = array(
+    'id'            => 'partner_metabox',
+    'title'         => __( 'Partner Details', 'cmb2' ),
+    'object_types'  => array( 'partner', ), // Post type
     'context'       => 'normal',
     'priority'      => 'high',
     'show_names'    => true, // Show field names on the left
     'fields'        => array(
       array(
-        'name' => 'Subtitle',
-        'desc' => 'e.g. Executive Director',
-        'id'   => $prefix . 'subtitle',
+        'name' => 'Link',
+        'desc' => 'http://...',
+        'id'   => $prefix . 'link',
         'type' => 'text_medium',
       ),
     ),
@@ -116,25 +116,25 @@ function metaboxes( array $meta_boxes ) {
 add_filter( 'cmb2_meta_boxes', __NAMESPACE__ . '\metaboxes' );
 
 /**
- * Get People
+ * Get Partners
  */
-function get_people($options=[]) {
+function get_partners($options=[]) {
 
   $args = array(
     'numberposts' => -1,
-    'post_type' => 'person',
+    'post_type' => 'partner',
     'orderby' => 'menu_order'
   );
 
-  $person_posts = get_posts($args);
-  if (!$person_posts) return false;
+  $partner_posts = get_posts($args);
+  if (!$partner_posts) return false;
 
-  $output = '<ul class="people">';
+  $output = '<ul class="partners">';
 
-  foreach ( $person_posts as $post ):
-    $output .= '<li class="person">';
+  foreach ( $partner_posts as $post ):
+    $output .= '<li class="partner">';
     ob_start();
-    include(locate_template('templates/article-person.php'));
+    include(locate_template('templates/article-partner.php'));
     $output .= ob_get_clean();
     $output .= '</li>';
   endforeach;

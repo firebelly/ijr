@@ -13,10 +13,7 @@
 <!-- main carousel -->
 <section>
   <div class="slider home-slider">
-    <?php 
-    // Carousels
-    echo do_shortcode('[carousel]');
-    ?>
+    <?= \Firebelly\PostTypes\Carousel\get_carousels(); ?>
   </div>
 </section>
 
@@ -33,12 +30,14 @@
     );
     if ($news_posts):
       foreach ($news_posts as $post) {
-        include(locate_template('templates/post-slider.php'));
+        ?><div class="slide-item"><?php
+        include(locate_template('templates/post-list.php'));
+        ?></div><?php
       }
     endif;
     ?>
   </div>
-  <a href="/blog/">View All News</a>
+  <a href="<?= get_permalink( get_option( 'page_for_posts' ) ) ?>">View All News</a>
 </section>
 
 <!-- radar list -->
@@ -54,10 +53,12 @@
     );
     if ($radar_posts):
       foreach ($radar_posts as $post) {
-        include(locate_template('templates/post-slider.php'));
+        ?><div class="slide-item"><?php
+        include(locate_template('templates/post-list.php'));
+        ?></div><?php
       }
     endif;
     ?>
   </div>
-  <a href="/blog/">View All</a>
+  <a href="<?= get_permalink( get_option( 'page_for_posts' ) ) ?>">View All</a>
 </section>

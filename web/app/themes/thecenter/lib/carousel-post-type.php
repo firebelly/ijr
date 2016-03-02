@@ -106,40 +106,25 @@ function metaboxes( array $meta_boxes ) {
     'priority'      => 'high',
     'show_names'    => true, // Show field names on the left
     'fields'        => array(
-      	array(
-      	    'name'    => 'Link text',
-      	    'id'      => $prefix . 'link_text',
-      	    'type'    => 'text',
-    		'default' => 'Learn More'
-      	),
-      	array(
-      	    'name'    => 'Links to',
-      	    'id'      => $prefix . 'links_to',
-      	    'type'    => 'select',
-      	    'options' => cmb2_get_post_options( array( 'post_type' => 'page', 'numberposts' => -1, 'post_parent' => 0	 ) ),
-      	),
-      	array(
-		    'name'    => 'Order #',
-      	    'desc'    => '1 is the first carousel, 2 is second and so forth',
-		    'default' => '1',
-		    'id'      => $prefix . 'order_num',
-		    'type'    => 'text_small'
-		)
-      	 //,
-      	// array(
-      	//     'name'    => 'Page to show on',
-      	//     // 'desc'    => 'field description (optional)',
-      	//     'id'      => $prefix . 'pages_visible',
-      	//     'type'    => 'select',
-      	//     'options' => cmb2_get_post_options( array( 'post_type' => 'page', 'numberposts' => -1, 'post_parent' 	=> 0 ) ),
-      	// ),
-      	// array(
-      	//     'name'    => 'Icon',
-      	//     'desc'    => 'Select icon type that shows next to title',
-      	//     'id'      => $prefix . 'icon',
-      	//     'type'    => 'select',
-      	//     'options' => icon_types(),
-      	// ),
+    	array(
+    	    'name'    => 'Link text',
+    	    'id'      => $prefix . 'link_text',
+    	    'type'    => 'text',
+  		'default' => 'Learn More'
+    	),
+    	array(
+    	    'name'    => 'Links to',
+    	    'id'      => $prefix . 'links_to',
+    	    'type'    => 'select',
+    	    'options' => cmb2_get_post_options( array( 'post_type' => 'page', 'numberposts' => -1, 'post_parent' => 0	 ) ),
+    	),
+    	array(
+	    'name'    => 'Order #',
+    	    'desc'    => '1 is the first carousel, 2 is second and so forth',
+	    'default' => '1',
+	    'id'      => $prefix . 'order_num',
+	    'type'    => 'text_small'
+  		), 
     ),
   );
 
@@ -147,31 +132,8 @@ function metaboxes( array $meta_boxes ) {
 }
 add_filter( 'cmb2_meta_boxes', __NAMESPACE__ . '\metaboxes' );
 
-function icon_types() {
-  return [
-    'catalyst' => 'Catalyst',
-    'clock' => 'Clock',
-    'digital-learning' => 'Digital Learning',
-    'exclamation' => 'Exclamation',
-    'letter' => 'Letter',
-    'lightbulb' => 'Lightbulb',
-    'news' => 'News',
-    'pov' => 'Point Of View',
-    'question' => 'Question',
-    'radar' => 'Radar',
-    'strategy' => 'Strategy',
-    'team' => 'Team',
-    'triad' => 'Triad',
-    'tricircle' => 'Tricircle',
-  ];
-}
-
-// Shortcode [carousels]
-add_shortcode('carousel', __NAMESPACE__ . '\shortcode');
-function shortcode($atts) {
-  extract(shortcode_atts(array(
-       'page' => '',
-    ), $atts));
+// Get Carousel
+function get_carousels() {
   $output = '';
 
   $args = array(
@@ -181,15 +143,6 @@ function shortcode($atts) {
     'meta_key' => '_cmb2_order_num',
     'order'     => 'ASC',
     );
-  if ($page != '') {
-    $args['meta_query'] = array(
-        array(
-            // 'key' => '_cmb2_pages_visible',
-            // 'value' => array($page),
-            'compare' => 'IN',
-        )
-    );
-  }
 
   $carousel_posts = get_posts($args);
   if (!$carousel_posts) return false;
