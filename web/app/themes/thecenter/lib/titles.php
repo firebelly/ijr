@@ -6,6 +6,7 @@ namespace Roots\Sage\Titles;
  * Page titles
  */
 function title() {
+  global $post;
   if (is_home()) {
     if (get_option('page_for_posts', true)) {
       return get_the_title(get_option('page_for_posts', true));
@@ -18,6 +19,8 @@ function title() {
     return sprintf(__('Search Results for %s', 'sage'), get_search_query());
   } elseif (is_404()) {
     return __('Not Found', 'sage');
+  } elseif ($post->post_name=='who-we-are') {
+    return __('for Community-based Children & Family Mental Health', 'sage');
   } else {
     return get_the_title();
   }

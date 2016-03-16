@@ -9,12 +9,12 @@ namespace Firebelly\PostTypes\Pages;
  function metaboxes( array $meta_boxes ) {
    $prefix = '_cmb2_'; // Start with underscore to hide from custom fields list
 
-   $meta_boxes['page_metabox'] = array(
-     'id'            => 'page_metabox',
+   $meta_boxes['page_subtitle'] = array(
+     'id'            => 'page_subtitle',
      'title'         => __( 'Subtitle', 'cmb2' ),
      'object_types'  => array( 'page', ), // Post type
      'context'       => 'normal',
-     'priority'      => 'high',
+     'priority'      => 'core',
      'show_names'    => true, // Show field names on the left
      'pages' => '',
      'fields'        => array(
@@ -33,6 +33,69 @@ namespace Firebelly\PostTypes\Pages;
        // ),
      ),
    );
+
+  $meta_boxes['page_recess'] = array(
+    'id'            => 'page_recess',
+    'title'         => __( 'Additional Options', 'cmb2' ),
+    'object_types'  => array( 'page', ), // Post type
+    'context'       => 'side',
+    'priority'      => 'default',
+    'show_names'    => false,
+    'fields'        => array(
+      array(
+          'name'     => 'yes',
+          'id'       => $prefix . 'recess',
+          'type'     => 'checkbox',
+          'default'  => 'on',
+          'desc'     => 'Recess primary content block',
+      ),
+    ),
+  );
+
+/**
+   * Repeating blocks
+   */
+  $cmb_group = new_cmb2_box( array(
+      'id'           => $prefix . 'metabox',
+      'title'        => __( 'Extra Blocks', 'cmb2' ),
+      'priority'      => 'low',
+      'object_types' => array( 'page', ),
+    ) 
+  );
+
+  $group_field_id = $cmb_group->add_field( array(
+      'id'          => $prefix . 'page_blocks',
+      'type'        => 'group',
+      'description' => __( 'Note that you must be in Text mode to reorder the Page Blocks', 'cmb' ),
+      'options'     => array(
+          'group_title'   => __( 'Block {#}', 'cmb' ),
+          'add_button'    => __( 'Add Another Block', 'cmb' ),
+          'remove_button' => __( 'Remove Block', 'cmb' ),
+          'sortable'      => true, // beta
+      ),
+  ) );
+
+  $cmb_group->add_group_field( $group_field_id, array(
+      'name' => 'Block Title',
+      'id'   => 'title',
+      'type' => 'text',
+  ) );
+
+  $cmb_group->add_group_field( $group_field_id, array(
+      'name' => 'Body',
+      'id'   => 'body',
+      'type' => 'wysiwyg',
+  ) );
+
+  $cmb_group->add_group_field( $group_field_id, array(
+      'name' => 'Hide Block',
+      // 'desc' => 'Check this to hide Page Block from the front end',
+      'id'   => 'hide_block',
+      'type' => 'checkbox',
+  ) );
+
+
+
 
    return $meta_boxes;
  }

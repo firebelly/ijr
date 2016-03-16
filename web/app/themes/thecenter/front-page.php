@@ -13,7 +13,7 @@
 <!-- main carousel -->
 <section>
   <div class="slider home-slider">
-    <?= \Firebelly\PostTypes\Carousel\get_carousels(); ?>
+    <?= \Firebelly\PostTypes\Headline\get_headlines(); ?>
   </div>
 </section>
 

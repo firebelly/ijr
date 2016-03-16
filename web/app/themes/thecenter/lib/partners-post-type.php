@@ -66,9 +66,8 @@ function edit_columns($columns){
   $columns = array(
     'cb' => '<input type="checkbox" />',
     'title' => 'Title',
-    '_cmb2_subtitle' => 'Subtitle',
-    'content' => 'Bio',
     'featured_image' => 'Image',
+    '_cmb2_link' => 'Link',
   );
   return $columns;
 }
@@ -118,7 +117,7 @@ add_filter( 'cmb2_meta_boxes', __NAMESPACE__ . '\metaboxes' );
 /**
  * Get Partners
  */
-function get_partners($options=[]) {
+function get_partners() {
 
   $args = array(
     'numberposts' => -1,

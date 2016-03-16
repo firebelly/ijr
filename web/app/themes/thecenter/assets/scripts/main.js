@@ -24,7 +24,11 @@ var FBSage = (function($) {
     // Set screen size vars
     _resize();
 
+    //initialize sliders
     _initSliders();
+
+    //put the svg icons inline to grab with use
+    _injectSvgSprite();
 
     // Fit them vids!
     $('main').fitVids();
@@ -169,6 +173,10 @@ var FBSage = (function($) {
       autoplaySpeed: 6000,
       speed: 800
     });
+  }
+
+  function _injectSvgSprite() {
+    boomsvgloader.load('/app/themes/thecenter/assets/svgs/build/svgs-defs.svg'); 
   }
 
   // Called in quick succession as window is resized

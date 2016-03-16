@@ -6,9 +6,6 @@
 namespace Firebelly\PostTypes\Person;
 use Firebelly\Utils;
 
-// Custom image size for post type?
-// add_image_size( 'people-thumb', 300, 300, true );
-
 /**
  * Register Custom Post Type
  */

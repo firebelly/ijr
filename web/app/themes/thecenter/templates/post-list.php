@@ -14,9 +14,9 @@ $tags = Utils\get_tag_list( $post );
    </div>
   	<div class="article-content">
 	    <header class="article-header">
-	      	<h4 class="article-title"><a href="<?= get_the_permalink($post); ?>"><?php echo $post->post_title; ?></a></h4>
+	      	<h1 class="article-title"><a href="<?= get_the_permalink($post); ?>"><?php echo $post->post_title; ?></a></h1>
 	    </header>
-	    <div class="article-excerpt">
+	    <div class="article-excerpt user-content">
 	      	<p><a href="<?= get_the_permalink($post) ?>" class="read-more"><?php echo Utils\get_excerpt($post); ?></a></p>
 	    </div>
 	    <?php if($tags) : ?>

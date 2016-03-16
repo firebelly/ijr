@@ -1,29 +1,28 @@
 <?php
 /**
- * Carousel post type
+ * Headline post type
  */
 
-namespace Firebelly\PostTypes\Carousel;
+namespace Firebelly\PostTypes\Headline;
 
 // Custom image size for post type?
-add_image_size( 'carousel-preview-thumb', 200, null, null );
-add_image_size( 'carousel-thumb', 500, null, null );
+add_image_size( 'headline-thumb', 500, null, null );
 
 // Register Custom Post Type
 function post_type() {
 
   $labels = array(
-    'name'                => 'Carousels',
-    'singular_name'       => 'Carousel',
-    'menu_name'           => 'Carousels',
+    'name'                => 'Headlines',
+    'singular_name'       => 'Headline',
+    'menu_name'           => 'Headlines',
     'parent_item_colon'   => '',
-    'all_items'           => 'All Carousels',
-    'view_item'           => 'View Carousel',
-    'add_new_item'        => 'Add New Carousel',
+    'all_items'           => 'All Headlines',
+    'view_item'           => 'View Headline',
+    'add_new_item'        => 'Add New Headline',
     'add_new'             => 'Add New',
-    'edit_item'           => 'Edit Carousel',
-    'update_item'         => 'Update Carousel',
-    'search_items'        => 'Search Carousels',
+    'edit_item'           => 'Edit Headline',
+    'update_item'         => 'Update Headline',
+    'search_items'        => 'Search Headlines',
     'not_found'           => 'Not found',
     'not_found_in_trash'  => 'Not found in Trash',
   );
@@ -34,8 +33,8 @@ function post_type() {
     'feeds'               => false,
   );
   $args = array(
-    'label'               => 'carousel',
-    'description'         => 'Carousels',
+    'label'               => 'headline',
+    'description'         => 'Headlines',
     'labels'              => $labels,
     'supports'            => array( 'title','thumbnail'), //took out editor
     'hierarchical'        => false,
@@ -53,7 +52,7 @@ function post_type() {
     'rewrite'             => $rewrite,
     'capability_type'     => 'page',
   );
-  register_post_type( 'carousel', $args );
+  register_post_type( 'headline', $args );
 
 }
 add_action( 'init', __NAMESPACE__ . '\post_type', 0 );
@@ -66,18 +65,17 @@ function edit_columns($columns){
     'featured_image' => 'Image',
     '_cmb2_link_text' => 'Link Text',
     '_cmb2_links_to' => 'Links To',
-    '_cmb2_order_num' => 'Order #'
   );
   return $columns;
 }
-add_filter('manage_carousel_posts_columns', __NAMESPACE__ . '\edit_columns');
+add_filter('manage_headline_posts_columns', __NAMESPACE__ . '\edit_columns');
 
 function custom_columns($column){
   global $post;
-  if ( $post->post_type == 'carousel' ) {
+  if ( $post->post_type == 'headline' ) {
     $custom = get_post_custom();
     if ( $column == 'featured_image' )
-      echo the_post_thumbnail( 'carousel-preview-thumb' );
+      echo the_post_thumbnail( 'thumbnail' );
     elseif ( $column == '_cmb2_links_to' ) {
       if ($pages = get_pages(array('include' => $custom[$column][0]))) {
         foreach($pages as $page) {
@@ -98,10 +96,10 @@ add_action('manage_posts_custom_column',  __NAMESPACE__ . '\custom_columns');
 function metaboxes( array $meta_boxes ) {
   $prefix = '_cmb2_'; // Start with underscore to hide from custom fields list
 
-  $meta_boxes['carousel_metabox'] = array(
-    'id'            => 'carousel_metabox',
+  $meta_boxes['headline_metabox'] = array(
+    'id'            => 'headline_metabox',
     'title'         => __( 'Extra Fields', 'cmb2' ),
-    'object_types'  => array( 'carousel', ), // Post type
+    'object_types'  => array( 'headline', ), // Post type
     'context'       => 'normal',
     'priority'      => 'high',
     'show_names'    => true, // Show field names on the left
@@ -118,13 +116,13 @@ function metaboxes( array $meta_boxes ) {
     	    'type'    => 'select',
     	    'options' => cmb2_get_post_options( array( 'post_type' => 'page', 'numberposts' => -1, 'post_parent' => 0	 ) ),
     	),
-    	array(
-	    'name'    => 'Order #',
-    	    'desc'    => '1 is the first carousel, 2 is second and so forth',
-	    'default' => '1',
-	    'id'      => $prefix . 'order_num',
-	    'type'    => 'text_small'
-  		), 
+    // 	array(
+	   //  'name'    => 'Order #',
+    // 	    'desc'    => '1 is the first headline, 2 is second and so forth',
+	   //  'default' => '1',
+	   //  'id'      => $prefix . 'order_num',
+	   //  'type'    => 'text_small'
+  		// ), 
     ),
   );
 
@@ -132,34 +130,34 @@ function metaboxes( array $meta_boxes ) {
 }
 add_filter( 'cmb2_meta_boxes', __NAMESPACE__ . '\metaboxes' );
 
-// Get Carousel
-function get_carousels() {
+// Get Headline
+function get_headlines() {
   $output = '';
 
   $args = array(
     'numberposts' => -1,
-    'post_type' => 'carousel',
-    'orderby' => 'meta_value_num',
-    'meta_key' => '_cmb2_order_num',
-    'order'     => 'ASC',
+    'post_type' => 'headline',
+    // 'orderby' => 'meta_value_num',
+    // 'meta_key' => '_cmb2_order_num',
+    // 'order'     => 'ASC',
     );
 
-  $carousel_posts = get_posts($args);
-  if (!$carousel_posts) return false;
+  $headline_posts = get_posts($args);
+  if (!$headline_posts) return false;
 
-  foreach ($carousel_posts as $post):
-    $thumb = get_the_post_thumbnail($post->ID, 'carousel-thumb');
+  foreach ($headline_posts as $post):
+    $thumb = get_the_post_thumbnail($post->ID, 'headline-thumb');
     $link_text = get_post_meta( $post->ID, '_cmb2_link_text', true );
     $links_to = get_permalink(get_post_meta( $post->ID, '_cmb2_links_to', true ));
 
     $output .= <<<HTML
-     	<div class="slide-item">
-       		<div class="slider-content">
-	     		{$thumb}
-	   			<h2>{$post->post_title}</h2>
-	   			<a href="{$links_to}">{$link_text}</a>
-		    </div>
-		</div>
+       <div class="slide-item">
+        <article>
+          {$thumb}
+          <h1>{$post->post_title}</h1>
+          <a href="{$links_to}">{$link_text}</a>
+        </article>
+       </div>
 HTML;
   endforeach;
  

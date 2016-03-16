@@ -1,6 +1,11 @@
 // Header
 
 .site-header {
+
+  .icon-ijr {
+  	height: 48px; width: 48px;
+  }
+
   @include media-sm {
   }
 

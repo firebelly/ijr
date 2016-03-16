@@ -231,6 +231,7 @@ gulp.task('images', function() {
 
 // ### SVG time!
 gulp.task('svgs', function() {
+  console.log("hello");
   return gulp.src(path.source + 'svgs/*.svg')
     .pipe(svgmin({
         plugins: [{
