@@ -1,4 +1,5 @@
 // FBSage - Firebelly 2015
+/*jshint latedef:false*/
 
 // Good Design for Good Reason for Good Namespace
 var FBSage = (function($) {
@@ -186,7 +187,7 @@ var FBSage = (function($) {
   function _sortDropDown() {
     $('#sort-select').on('change',function() {
       window.location.href = $(this).attr('value');
-    })
+    });
   }
 
   // Track ajax pages in Analytics
