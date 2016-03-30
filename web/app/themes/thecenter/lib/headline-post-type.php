@@ -6,7 +6,7 @@
 namespace Firebelly\PostTypes\Headline;
 
 // Custom image size for post type?
-add_image_size( 'headline-thumb', 500, null, null );
+add_image_size( 'headline-thumb', 1800, null, null );
 
 // Register Custom Post Type
 function post_type() {
@@ -47,7 +47,7 @@ function post_type() {
     'menu_icon'           => 'dashicons-admin-post',
     'can_export'          => false,
     'has_archive'         => false,
-    'exclude_from_search' => false,
+    'exclude_from_search' => true,
     'publicly_queryable'  => true,
     'rewrite'             => $rewrite,
     'capability_type'     => 'page',
@@ -130,9 +130,14 @@ function metaboxes( array $meta_boxes ) {
 }
 add_filter( 'cmb2_meta_boxes', __NAMESPACE__ . '\metaboxes' );
 
-// Get Headline
+// Get Headlines
 function get_headlines() {
   $output = '';
+  $output .= <<<HTML
+    <section class="headline-banner">
+      <div class="slider headline-slider">
+        
+HTML;
 
   $args = array(
     'numberposts' => -1,
@@ -145,21 +150,44 @@ function get_headlines() {
   $headline_posts = get_posts($args);
   if (!$headline_posts) return false;
 
+  //bg divs
   foreach ($headline_posts as $post):
-    $thumb = get_the_post_thumbnail($post->ID, 'headline-thumb');
-    $link_text = get_post_meta( $post->ID, '_cmb2_link_text', true );
-    $links_to = get_permalink(get_post_meta( $post->ID, '_cmb2_links_to', true ));
-
+    $thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'headline-thumb')[0];
+    $duo_url = \Firebelly\Media\get_duo_url($thumb_url, '', [
+        'color1' => '2f2d28',
+        'color2' => 'dddcd6',
+      ]);
     $output .= <<<HTML
-       <div class="slide-item">
-        <article>
-          {$thumb}
-          <h1>{$post->post_title}</h1>
-          <a href="{$links_to}">{$link_text}</a>
-        </article>
-       </div>
+    <div class="slide-item slide-bg" style="background-image: url('{$thumb_url}')">
+      <div class="headline-duo" style="background-image: url('{$duo_url}')"> </div>
+    </div>
 HTML;
   endforeach;
+
+  //add the goddamn dots :)
+  $output .= '<div class="dots"></div>';
+
+  $output .= '<div class="overflow-wrapper">';
+
+  //article divs
+  $i = 0;
+  foreach ($headline_posts as $post):
+    $link_text = get_post_meta( $post->ID, '_cmb2_link_text', true );
+    $links_to = get_permalink(get_post_meta( $post->ID, '_cmb2_links_to', true ));
+    $output .= <<<HTML
+      <article class="slide-fg headline-article" data-slick-index="{$i}" data-links-to="{$links_to}">
+        <h1 class="headline-title"><span class="gradient-highlight">{$post->post_title}</span></h1>
+        <a class="learn-more">{$link_text}</a>
+      </article>
+HTML;
+    $i++;
+  endforeach;
+
+  $output .= <<<HTML
+        </div>
+      </div>
+</section>
+HTML;
  
   return $output;
 }

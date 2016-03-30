@@ -3,12 +3,16 @@
   <?php get_template_part('templates/content', 'page'); ?>
 <?php endwhile; ?>
 
-<section id="staff">
-  <h1>Staff</h1>    
-  <?= \Firebelly\PostTypes\Person\get_people(); ?>
+<section class="staff content-block">
+	<div class="content">
+  		<h1 class="title">Staff</h1>    
+  		<?= \Firebelly\PostTypes\Person\get_people(); ?>
+  	</div>
 </section>
 
-<section id="partners">
-  <h1>Partners</h1>    
-  <?= \Firebelly\PostTypes\Partners\get_partners(); ?>
+<section class="partners content-block">
+	<div class="content">
+  		<h1 class="title">Partners</h1>    
+  		<?= \Firebelly\PostTypes\Partners\get_partners(); ?>
+	</div>
 </section>

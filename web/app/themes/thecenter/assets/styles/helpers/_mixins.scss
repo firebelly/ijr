@@ -14,6 +14,70 @@
   }
 }
 
+//amimations
+ //cycle from blue to red (every thing in the site does this)
+@mixin color-cycle() { 
+    animation: blue-red-color $cycle-speed infinite alternate;
+}
+@mixin bg-color-cycle() {
+    animation: blue-red-bg-color $cycle-speed infinite alternate;
+}
+@mixin fill-cycle() { 
+    animation: blue-red-fill $cycle-speed infinite alternate;
+}
+@mixin stroke-cycle() { 
+    animation: blue-red-stroke $cycle-speed infinite alternate;
+}
+@mixin text-stroke-cycle() { 
+    animation: blue-red-text-stroke $cycle-speed infinite alternate;
+}
+@mixin gradient-highlight-cycle() { 
+    animation: blue-red-gradient-highlight $cycle-speed infinite alternate;
+}
+
+
+//dots
+@mixin dots() {
+  position: relative;
+  &:after {
+    content: " ";
+    z-index: $z-dots;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0; right: 0;
+    height: 100%;
+    background-image: url('/app/themes/thecenter/assets/svgs/bg-dots-black.svg');
+    background-size: 12px;
+  }
+}
+
+//text styles
+@mixin highlight_link() {
+  @include bg-color-cycle();
+  padding: 4px;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: normal;
+  text-decoration: none;
+  color: $bg;
+}
+
+@mixin small_text() {
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin big_text() {
+  font-size: 32px;
+  line-height: 36px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 // Responsive mixins by Andy Richardson (@andimal): https://github.com/andimal/sass-responsive-mixin-madness
 
 @mixin media-xs() {
@@ -54,3 +118,4 @@
     @content;
   }
 }
+

@@ -5,15 +5,36 @@
 $black: #202020;
 $black-lite: #444648;
 $white: #fff;
-$gray-lite: #DCDCDC;
 $gray: #969696;
 $gray-dark: #555;
 
+$gray-lite: #dddcd7;
+$red: #d50032;
+$blue: #10069f;
+$bg: $gray-lite;
+
 // Brand Swatches
-$brand-primary: $black;
-$brand-secondary: $white;
+$brand-primary: $blue;
+$brand-secondary: $gray-lite;
 
 // Breakpoints
 $breakpoint-sm: 480px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;
+
+//Z Indices
+$z-nav-toggle-active: 50;
+$z-nav: 40;
+$z-staff-modal: 35;
+$z-staff-mask: 30;
+$z-nav-mask: 30;
+$z-nav-toggle-inactive: 20;
+$z-brand: 20;
+$z-arrows: 10;
+$z-dots: -10;
+$z-nav-mask-hide: -30;
+
+
+//animation speeds;
+$cycle-speed: 60s;
+$nav-push-speed: 0.5s;

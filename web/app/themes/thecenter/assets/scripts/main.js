@@ -27,8 +27,23 @@ var FBSage = (function($) {
     //initialize sliders
     _initSliders();
 
+    //allow nav to push in on click of .nav-toggle
+    _navToggle();
+
+    //remove duotone headline on mouseover, follow link on click
+    _headlineMouseEvents();
+
     //put the svg icons inline to grab with use
     _injectSvgSprite();
+
+    //replace date with svg numbers
+    _replaceDate();
+
+    //staff modals
+    _staffModals(); 
+
+    //handle sort dropdown menu in archive listing
+   _sortDropDown();
 
     // Fit them vids!
     $('main').fitVids();
@@ -44,6 +59,18 @@ var FBSage = (function($) {
         _hideMobileNav();
       }
     });
+
+    //replace date with svg numbers
+    function _replaceDate() {
+      $('.time .day').each(function() {
+        var numbers = $(this).text().split(''),
+            replacement = '';
+        replacement += '<svg class="icon-number" role="img"><use xlink:href="#icon-number-'+numbers[0]+'"></use></svg>';
+        replacement += '<svg class="icon-number" role="img"><use xlink:href="#icon-number-'+numbers[1]+'"></use></svg>';
+        $(this).html(replacement);
+      });
+
+    }
 
     // Smoothscroll links
     $('a.smoothscroll').click(function(e) {
@@ -155,6 +182,13 @@ var FBSage = (function($) {
     });
   }
 
+  //handle sort dropdown menu in archive listing
+  function _sortDropDown() {
+    $('#sort-select').on('change',function() {
+      window.location.href = $(this).attr('value');
+    })
+  }
+
   // Track ajax pages in Analytics
   function _trackPage() {
     if (typeof ga !== 'undefined') { ga('send', 'pageview', document.location.href); }
@@ -165,18 +199,110 @@ var FBSage = (function($) {
     if (typeof ga !== 'undefined') { ga('send', 'event', category, action); }
   } 
 
+  //opening/closing modals for people;
+  function _openPerson($person) {
+    _closePeople();
+    $person.addClass('open');
+    $('html, body').animate({
+        scrollTop: $person.offset().top-64
+      }, 500);
+  }
+  function _closePeople() {
+    $('.person').removeClass('open');
+  }
+  function _numPeople() {
+    return $('.person').length;
+  }
+  function _advancePerson(n) {
+      var i = Number($('.person.open').attr('data-person-num')),
+        tot = _numPeople(),
+        i= (i+n) % tot,
+        selector = '.person[data-person-num="'+i+'"]',
+        $newPerson = $(selector);
+      _openPerson($newPerson);
+  }
+
+  function _staffModals() {
+    $('.close-people').on('click', function () {
+      _closePeople();
+    });
+
+    $('.open-person').on('click', function () {
+      _closePeople();
+      var $person = $(this).closest('.person');
+      _openPerson($person);
+    });
+
+    $('.next-person').on('click', function () {
+      _advancePerson(1);
+    });
+    $('.prev-person').on('click', function () {
+      var tot = _numPeople();
+      _advancePerson(tot-1);
+    });
+  }
+
+
   //Initialize Slick Sliders
   function _initSliders(){
-    $('.slider').slick({
+    $('.headline-slider.slider').slick({
       slide: '.slide-item',
       autoplay: true,
       autoplaySpeed: 6000,
-      speed: 800
+      speed: 1200,
+      pauseOnHover: true,
+      prevArrow: '<svg class="slider-nav-left icon-arrow-left" role="img"><use xlink:href="#icon-arrow-left"></use></svg>',
+      nextArrow: '<svg class="slider-nav-right icon-arrow-right" role="img"><use xlink:href="#icon-arrow-right"></use></svg>',   
+    });
+
+    $('.post-slider.slider').slick({
+      slide: '.slide-item',
+      speed: 1200,
+      prevArrow: '<svg class="slider-nav-left icon-arrow-left" role="img"><use xlink:href="#icon-arrow-left"></use></svg>',
+      nextArrow: '<svg class="slider-nav-right icon-arrow-right" role="img"><use xlink:href="#icon-arrow-right"></use></svg>',   
+    });
+
+
+
+    //things got complicated with animations/overlays, needed to make each slide multiple, seperate divs
+    //when slick makes a slide active, we want to throw a .active class on every div that's associated associated (via data-slick-index)
+    //start with first one
+    $('.slider').find('.slide-fg[data-slick-index="0"]').addClass('active');
+    //revise on slide change...
+    $('.slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+      $(this).find('.slide-fg').removeClass('active');
+      $(this).find('.slide-fg[data-slick-index="'+nextSlide+'"]').addClass('active');
+    }); 
+  }
+
+  function _navToggle() {
+    $('.nav-toggle').on('click', function () {
+        $('.nav-toggle').toggleClass('active');
+        $('.nav-push-wrap').toggleClass('pushed');
+        $('.site-nav').toggleClass('active');
+    });
+  }
+
+  //remove duotone headline on mouseover, follow link on click
+  function _headlineMouseEvents() {
+    $('.overflow-wrapper').mouseover(function() {
+      $('.headline-duo').css('opacity',0);
+        $(this).css('cursor','pointer');
+    });
+
+    $('.overflow-wrapper').mouseout(function() {
+      $('.headline-duo').css('opacity',1);
+    });
+
+    $('.headline-article').on('click',function() {
+      var url = $(this).attr('data-links-to');
+      window.location.href = url;
     });
   }
 
   function _injectSvgSprite() {
     boomsvgloader.load('/app/themes/thecenter/assets/svgs/build/svgs-defs.svg'); 
+    console.log('boom!');
   }
 
   // Called in quick succession as window is resized

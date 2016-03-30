@@ -2,13 +2,39 @@
 
 .site-header {
 
-  .icon-ijr {
-  	height: 48px; width: 48px;
-  }
+	.brand {
+		z-index: $z-brand;
+		position: fixed;
+		width: 180px;
+		height: 186+48+48px;
+		left: 0px;
+		background: linear-gradient( 0deg , rgba(0,0,0,0), $bg 48px);
+		transition: transform $nav-push-speed;
+		
+		a{ text-decoration: none; }
 
-  @include media-sm {
-  }
+		h1 {
+			position: fixed;
+			top: 172px; left: 125px;
+			transform-origin: 0% 0%;
+			transform: rotate(270deg) translateY(-100%);
+			margin: 0; padding: 0;
+			font-size: 32px;
+			line-height: 32px;
+		}
+				
+		.icon-ijr {
+			position: fixed;
+			top: 186px; left: 90px;
+			transform: translateX(-50%);
+			height: 48px; width: 48px;
+			@include fill-cycle();
+		}
+	}
 
-  @include media-md {
-  }
+	@include media-sm {
+	}
+
+	@include media-md {
+	}
 }

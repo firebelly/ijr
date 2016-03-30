@@ -47,7 +47,7 @@ function post_type() {
     'menu_icon'           => 'dashicons-admin-post',
     'can_export'          => false,
     'has_archive'         => false,
-    'exclude_from_search' => false,
+    'exclude_from_search' => true,
     'publicly_queryable'  => true,
     'rewrite'             => $rewrite,
   );
@@ -62,8 +62,8 @@ add_action( 'init', __NAMESPACE__ . '\post_type', 0 );
 function edit_columns($columns){
   $columns = array(
     'cb' => '<input type="checkbox" />',
-    'title' => 'Title',
-    '_cmb2_subtitle' => 'Subtitle',
+    'title' => 'Name',
+    '_cmb2_title' => 'Title',
     'content' => 'Bio',
     'featured_image' => 'Image',
   );
@@ -93,17 +93,23 @@ function metaboxes( array $meta_boxes ) {
 
   $meta_boxes['person_metabox'] = array(
     'id'            => 'person_metabox',
-    'title'         => __( 'Person Details', 'cmb2' ),
+    'title'         => __( 'Title', 'cmb2' ),
     'object_types'  => array( 'person', ), // Post type
     'context'       => 'normal',
     'priority'      => 'high',
     'show_names'    => true, // Show field names on the left
     'fields'        => array(
       array(
-        'name' => 'Subtitle',
+        'name' => 'Title',
         'desc' => 'e.g. Executive Director',
-        'id'   => $prefix . 'subtitle',
+        'id'   => $prefix . 'title',
         'type' => 'text_medium',
+      ),
+      array(
+        'name' => 'Show in staff grid',
+        'desc' => 'If checked, the title will appear in grid view–in addition to when bio is expanded',
+        'id'   => $prefix . 'show_title',
+        'type' => 'checkbox',
       ),
     ),
   );
@@ -128,12 +134,14 @@ function get_people($options=[]) {
 
   $output = '<ul class="people">';
 
+  $i = 0;
   foreach ( $person_posts as $post ):
-    $output .= '<li class="person">';
+    $output .= '<li>';
     ob_start();
     include(locate_template('templates/article-person.php'));
     $output .= ob_get_clean();
     $output .= '</li>';
+    $i++;
   endforeach;
 
   $output .= '</ul>';

@@ -16,12 +16,12 @@ function get_page_blocks($post) {
           $block_title = $page_block['title'];
         if (!empty($page_block['body'])) {
           $block_body = apply_filters('the_content', $page_block['body']);
-          $output .= '<section>';
+          $output .= '<section class="content-block"><div class="content">';
           if ($block_title) {
-            $output .= '<h1>' . $block_title . '</h1>';
+            $output .= '<h1 class="title">' . $block_title . '</h1>';
           }
           $output .= '<div class="user-content">' . $block_body . '</div>';
-          $output .= '</section>';
+          $output .= '</div></section>';
         }
       }
     }
@@ -39,6 +39,15 @@ function search_queries( $query ) {
   return $query;
 }
 add_filter( 'pre_get_posts', __NAMESPACE__ . '\\search_queries' );
+
+/**
+ * Remove pages from search
+ */
+function remove_pages_from_search() {
+    global $wp_post_types;
+    $wp_post_types['page']->exclude_from_search = true;
+}
+add_action('init', __NAMESPACE__ . '\\remove_pages_from_search');
 
 /**
  * Custom li'l excerpt function
@@ -67,19 +76,23 @@ function console( $string ) {
 /**
  * Get li's of post tags
  */
-function get_tag_list( $post ) {
+function get_tags( $post ) {
   $output = '';
   $tags=get_the_tags($post->ID);
   if ( has_tag(null,$post) ) {
-    console("we have tags");
     $tags=get_the_tags($post->ID);
+   
+    $tag_list = array();
     foreach ($tags as $tag) {
       $tag_link = get_tag_link( $tag->term_id );
       $tag_name = $tag->name;
-      $output .= '<li><a href="'.$tag_link.'">'.$tag_name.'</a></li>';
+      $taglist[] = '<a href="'.$tag_link.'">'.$tag_name.'</a>';
     }
+    $output .= '<ul class="tags"><li>';
+    $output .= implode(", </li><li>",$taglist);
+    $output .= '</li></ul>';
     return $output;
-  } else{
+  } else {
     return false;
   }
   

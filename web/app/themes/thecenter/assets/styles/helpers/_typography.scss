@@ -1,14 +1,24 @@
 // Typography
 
+
+
 // Fonts
 $sans: Helvetica, sans-serif;
 $serif: Georgia, serif;
+@font-face {
+    font-family: theinhardtMedium;
+    src: url(/app/themes/thecenter/assets/fonts/Theinhardt-Medium.otf);
+}
+$main-font: theinhardtMedium, sans-serif;
+
+
+
 
 // Sans-specific styles to chunk into one include
 @mixin font-sans() {
 }
 // Serif-specific styles to chunk into one include
-@mixin font-sans() {
+@mixin font-serif() {
 }
 
 // Hide fonts while loading from Typekit

@@ -50,7 +50,7 @@ function post_type() {
     'menu_icon'           => 'dashicons-admin-post',
     'can_export'          => false,
     'has_archive'         => false,
-    'exclude_from_search' => false,
+    'exclude_from_search' => true,
     'publicly_queryable'  => true,
     'rewrite'             => $rewrite,
   );
@@ -109,7 +109,6 @@ function metaboxes( array $meta_boxes ) {
       ),
     ),
   );
-
   return $meta_boxes;
 }
 add_filter( 'cmb2_meta_boxes', __NAMESPACE__ . '\metaboxes' );

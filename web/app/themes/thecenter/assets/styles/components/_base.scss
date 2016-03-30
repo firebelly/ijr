@@ -8,11 +8,16 @@ html {
 }
 
 body {
-  color: $black;
+  @include color-cycle();
   font-size: 16px;
   overflow-x: hidden;
-  font-family: $sans;
-  background: $white;
+  font-family: $main-font;
+  letter-spacing: .01em;
+  background: $bg;
+}
+
+.nav-push-wrap {
+  padding: 0 72px 72px 180px; 
 }
 
 p {
@@ -29,6 +34,7 @@ img {
   max-width: 100%;
   height: auto;
 }
+
 
 // Browser alert
 .alert-warning {
@@ -65,3 +71,4 @@ img {
   @include media-md {
   }
 }
+

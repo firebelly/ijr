@@ -2,13 +2,22 @@
 
 .user-content {
   @include clearfix();
+  color: $black;
+  font-size: 16px;
+  line-height: 24px;
+
+  *:first-child {margin-top: 0;}
+
+  h1,h2,h3,h4,h5,h6,a,blockquote {
+    @include color-cycle();
+  }
 
   h1,h2,h3,h4,h5,h6 {
-    
+    @include big_text();
   }
 
   p {
-
+    margin-bottom: 0;
   }
 
   a {
@@ -42,5 +51,14 @@
     font-weight: bold;
   }
 
+  figcaption {
+    font-size: .8em;
+  }
 
+}
+
+.staff { 
+  .user-content {
+    color: $bg;
+  }
 }
