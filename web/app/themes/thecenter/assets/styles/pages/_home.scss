@@ -466,6 +466,7 @@ button, input[type="submit"] {
 .news, .radar {
 	position: relative;
 	margin-right: -32px;
+	@include media-md() {margin-right: 0;}
 	.all{
 		@include highlight_link() ;
 		position: absolute;
