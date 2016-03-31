@@ -1,7 +1,7 @@
 <header class="site-header" role="banner">
   <hgroup class="brand">
     <a href="<?= esc_url(home_url('/')); ?>">
-      <h1>the<br>Center</h1>
+      <h1>the <span class="-center">Center</span></h1>
       <svg role="image" class="icon icon-ijr"><use xlink:href="#icon-ijr"></use></svg>
     </a>
   </hgroup>

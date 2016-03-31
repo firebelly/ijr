@@ -14,7 +14,7 @@ $show_title =  get_post_meta( $post->ID, '_cmb2_show_title', true )=='on';
 $body = apply_filters('the_content', $post->post_content);
 $person_num = isset($i) ? "data-person-num=\"{$i}\"" : '';
 ?>
-<article data-url="<?= get_permalink($post) ?>" id="<?= $post->post_name ?>" class="person" <?= $person_num ?>>
+<div data-url="<?= get_permalink($post) ?>" id="<?= $post->post_name ?>" class="person" <?= $person_num ?>>
   <?= $photo_duo ?>
   <div class="read-bio open-person">
 	  <a class="open-person">Read Bio</a>
@@ -26,7 +26,7 @@ $person_num = isset($i) ? "data-person-num=\"{$i}\"" : '';
   <div class="mask close-people"></div>
   <div class="modal">
   	<div class="viewport">
-  		<svg class="icon-x close-people" role="img"><use xlink:href="#icon-x"></use></svg>
+		<svg class="icon-x close-people" role="img"><use xlink:href="#icon-x"></use></svg>
 	  	<svg class="icon-arrow-right next-person" role="img"><use xlink:href="#icon-arrow-right"></use></svg>
 	  	<div class="content-wrapper">
 		  	<hgroup class="modal-titles">

@@ -17,7 +17,10 @@ body {
 }
 
 .nav-push-wrap {
-  padding: 0 72px 72px 180px; 
+  padding: $gut-top $gut-right $gut-bottom $gut-left;
+  @include media-md() {
+    padding: $gut-top-md $gut-right-md $gut-bottom-md $gut-left-md;
+  }
 }
 
 p {
@@ -37,20 +40,24 @@ img {
 
 
 // Browser alert
-.alert-warning {
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 200;
-  color: $black;
-  padding: 50px;
-  text-align: center;
-  background: $brand-primary;
-}
 .alert {
-  padding: 50px;
-  background: #fff;
+  padding: 0px; 
+  padding-top: 36px;
+  padding-bottom: 36px;
 }
+.alert-warning {
+  background-color: $bg;
+  text-align: left;
+  margin-top: 162-36px;
+  margin-bottom: 162px;
+  margin-right: 72px;
+  @include color-cycle();
+  @include big_text();
+  max-width: 768px;
+}
+
+
+
 
 // Disable scrolling when modals are active
 .no-scroll {
@@ -71,4 +78,74 @@ img {
   @include media-md {
   }
 }
+*:focus {
+    outline: none;
+}
 
+
+
+//global styles
+
+.dots{
+  display: block;
+  position: absolute;
+  top: 0; 
+  left: 0; right: 0;
+  height: 100%;
+  background-image: url('/app/themes/thecenter/assets/svgs/bg-dots-black.svg');
+  background-size: 12px;
+}
+.headline-title {
+  position: relative;
+  margin: 0; margin-top: 96px; margin-right: 72px;
+  @include media-md() {
+    margin: 0; margin-top: 114px; margin-right: 72px;
+    max-width: 660px;
+  }
+  font-weight: normal;
+  .gradient-highlight {
+    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0) 3%, $bg 3%, $bg 87%, rgba(0,0,0,0) 87%);
+    background-repeat: repeat-x;
+  }
+}
+.next-post, .prev-post, .slider-nav-right, .slider-nav-left {
+    z-index: $z-arrows;
+    position: absolute;
+    @include fill-cycle();
+    &:hover{
+      cursor: pointer;
+    }
+}
+.headline-title, .search-field {
+  font-size: 32px;
+  line-height: 36px;
+  @include media-md() {
+    font-size: 64px;
+    line-height: 66px;
+  }
+}
+
+
+
+
+
+
+.slider-nav-left {
+  left: -14px;
+  @include media-md() {left: -126px;}
+}
+.slider-nav-right {
+  right: -14+36px;
+  @include media-md() {right: -36px;}
+}
+
+//icons
+.icon-arrow-right, .icon-arrow-left {
+    width: 72px; height: 20px;
+}
+.icon-burger {
+  width: 36px; height: 26px;
+}
+.icon-x, .icon-burger {
+  stroke-width: 2px;
+}

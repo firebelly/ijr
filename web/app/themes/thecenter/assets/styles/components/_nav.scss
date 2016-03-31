@@ -21,16 +21,20 @@
 		transition: opacity 0.5s, height 0.1s 0.5s;
 	}
 	&.pushed { 
-		margin-left: -50vw;
-		margin-right: 50vw;
+		margin-left: -100vw;
+		margin-right: 100vw;
+		@include media-md {
+			margin-left: -50vw;
+			margin-right: 50vw;
+		}
+		.brand {
+			transform: translateX(-50vw);
+		}
 		&::after{
 			z-index: $z-nav-mask;
 			height: 100%;
 			opacity: .75;
 			transition: opacity 1.5s 0.1s, height 0.1s;
-		}
-		.brand, .nav-toggle-gradient {
-			transform: translateX(-50vw);
 		}
 	}
 }
@@ -39,18 +43,27 @@
 .nav-toggle{
 	z-index: $z-nav-toggle-inactive;
 	position: fixed;
-	width: 72px;
+	width: 36px;
+	top: -54px;
+	@include media-md {
+		width: 72px;
+		top: 0;	
+	}
 	height: 170+48px;
-	top: 0;
+	
 	right: 0px;
-	background: linear-gradient( 0deg , rgba(0,0,0,0), $bg 48px);
+	background: linear-gradient( 0deg , rgba(221,220,215,0), $bg 48px);
 	&:hover{
 		cursor: pointer;
 	}
 	.menu{
 		position: fixed;
-		bottom: calc(100% - 168px);
-		left: calc(100% - 54px);
+		bottom: calc(100% - 168px + 54px);
+		left: calc(100% - 54px + 36px);
+		@include media-md () {
+			bottom: calc(100% - 168px);
+			left: calc(100% - 54px);
+		}
 		transform-origin: 0% 100%;
 		transform: rotate(270deg) translateY(50%);
 		margin: 0;
@@ -81,11 +94,15 @@
 /* Nav Icon */
 
 .nav-icon { //#nav-icon
-	top: 78px; right: 36+18px;
+	top: 78-54px; 
+	right: $gut-right - 18px;
+	@include media-md {
+		top: 78px; 
+		right: $gut-right-md - 18px;
+	}
 	position: fixed;
 	margin: 0;
 	transform: rotate(0deg) translateX(50%);
-	transition: .5s ease-in-out;
 	cursor: pointer;
 	// 	span{
 	//   		@include bg-color-cycle();
@@ -158,16 +175,23 @@
 
 .site-nav {
 	&.active{
-		margin-left: -50vw;
-		margin-right: 50vw;
+		margin-left: -100vw;
+		margin-right: 100vw;
+		@include media-md {
+			margin-left: -50vw;
+			margin-right: 50vw;
+		}
 	}
 	z-index: $z-nav;
 	position: fixed;
 	left: 100%;
-	width: 50%;
+	width: 100%;
 	top: 0; 
 	bottom: 0;
-	padding: 72px;
+	padding: 36px;
+	@include media-md() {
+		padding: 72px;
+	}
 	@include bg-color-cycle();
 	transition: margin $nav-push-speed;
 
@@ -176,7 +200,8 @@
 		padding: 0;
 		list-style: none;
 		li.menu-item {
-			margin-top: 24px;
+			margin-top: 12px;
+			@include media-md() {margin-top: 24px;}
 			&:first-child { margin-top: 0; }
 			padding-bottom: 12px;
 			width: 100%;

@@ -52,32 +52,6 @@
   }
 }
 
-//text styles
-@mixin highlight_link() {
-  @include bg-color-cycle();
-  padding: 4px;
-  font-size: 16px;
-  line-height: 16px;
-  font-weight: normal;
-  text-decoration: none;
-  color: $bg;
-}
-
-@mixin small_text() {
-  font-size: 16px;
-  line-height: 18px;
-  font-weight: normal;
-  font-style: normal;
-}
-
-@mixin big_text() {
-  font-size: 32px;
-  line-height: 36px;
-  font-weight: normal;
-  font-style: normal;
-}
-
-
 // Responsive mixins by Andy Richardson (@andimal): https://github.com/andimal/sass-responsive-mixin-madness
 
 @mixin media-xs() {
@@ -87,6 +61,11 @@
 }
 @mixin media-sm() {
   @media screen and (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+@mixin media-xs-sm() {
+  @media screen and (max-width: $breakpoint-md - 1) {
     @content;
   }
 }
@@ -118,4 +97,35 @@
     @content;
   }
 }
+
+
+//text styles
+@mixin highlight_link() {
+  @include bg-color-cycle();
+  padding: 4px;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: normal;
+  text-decoration: none;
+  color: $bg;
+}
+
+@mixin small_text() {
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin big_text() {
+  font-size: 16px;
+  line-height: 24px;
+  @include media-md () {
+    font-size: 32px;
+    line-height: 36px;
+  }
+  font-weight: normal;
+  font-style: normal;
+}
+
 

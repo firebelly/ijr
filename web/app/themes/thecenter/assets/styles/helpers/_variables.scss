@@ -18,13 +18,14 @@ $brand-primary: $blue;
 $brand-secondary: $gray-lite;
 
 // Breakpoints
-$breakpoint-sm: 480px;
-$breakpoint-md: 768px;
+$breakpoint-sm: 750px;
+$breakpoint-md: 750px;
 $breakpoint-lg: 1024px;
 
 //Z Indices
 $z-nav-toggle-active: 50;
 $z-nav: 40;
+$z-staff-arrows: 37;
 $z-staff-modal: 35;
 $z-staff-mask: 30;
 $z-nav-mask: 30;
@@ -38,3 +39,14 @@ $z-nav-mask-hide: -30;
 //animation speeds;
 $cycle-speed: 60s;
 $nav-push-speed: 0.5s;
+
+//gutters
+$gut-top:0;
+$gut-right:36px;
+$gut-bottom:48px;
+$gut-left:36px;
+//md
+$gut-top-md:0;
+$gut-right-md:72px;
+$gut-bottom-md:72px;
+$gut-left-md:180px;

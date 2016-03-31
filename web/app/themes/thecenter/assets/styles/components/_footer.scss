@@ -2,16 +2,16 @@
 
 .site-footer {
 	position: relative;
-	margin-top: 54+162px;
-	height: 132px;
+	margin-top: 156px; //156
+	@include media-md{margin-top: 206px;} //206}
 	@include small_text();
 	h1 { 
 		@include small_text(); 
 		margin: 0;
 	}
 	.contact, .newsletter, {
-		position: absolute;
-		top: 0;
+		// position: absolute;
+		// top: 0;
 		height: 100%;
 		width: 100%; // width: 50%;
 		margin: 0;
@@ -50,12 +50,16 @@
 
 	}
 	.contact {
-		// left: 50%;
+		.contact-info, .logo {
+			display: inline-block;	
+			width: 100%;
+			@include min-screen(420px) {
+				width: 48%;
+			}
+			
+		}
 		.contact-info {
-			// position: absolute;
-			// top: 0;
-			// // left: 20%;
-			float: left;
+			min-height: 136px;
 			line-height: 24px;
 			h1 {margin: 0;}
 			address {
@@ -63,15 +67,54 @@
 				font-style: normal;
 			}
 		}
+		.logo{
+			text-align: left;
+			@include min-screen(420px) {
+				text-align: right;
+				min-height: 130px;
+			}
+		}
 		.icon-uic {
-			// position: absolute;
-			// right: 0;
-			// top: 70px;
-			margin-top: 70px;
-			float: right;
-			transform: translateY(-50%);
+			margin-top: 36px;
 			width: 172px; height: 48px;
 			@include fill-cycle();
+			@include min-screen(420px) {
+				transform: translateY(-50%);
+			}
 		}
 	}
+
+	// 	.contact {
+	// 	// left: 50%;
+	// 	.contact-info {
+	// 		// position: absolute;
+	// 		// top: 0;
+	// 		// // left: 20%;
+	// 		display: inline-block;		
+	// 		@include max-screen(420px) {
+	// 		}
+	// 		line-height: 24px;
+	// 		h1 {margin: 0;}
+	// 		address {
+	// 			margin-top: 24px;
+	// 			font-style: normal;
+	// 		}
+	// 	}
+	// 	.icon-uic {
+	// 		// position: absolute;
+	// 		// right: 0;
+	// 		// top: 70px;
+	// 		margin-top: 70px;
+	// 		float: right;
+	// 		display: inline-block;	
+	// 		@include max-screen(420px) {
+	// 			float: none;
+	// 			display: block;
+	// 			transform: none;
+	// 		}
+	// 		transform: translateY(-50%);
+	// 		width: 172px; height: 48px;
+	// 		@include fill-cycle();
+	// 	}
+	// }
 }

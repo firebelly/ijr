@@ -24,7 +24,9 @@
         <span class="email"><a href="mailto:info@ijrcenter.com">info@ijrcenter.com</a></span>
       </address>
     </div>
-    <svg role="image" class="icon icon-uic"><use xlink:href="#icon-uic"></use></svg>
+    <div class="logo">
+      <svg role="image" class="icon icon-uic"><use xlink:href="#icon-uic"></use></svg>
+    </div>
   </section>
 
 

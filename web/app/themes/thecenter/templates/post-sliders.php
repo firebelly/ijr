@@ -10,7 +10,10 @@ use Firebelly\Utils;
   	foreach ($posts as $post):
     	?>
     	<div class="slide-fg" data-slick-index="<?= $i ?>">
-			<?php include(locate_template('templates/post-time.php')) ?>
+			<?php 
+			$time_class='time-big';
+			include(locate_template('templates/post-time.php')); 
+			?>
 		</div>
 		<?php
     	$i++;

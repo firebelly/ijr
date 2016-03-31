@@ -12,3 +12,6 @@ $recess = $post ? get_post_meta($post->ID, '_cmb2_recess', true)=='on' : '';
 	<div class="dots"></div>
 	<h1 class="headline-title"><span class="gradient-highlight"><?= Titles\title(); ?></span></h1>
 </div>
+
+
+<!-- <?= $recess ? '' : '</div>'; ?> -->

@@ -29,8 +29,11 @@
   }
 
 .slider-nav-right, .slider-nav-left {
-    top: 50%;
     transform: translateY(-50%);
+    top: calc(100% - 75px);
+    @include media-md() {
+      top: 50%;
+    }
 }
 
   // hide the ajax loader - not needed

@@ -8,7 +8,7 @@ var FBSage = (function($) {
       breakpoint_small = false,
       breakpoint_medium = false,
       breakpoint_large = false,
-      breakpoint_array = [480,1000,1200],
+      breakpoint_array = [750,750,1200],
       $document,
       $sidebar,
       loadingTimer,
@@ -44,7 +44,17 @@ var FBSage = (function($) {
     _staffModals(); 
 
     //handle sort dropdown menu in archive listing
-   _sortDropDown();
+    _sortDropDown();
+
+    //make search bar appear
+    _initSearch();
+
+    //position/resize staff modals (too hard with css)
+    _styleStaff(); 
+
+   //push down recessed page content if headline-title overlaps 
+   //-- wish I could think of a way to do this with css
+   _pushPageRecess();
 
     // Fit them vids!
     $('main').fitVids();
@@ -60,18 +70,6 @@ var FBSage = (function($) {
         _hideMobileNav();
       }
     });
-
-    //replace date with svg numbers
-    function _replaceDate() {
-      $('.time .day').each(function() {
-        var numbers = $(this).text().split(''),
-            replacement = '';
-        replacement += '<svg class="icon-number" role="img"><use xlink:href="#icon-number-'+numbers[0]+'"></use></svg>';
-        replacement += '<svg class="icon-number" role="img"><use xlink:href="#icon-number-'+numbers[1]+'"></use></svg>';
-        $(this).html(replacement);
-      });
-
-    }
 
     // Smoothscroll links
     $('a.smoothscroll').click(function(e) {
@@ -89,6 +87,66 @@ var FBSage = (function($) {
 
   } // end init()
 
+  //replace date with svg numbers
+  function _replaceDate() {
+    $('.time-big .day').each(function() {
+      var numbers = $(this).text().split(''),
+          replacement = '';
+      replacement += '<svg class="icon-number" role="img"><use xlink:href="#icon-number-'+numbers[0]+'"></use></svg>';
+      replacement += '<svg class="icon-number" role="img"><use xlink:href="#icon-number-'+numbers[1]+'"></use></svg>';
+      $(this).html(replacement);
+    });
+  }
+
+  //position/resize staff modals (too hard with css)
+  function _styleStaff() {
+    $('.staff .viewport').each(function() {
+      var currentTop = $(this).offset().top;
+      var $person = $(this).closest('.person');
+      var newTop = 0;
+
+      if($(window).width() >= breakpoint_array[1]) {
+        newTop = $person.offset().top + $person.height() - 144;
+        $(this).offset({top: newTop, left: 0 });
+        $(this).find('.icon-x').offset({ top: $person.offset().top, left: 69});
+      }else{
+        newTop = $person.offset().top + $person.height() - 124;
+        $(this).offset({top: newTop, left: 0 });
+        $(this).find('.icon-x').offset({ top: $person.offset().top, left: 10});
+      }
+    });
+
+    
+    if($(window).width() >= breakpoint_array[1]) {
+      $person = $('.person').first(); //match to size of person element (take #0, they're all the same)
+      var persW = $person.width();
+      $('.staff .modal .wp-post-image').width(persW);
+      $('.modal-titles').css('max-width',persW);
+      $('.staff li:nth-child(2n+1) .modal-titles').css('margin-left',24+persW);
+    }else{ 
+      $('.staff .modal .wp-post-image').css('width',$(window).width()-72);
+      $('.modal-titles').css('max-width','');
+      $('.staff li:nth-child(2n+1) .modal-titles').css('margin-left','');
+
+    }
+
+  }
+
+  //push down recessed page content if headline-title overlaps 
+  //-- wish I could think of a way to do this with css
+  function _pushPageRecess() {
+    if($(window).width() >= breakpoint_array[1]) {
+      var headerHeight = $('.page-header').height();
+      var headlineHeight = $('.headline-title').height();
+      var headlineOffset = $('.headline-title').offset().top;
+      var margin = -(headerHeight-(headlineOffset+headlineHeight))+36;
+      $('.content-block.recess').css('margin-top',margin+'px');
+    } else {
+      $('.content-block.recess').css('margin-top','');
+    }
+  }
+
+
   function _scrollBody(element, duration, delay) {
     if ($('#wpadminbar').length) {
       wpOffset = $('#wpadminbar').height();
@@ -103,18 +161,15 @@ var FBSage = (function($) {
   }
 
   function _initSearch() {
-    $('.search-form:not(.mobile-search) .search-submit').on('click', function (e) {
-      if ($('.search-form').hasClass('active')) {
-
-      } else {
-        e.preventDefault();
-        $('.search-form').addClass('active');
-        $('.search-field:first').focus();
+    $('.search-toggle').on('click', function() {
+      if($('.search-form').hasClass('searching')){
+        console.log('submit!');
+        $('.search-form').submit();
+      }else{
+        $('.search-form').addClass('searching');
+        $('.headline-title').addClass('searching');
+        $('.search-field').focus();
       }
-    });
-    $('.search-form .close-button').on('click', function() {
-      _hideSearch();
-      _hideMobileNav();
     });
   }
 
@@ -202,6 +257,7 @@ var FBSage = (function($) {
 
   //opening/closing modals for people;
   function _openPerson($person) {
+    _styleStaff();
     _closePeople();
     $person.addClass('open');
     $('html, body').animate({
@@ -215,11 +271,11 @@ var FBSage = (function($) {
     return $('.person').length;
   }
   function _advancePerson(n) {
-      var i = Number($('.person.open').attr('data-person-num')),
-        tot = _numPeople(),
-        i= (i+n) % tot,
-        selector = '.person[data-person-num="'+i+'"]',
-        $newPerson = $(selector);
+      var i = Number($('.person.open').attr('data-person-num'));
+      var tot = _numPeople();
+      i = (i+n) % tot;
+      var selector = '.person[data-person-num="'+i+'"]';
+      var $newPerson = $(selector);
       _openPerson($newPerson);
   }
 
@@ -312,6 +368,14 @@ var FBSage = (function($) {
     breakpoint_small = (screenWidth > breakpoint_array[0]);
     breakpoint_medium = (screenWidth > breakpoint_array[1]);
     breakpoint_large = (screenWidth > breakpoint_array[2]);
+
+    //push down recessed page content if headline-title overlaps 
+    //-- wish I couls think of a way to do this with css
+    _pushPageRecess();
+    
+    //position/resize staff modals (too hard with css)
+    _styleStaff(); 
+
   }
 
   // Called on scroll

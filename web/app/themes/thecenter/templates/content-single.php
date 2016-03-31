@@ -8,12 +8,18 @@ $category = get_the_category()[0];
       <h1 class="entry-title headline-title"><span class="gradient-highlight"><?php the_title(); ?></span></h1>
     </header>
     <div class="post-content">
-      <?php include(locate_template('templates/post-time.php')); ?>
+      <?php 
+      $time_class='time-big';
+      include(locate_template('templates/post-time.php')); 
+      ?>
+      <div class='arrows'>
+        <?php previous_post_link( '%link', '<svg class="prev-post icon-arrow-left" role="img"><use xlink:href="#icon-arrow-left"></use></svg>' ); ?>
+        <?php next_post_link( '%link', '<svg class="next-post icon-arrow-right" role="img"><use xlink:href="#icon-arrow-right"></use></svg>' ); ?>
+      </div>
       <div class="entry-content user-content">
         <?php the_content(); ?>
       </div>
-      <?php previous_post_link( '%link', '<svg class="prev-post icon-arrow-left" role="img"><use xlink:href="#icon-arrow-left"></use></svg>' ); ?>
-      <?php next_post_link( '%link', '<svg class="next-post icon-arrow-right" role="img"><use xlink:href="#icon-arrow-right"></use></svg>' ); ?>
+     
     </div>
   </article>
 <?php endwhile; ?>
