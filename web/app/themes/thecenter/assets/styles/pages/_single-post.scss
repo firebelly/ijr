@@ -91,11 +91,11 @@
     }
     transform: translateY(-50%);
   }
-  .prev-post {
+  .next-post {
     left: 10px;
     @include media-md() {left: 36px;}
   }
-  .next-post {
+  .prev-post {
     right: 10px;
     @include media-md() {right: 36px;}
   }

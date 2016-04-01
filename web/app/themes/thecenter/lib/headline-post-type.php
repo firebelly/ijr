@@ -165,7 +165,7 @@ HTML;
   endforeach;
 
   //add the goddamn dots :)
-  $output .= '<div class="dots"></div>';
+  $output .= '<div class="bg-dots"></div>';
 
   $output .= '<div class="overflow-wrapper">';
 

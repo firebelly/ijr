@@ -2,51 +2,51 @@
 
 .site-header {
 
-	.brand {
-		z-index: $z-brand;
+  .brand {
+    z-index: $z-brand;
 
-		.icon-ijr {
-			visibility: hidden;
-			position: fixed;
-			top: 186px; left: 90px;
-			transform: translateX(-50%);
-			height: 48px; width: 48px;
-			@include fill-cycle();
-		}
-		position: absolute;
-		top: 24px;
-		left: $gut-left;
-		background-color: $bg;
-		h1 {
-			@include small_text(); 
-			margin: 4px;
-		}
-		a{ 
-			text-decoration: none; 
-		}
-		@include media-md() {
-			position: fixed;
-			top: 0px;
-			width: $gut-left-md;
-			height: 186+48+48px;
-			left: 0px;
-			background: linear-gradient( 0deg , rgba(221,220,215,0), $bg 48px);
-			transition: transform $nav-push-speed;
-			h1 {
-				position: fixed;
-				top: 172px; left: 125px;
-				transform-origin: 0% 0%;
-				transform: rotate(270deg) translateY(-100%);
-				margin: 0; padding: 0;
-				font-size: 32px;
-				line-height: 32px;
-				.-center{
-					@include clearfix();
-				}
-			}	
-			.icon-ijr {
-				visibility: visible;
-			}
-		}
-	}
+    .icon-ijr {
+      visibility: hidden;
+      position: fixed;
+      top: 186px; left: 90px;
+      transform: translateX(-50%);
+      height: 48px; width: 48px;
+      @include fill-cycle();
+    }
+    position: absolute;
+    top: 24px;
+    left: $gut-left;
+    background-color: $bg;
+    h1 {
+      @include small_text(); 
+      margin: 4px;
+    }
+    a{ 
+      text-decoration: none; 
+    }
+    @include media-md() {
+      position: fixed;
+      top: 0px;
+      width: $gut-left-md;
+      height: 186+48+48px;
+      left: 0px;
+      background: linear-gradient( 0deg , rgba(221,220,215,0), $bg 48px);
+      transition: transform $nav-push-speed;
+      h1 {
+        position: fixed;
+        top: 172px; left: 125px;
+        transform-origin: 0% 0%;
+        transform: rotate(270deg) translateY(-100%);
+        margin: 0; padding: 0;
+        font-size: 32px;
+        line-height: 32px;
+        .-center{
+          @include clearfix();
+        }
+      }  
+      .icon-ijr {
+        visibility: visible;
+      }
+    }
+  }
 }

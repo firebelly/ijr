@@ -367,20 +367,42 @@
 
 //pagination 
 .pagination {
-	// position: relative;
-	height: 132px;
+	left: 0;
+	position: absolute;
 	width: 100%;
 	background-color: $bg;
+	.prev-page, .next-page, .pagination-numbers {
+		position: absolute;
+		top: 78px;
+		@include media-md { top: 108px; }
+	}
 	.prev-page, .next-page {
-		margin-top: 112px;
 		transform: translateY(-50%);
 		@include fill-cycle();
 	}
-	.prev-page {
-		margin-left: -126px;
-	}
 	.next-page {
-		margin-right: -36px;
+		left: 36px;
+	}
+	.prev-page {
+		right: 36px;
+	}
+	.pagination-numbers {
+		@include media-md {
+			padding-left: 180px; //woah!  this works to center it in relation to the page body
+			padding-right: 72px;
+		}
+		left: 50%;
+		transform: translate(-50%,-50%);
+		a { 
+			text-decoration: none; 
+			padding: 6px;
+		}
+		.current {
+			@include highlight_link();
+			padding: 2px;
+			margin: 4px;
+		}
+
 	}
 }
 

@@ -9,7 +9,7 @@ $recess = $post ? get_post_meta($post->ID, '_cmb2_recess', true)=='on' : '';
 ?>
 
 <div class="page-header" style="background-image: url('<?= $duo_url ? $duo_url : ''; ?>');">
-	<div class="dots"></div>
+	<div class="bg-dots"></div>
 	<h1 class="headline-title"><span class="gradient-highlight"><?= Titles\title(); ?></span></h1>
 </div>
 

@@ -1,120 +1,120 @@
 // Footer
 
 .site-footer {
-	position: relative;
-	margin-top: 156px; //156
-	@include media-md{margin-top: 206px;} //206}
-	@include small_text();
-	h1 { 
-		@include small_text(); 
-		margin: 0;
-	}
-	.contact, .newsletter, {
-		// position: absolute;
-		// top: 0;
-		height: 100%;
-		width: 100%; // width: 50%;
-		margin: 0;
-		padding: 0;
-	}
+  position: relative;
+  margin-top: 156px; //156
+  @include media-md{margin-top: 270px;} //206}
+  @include small_text();
+  h1 { 
+    @include small_text(); 
+    margin: 0;
+  }
+  .contact, .newsletter, {
+    // position: absolute;
+    // top: 0;
+    height: 100%;
+    width: 100%; // width: 50%;
+    margin: 0;
+    padding: 0;
+  }
 
-	.newsletter {
-		border-right: 2px solid;
-		form {
-			position: absolute;
-			height: 100%;
-			max-width: 380px; 
-			width: 90%;
-			h1 {
-				position: absolute;
-				top: 0;
-			}
-			input[type="email"] {
-				position: absolute;
-				top: 48px;
-				height: 36px;
-				width: 100%;
-			}
-			.icon-arrow-right {
-				position: absolute;
-				bottom: 12px; left: 0;
-				transform: translateY(50%);
-			    width: 72px; height: 20px;
-				@include fill-cycle();
-			}
-			button {
-				position: absolute;
-				bottom: 0; right: 0;
-			}
-		}
+  .newsletter {
+    border-right: 2px solid;
+    form {
+      position: absolute;
+      height: 100%;
+      max-width: 380px; 
+      width: 90%;
+      h1 {
+        position: absolute;
+        top: 0;
+      }
+      input[type="email"] {
+        position: absolute;
+        top: 48px;
+        height: 36px;
+        width: 100%;
+      }
+      .icon-arrow-right {
+        position: absolute;
+        bottom: 12px; left: 0;
+        transform: translateY(50%);
+          width: 72px; height: 20px;
+        @include fill-cycle();
+      }
+      button {
+        position: absolute;
+        bottom: 0; right: 0;
+      }
+    }
 
-	}
-	.contact {
-		.contact-info, .logo {
-			display: inline-block;	
-			width: 100%;
-			@include min-screen(420px) {
-				width: 48%;
-			}
-			
-		}
-		.contact-info {
-			min-height: 136px;
-			line-height: 24px;
-			h1 {margin: 0;}
-			address {
-				margin-top: 24px;
-				font-style: normal;
-			}
-		}
-		.logo{
-			text-align: left;
-			@include min-screen(420px) {
-				text-align: right;
-				min-height: 130px;
-			}
-		}
-		.icon-uic {
-			margin-top: 36px;
-			width: 172px; height: 48px;
-			@include fill-cycle();
-			@include min-screen(420px) {
-				transform: translateY(-50%);
-			}
-		}
-	}
+  }
+  .contact {
+    .contact-info, .logo {
+      display: inline-block;  
+      width: 100%;
+      @include min-screen(420px) {
+        width: 48%;
+      }
+      
+    }
+    .contact-info {
+      min-height: 136px;
+      line-height: 24px;
+      h1 {margin: 0;}
+      address {
+        margin-top: 24px;
+        font-style: normal;
+      }
+    }
+    .logo{
+      text-align: left;
+      @include min-screen(420px) {
+        text-align: right;
+        min-height: 130px;
+      }
+    }
+    .icon-uic {
+      margin-top: 36px;
+      width: 172px; height: 48px;
+      @include fill-cycle();
+      @include min-screen(420px) {
+        transform: translateY(-50%);
+      }
+    }
+  }
 
-	// 	.contact {
-	// 	// left: 50%;
-	// 	.contact-info {
-	// 		// position: absolute;
-	// 		// top: 0;
-	// 		// // left: 20%;
-	// 		display: inline-block;		
-	// 		@include max-screen(420px) {
-	// 		}
-	// 		line-height: 24px;
-	// 		h1 {margin: 0;}
-	// 		address {
-	// 			margin-top: 24px;
-	// 			font-style: normal;
-	// 		}
-	// 	}
-	// 	.icon-uic {
-	// 		// position: absolute;
-	// 		// right: 0;
-	// 		// top: 70px;
-	// 		margin-top: 70px;
-	// 		float: right;
-	// 		display: inline-block;	
-	// 		@include max-screen(420px) {
-	// 			float: none;
-	// 			display: block;
-	// 			transform: none;
-	// 		}
-	// 		transform: translateY(-50%);
-	// 		width: 172px; height: 48px;
-	// 		@include fill-cycle();
-	// 	}
-	// }
+  //   .contact {
+  //   // left: 50%;
+  //   .contact-info {
+  //     // position: absolute;
+  //     // top: 0;
+  //     // // left: 20%;
+  //     display: inline-block;    
+  //     @include max-screen(420px) {
+  //     }
+  //     line-height: 24px;
+  //     h1 {margin: 0;}
+  //     address {
+  //       margin-top: 24px;
+  //       font-style: normal;
+  //     }
+  //   }
+  //   .icon-uic {
+  //     // position: absolute;
+  //     // right: 0;
+  //     // top: 70px;
+  //     margin-top: 70px;
+  //     float: right;
+  //     display: inline-block;  
+  //     @include max-screen(420px) {
+  //       float: none;
+  //       display: block;
+  //       transform: none;
+  //     }
+  //     transform: translateY(-50%);
+  //     width: 172px; height: 48px;
+  //     @include fill-cycle();
+  //   }
+  // }
 }

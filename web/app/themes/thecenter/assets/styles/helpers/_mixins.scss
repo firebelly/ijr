@@ -23,6 +23,7 @@
     animation: blue-red-bg-color $cycle-speed infinite alternate;
 }
 @mixin fill-cycle() { 
+    fill: none; //this makes the animation work in safari.  I dont know why;
     animation: blue-red-fill $cycle-speed infinite alternate;
 }
 @mixin stroke-cycle() { 

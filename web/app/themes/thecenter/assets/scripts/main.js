@@ -52,9 +52,9 @@ var FBSage = (function($) {
     //position/resize staff modals (too hard with css)
     _styleStaff(); 
 
-   //push down recessed page content if headline-title overlaps 
-   //-- wish I could think of a way to do this with css
-   _pushPageRecess();
+    //push down recessed page content if headline-title overlaps 
+    //-- wish I could think of a way to do this with css
+    _pushPageRecess();
 
     // Fit them vids!
     $('main').fitVids();

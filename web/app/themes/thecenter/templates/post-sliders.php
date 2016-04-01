@@ -3,7 +3,7 @@ use Firebelly\Utils;
 ?>
 
 <div class="slider post-slider">
-	<div class="dots"></div>
+	<div class="bg-dots"></div>
 	  	<?php
   	//time fg divs
   	$i = 0;
