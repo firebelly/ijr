@@ -4,10 +4,10 @@
 .page{
   .page-header {
     position: relative;
-	min-height: 312px;
-	@include media-md() {
-		min-height: 600px;
-	}
+  min-height: 312px;
+  @include media-md {
+    min-height: 600px;
+  }
     background-size: cover;
     overflow: auto;
   }
@@ -15,46 +15,46 @@
 
 //global
 .content-block {
-	position: relative;
-	overflow: visible;
-	min-height: 312px;
-	margin-top: 54px;
-	margin-right: -36px;
-	padding: 0; 
-	padding-right: 36px;
-	padding-bottom: 105px;
-	@include media-md() {
-		margin-right: 0;
-		padding-right: 72px;
-		&.recess {
-			padding: 0; padding-right: 72px;
-			margin-top: -252px;
-			margin-bottom: 90+54px;
-		}
-	}
-	@include media-xs-sm() {
-		@include dots();
-	}
-	&:not(.recess){
-		@include dots();
-	}
-	.content {
-		position: relative;
-		max-width: 768px;
-		background-color: $bg;
-		overflow: visible;
-		padding: 0;
-		.title {
-			overflow: auto;
-			display: inline-block;
-			@include highlight_link();
-			margin: 0; margin-bottom: 24px;
-		}
-		.user-content {
-			overflow: auto;
-			margin: 0;
-		}
-	}
+  position: relative;
+  overflow: visible;
+  min-height: 312px;
+  margin-top: 54px;
+  margin-right: -36px;
+  padding: 0; 
+  padding-right: 36px;
+  padding-bottom: 105px;
+  @include media-md {
+    margin-right: 0;
+    padding-right: 72px;
+    &.recess {
+      padding: 0; padding-right: 72px;
+      margin-top: -252px;
+      margin-bottom: 90+54px;
+    }
+  }
+  @include media-xs-sm() {
+    @include dots();
+  }
+  &:not(.recess){
+    @include dots();
+  }
+  .content {
+    position: relative;
+    max-width: 768px;
+    background-color: $bg;
+    overflow: visible;
+    padding: 0;
+    .title {
+      overflow: auto;
+      display: inline-block;
+      @include highlight_link();
+      margin: 0; margin-bottom: 24px;
+    }
+    .user-content {
+      overflow: auto;
+      margin: 0;
+    }
+  }
 
 
 }
@@ -62,48 +62,48 @@
 
 //time
 .time-small {
-	margin-left: 11px;
-	visibility: visible;
-	display: inline;
-	.month, .day {display: inline;}
-	@include media-md() {
-		visibility: hidden;
-	}
+  margin-left: 11px;
+  visibility: visible;
+  display: inline;
+  .month, .day {display: inline;}
+  @include media-md {
+    visibility: hidden;
+  }
 }
 
 .time-big {
-	visibility: hidden;
-	@include media-md() {
-		visibility: visible;
-	}
-	position: absolute;
-	.month {
-		position: absolute;
-		top: .2em;
-		left: -90px;
-		transform: translateX(-50%);
-		@include small_text();
-	}
-	.day {
-		position: absolute;
-		left: -126px;
-		top: 22px;
-		font-size: 135px;
-		letter-spacing: -.01em;
-		.icon-number {
-			fill: $bg;
-			@include stroke-cycle();
-			stroke-width: 2px;
-			width: 80px;
-			position: absolute;
-			&:first-child{
-				right: 2px;
-			}
-			&:last-child{
-				left: -6px;
-			}
-		}
-	}
+  visibility: hidden;
+  @include media-md {
+    visibility: visible;
+  }
+  position: absolute;
+  .month {
+    position: absolute;
+    top: .2em;
+    left: -90px;
+    transform: translateX(-50%);
+    @include small_text();
+  }
+  .day {
+    position: absolute;
+    left: -126px;
+    top: 22px;
+    font-size: 135px;
+    letter-spacing: -.01em;
+    .icon-number {
+      fill: $bg;
+      @include stroke-cycle();
+      stroke-width: 2px;
+      width: 80px;
+      position: absolute;
+      &:first-child{
+        right: 2px;
+      }
+      &:last-child{
+        left: -6px;
+      }
+    }
+  }
 }
 
 //global
@@ -112,320 +112,320 @@
 
 //who we are page
 .who-we-are.page{
-	.partners {
-		ul{
-			margin: 0;
-			padding: 0;
-			list-style: none;
-			li{
-				display: inline-block;
-				width: 156px; height: 104px;
-				position: relative;
-				margin-right: 48px;
-				margin-bottom: 48px;
-				@include screen(432px,635px) {
-					&:nth-child(2n) {
-						margin-right: 0px; 
-					}
-				}
-				@include screen(636px,767px) {
-					&:nth-child(3n) {
-						margin-right: 0px; 
-					}
-				}
-				@include screen(768px,887px) {
-					&:nth-child(2n) {
-						margin-right: 0px; 
-					}
-				}
-				@include screen(888px,1091px) {
-					&:nth-child(3n) {
-						margin-right: 0px; 
-					}
-				}
-				@include min-screen(1092px) {
-					&:nth-child(4n) {
-						margin-right: 0px; 
-					}
-				}
+  .partners {
+    ul{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      li{
+        display: inline-block;
+        width: 156px; height: 104px;
+        position: relative;
+        margin-right: 48px;
+        margin-bottom: 48px;
+        @include screen(432px,635px) {
+          &:nth-child(2n) {
+            margin-right: 0px; 
+          }
+        }
+        @include screen(636px,767px) {
+          &:nth-child(3n) {
+            margin-right: 0px; 
+          }
+        }
+        @include screen(768px,887px) {
+          &:nth-child(2n) {
+            margin-right: 0px; 
+          }
+        }
+        @include screen(888px,1091px) {
+          &:nth-child(3n) {
+            margin-right: 0px; 
+          }
+        }
+        @include min-screen(1092px) {
+          &:nth-child(4n) {
+            margin-right: 0px; 
+          }
+        }
 
-				img {
-					position: absolute;
-					top: 50%;
-					transform: translateY(-50%);
-					width: 100%;
-					height: auto;
-				}
-			}
-		}
-	}
-	.staff{
-		ul{
-			list-style: none;
-			margin: 0; margin-top: 12px;
-			padding: 0;
-			line-height: 0;
-			li {
-				margin: 0; padding: 0;
-				position: relative;
-				display: inline-block;
-				width: 100%;
-				&:nth-child(n+2) {
-					margin-top: 24px;
-				}
-				@include min-screen(850px) { //468
-					width: calc(50% - 12px);
-					&:nth-child(n+2) {
-						margin-top: 0;
-					}
-					&:nth-child(2n+2) {
-						margin-left: 24px;
-					}
-					&:nth-child(n+3) {
-						margin-top: 24px;
-					}
-				}
-			}
-		}
-		.person{
-			width: 100%;
-			height: auto;
-			position: relative;
-			.titles{
-				position: absolute;
-				top: 0;
-				left: 0;
-				padding: 4px;
-				background-color: $bg;
-				h1,h2 {
-					margin: 0; padding: 0;
-					font-size: 16px;
-					line-height: 18px;
-				}
-			}
-			.read-bio {
-				position: absolute;
-				top: 0;
-				bottom: 0;
-				left: 0;
-				right: 0;
-				@include big_text();
-				@include bg-color-cycle();
-				opacity: 0;
-				transition: opacity 0.5s;
-				&:hover{
-					opacity: .85;
-					cursor: pointer;
-				}
-				a {
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%,-50%);
-					color: $bg;
-					text-decoration: underline;
-					font-weight: normal;
-				}
-			}
-			.mask { 
-				visibility: hidden;
-				position: fixed;
-				top: 0; bottom: 0;
-				right: 0; left: 0;
-				background-color: $bg;
-				z-index: $z-staff-mask;
-				opacity: 0;
-				transition: opacity 0.5s;
-				&:hover{
-					cursor: pointer;
-				}
-			}
-			.modal{
-				visibility: hidden;
-				position: absolute;
-				z-index: $z-staff-modal;
-				top: 0;
-				position: absolute;
-				.wp-post-image{
-					position: absolute;
-					max-width: none;
-					@include min-screen(850px) {max-width: 372px;}
-					height: auto;
-					top: 0;
-					left: 0;
-				}
-				.icon-x{
-					@include stroke-cycle();
-					height: 16px;
-					width: 16px;
-					top: -102px;
-					left: 18px;
-					stroke-width: 4px;
-					@include media-md() {
-						height: 42px;
-						width: 42px;
-						top: -102px;
-						left: 90px;
-						stroke-width: 2px;
-					}
-					position: absolute;
-					
-					&:hover {
-						cursor: pointer;
-					}
-				}
-				.viewport{
-					position: absolute;
-					top: 102px;
-					left: 0;
-					width: 100vw;
-					background-color: #000;
-					.icon-arrow-right, .icon-arrow-left{
-						position: absolute;
-						top: 96px;
-						@include media-md() {top: 142px;}
-						transform: translateY(-50%);
-						cursor: pointer;
-					}
-					& > .icon-arrow-right {
-						@include fill-cycle();
-						right: 36px;
-						visibility: hidden;
-						@include media-md() {
-							visibility: visible;
-						}
-					}
-					.content-wrapper {
-						position: absolute;
-						top: 0;
-						left: 0;
-						right: 0;
-						padding-left: 36px;
-						@include media-md() {
-							right: 72px;
-							padding-left: 180px;
-						}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-						color: $bg;
-						@include bg-color-cycle();
-						overflow: hidden;
-						.modal-titles{
-							margin-top: 156px;
-							@include min-screen(850px) {
-								margin-top: 44px; 
-								min-height: 108px;	
-							}
-						
-							h1,h2 {
-								margin: 0; padding: 0;
-								@include big_text();
-								@include min-screen(850px) { 
-									font-size:  24px;
-									line-height: 36px;
-								}
-								@include media-lg { @include big_text(); }							
-							}
-						}
-						.bio{
-							margin: 24px 72px 54px 0; 
-							padding: 0;
-							max-width: 768px;
-							font-size: 16px;
-							line-height: 24px;
-						}
-						.icon-arrow-right, .icon-arrow-left{
-							fill: $bg;
-							z-index: $z-staff-arrows;
-						}
-						.icon-arrow-right {
-							right: 12px;
-							@include media-md() {right: -36px;}
-						}
-						.icon-arrow-left {
-							left: 12px;
-							@include media-md() {left: 54px;}
-						}
-					}
-				}
-			}
-			.modal, .content-wrapper, .mask, .icon-arrow-right, .icon-x {
-				visibility: hidden;
-				opacity: 0;
-				transition: opacity 0.5s;
-			}
-			.content-wrapper, .icon-arrow-right, .icon-x {
-				transition: opacity 0.5s 0.5s;
-			}
-			&.open {
-				.modal, .content-wrapper, .wp-post-image,  .icon-arrow-right, .icon-x {
-					opacity: 1;
-					visibility: visible;
-				}
-				.mask{
-					visibility: visible;
-					opacity: 0.75;
-				}
-			}
-		}
-	}
+        img {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+  .staff{
+    ul{
+      list-style: none;
+      margin: 0; margin-top: 12px;
+      padding: 0;
+      line-height: 0;
+      li {
+        margin: 0; padding: 0;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        &:nth-child(n+2) {
+          margin-top: 24px;
+        }
+        @include min-screen(850px) { //468
+          width: calc(50% - 12px);
+          &:nth-child(n+2) {
+            margin-top: 0;
+          }
+          &:nth-child(2n+2) {
+            margin-left: 24px;
+          }
+          &:nth-child(n+3) {
+            margin-top: 24px;
+          }
+        }
+      }
+    }
+    .person{
+      width: 100%;
+      height: auto;
+      position: relative;
+      .titles{
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 4px;
+        background-color: $bg;
+        h1,h2 {
+          margin: 0; padding: 0;
+          font-size: 16px;
+          line-height: 18px;
+        }
+      }
+      .read-bio {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        @include big_text();
+        @include bg-color-cycle();
+        opacity: 0;
+        transition: opacity 0.5s;
+        &:hover{
+          opacity: .85;
+          cursor: pointer;
+        }
+        a {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          color: $bg;
+          text-decoration: underline;
+          font-weight: normal;
+        }
+      }
+      .mask { 
+        visibility: hidden;
+        position: fixed;
+        top: 0; bottom: 0;
+        right: 0; left: 0;
+        background-color: $bg;
+        z-index: $z-staff-mask;
+        opacity: 0;
+        transition: opacity 0.5s;
+        &:hover{
+          cursor: pointer;
+        }
+      }
+      .modal{
+        visibility: hidden;
+        position: absolute;
+        z-index: $z-staff-modal;
+        top: 0;
+        position: absolute;
+        .wp-post-image{
+          position: absolute;
+          max-width: none;
+          @include min-screen(850px) {max-width: 372px;}
+          height: auto;
+          top: 0;
+          left: 0;
+        }
+        .icon-x{
+          @include stroke-cycle();
+          height: 16px;
+          width: 16px;
+          top: -102px;
+          left: 18px;
+          stroke-width: 4px;
+          @include media-md {
+            height: 42px;
+            width: 42px;
+            top: -102px;
+            left: 90px;
+            stroke-width: 2px;
+          }
+          position: absolute;
+          
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        .viewport{
+          position: absolute;
+          top: 102px;
+          left: 0;
+          width: 100vw;
+          background-color: #000;
+          .icon-arrow-right, .icon-arrow-left{
+            position: absolute;
+            top: 96px;
+            @include media-md {top: 142px;}
+            transform: translateY(-50%);
+            cursor: pointer;
+          }
+          & > .icon-arrow-right {
+            @include fill-cycle();
+            right: 36px;
+            visibility: hidden;
+            @include media-md {
+              visibility: visible;
+            }
+          }
+          .content-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding-left: 36px;
+            @include media-md {
+              right: 72px;
+              padding-left: 180px;
+            }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+            color: $bg;
+            @include bg-color-cycle();
+            overflow: hidden;
+            .modal-titles{
+              margin-top: 156px;
+              @include min-screen(850px) {
+                margin-top: 44px; 
+                min-height: 108px;  
+              }
+            
+              h1,h2 {
+                margin: 0; padding: 0;
+                @include big_text();
+                @include min-screen(850px) { 
+                  font-size:  24px;
+                  line-height: 36px;
+                }
+                @include media-lg { @include big_text(); }              
+              }
+            }
+            .bio{
+              margin: 24px 72px 54px 0; 
+              padding: 0;
+              max-width: 768px;
+              font-size: 16px;
+              line-height: 24px;
+            }
+            .icon-arrow-right, .icon-arrow-left{
+              fill: $bg;
+              z-index: $z-staff-arrows;
+            }
+            .icon-arrow-right {
+              right: 12px;
+              @include media-md {right: -36px;}
+            }
+            .icon-arrow-left {
+              left: 12px;
+              @include media-md {left: 54px;}
+            }
+          }
+        }
+      }
+      .modal, .content-wrapper, .mask, .icon-arrow-right, .icon-x {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+      .content-wrapper, .icon-arrow-right, .icon-x {
+        transition: opacity 0.5s 0.5s;
+      }
+      &.open {
+        .modal, .content-wrapper, .wp-post-image,  .icon-arrow-right, .icon-x {
+          opacity: 1;
+          visibility: visible;
+        }
+        .mask{
+          visibility: visible;
+          opacity: 0.75;
+        }
+      }
+    }
+  }
 }
 
 
 //pagination 
 .pagination {
-	left: 0;
-	position: absolute;
-	width: 100%;
-	background-color: $bg;
-	.prev-page, .next-page, .pagination-numbers {
-		position: absolute;
-		top: 78px;
-		@include media-md { top: 108px; }
-	}
-	.prev-page, .next-page {
-		transform: translateY(-50%);
-		@include fill-cycle();
-	}
-	.next-page {
-		left: 36px;
-	}
-	.prev-page {
-		right: 36px;
-	}
-	.pagination-numbers {
-		@include media-md {
-			padding-left: 180px; //woah!  this works to center it in relation to the page body
-			padding-right: 72px;
-		}
-		left: 50%;
-		transform: translate(-50%,-50%);
-		a { 
-			text-decoration: none; 
-			padding: 6px;
-		}
-		.current {
-			@include highlight_link();
-			padding: 2px;
-			margin: 4px;
-		}
+  left: 0;
+  position: absolute;
+  width: 100%;
+  background-color: $bg;
+  .prev-page, .next-page, .pagination-numbers {
+    position: absolute;
+    top: 78px;
+    @include media-md { top: 108px; }
+  }
+  .prev-page, .next-page {
+    transform: translateY(-50%);
+    @include fill-cycle();
+  }
+  .next-page {
+    left: 36px;
+  }
+  .prev-page {
+    right: 36px;
+  }
+  .pagination-numbers {
+    @include media-md {
+      padding-left: 180px; //woah!  this works to center it in relation to the page body
+      padding-right: 72px;
+    }
+    left: 50%;
+    transform: translate(-50%,-50%);
+    a { 
+      text-decoration: none; 
+      padding: 6px;
+    }
+    .current {
+      @include highlight_link();
+      padding: 2px;
+      margin: 4px;
+    }
 
-	}
+  }
 }
 
 
 
 //forms
 button, input[type="submit"] {
-	border: none;
-	outline: none;
-	@include highlight_link() ;
+  border: none;
+  outline: none;
+  @include highlight_link() ;
 }
 // input[type="email"], input[type="search"]  {
-// 	@include big_text();
-// 	border-style: solid;
-// 	border-width: 0 2px 2px 0;
-// 	border: 0;
-// 	padding-bottom: 6px;
-// 	background-color: $bg;
+//   @include big_text();
+//   border-style: solid;
+//   border-width: 0 2px 2px 0;
+//   border: 0;
+//   padding-bottom: 6px;
+//   background-color: $bg;
 // }
 
 
@@ -434,96 +434,96 @@ button, input[type="submit"] {
 
 // Home page
 .home.page {
-	.headline-banner {
-		.overflow-wrapper{
-			position: absolute;
-			overflow: hidden;
-			top: 0; 
-			height: 100%;
-			right: 0; left: 0;
-		}
-		.slide-bg {
-			min-height: 312px;
-			@include media-md() {
-				min-height: 600px;
-			}
-			background-size: cover;
-			position: relative;
-		}
-		.headline-duo{
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			height: 100%;
-			background-size: cover;
-			opacity: 1;
-			transition: opacity 0.5s;
-			&:hover{
-				display: none;
-				cursor: pointer;
-			}
-		}
-		.headline-article {
-			min-height: 312px;
-			@include media-md() {
-				min-height: 600px;
-			}
-			width: 100%;
-			.learn-more {
-				@include highlight_link();
-				display: inline-block;
-				margin-top: 42px;
-				@include media-md() {
-					margin-top: 48px;
-				}
-			}
-		}
-		@include media-xs-sm()  {
-			.slider-nav-left {
-				visibility: hidden;
-			}
-			.slider-nav-right {
-				bottom: 54px;
-				right: 12 - 36px;
-			}
-		}	
-	}
+  .headline-banner {
+    .overflow-wrapper{
+      position: absolute;
+      overflow: hidden;
+      top: 0; 
+      height: 100%;
+      right: 0; left: 0;
+    }
+    .slide-bg {
+      min-height: 312px;
+      @include media-md {
+        min-height: 600px;
+      }
+      background-size: cover;
+      position: relative;
+    }
+    .headline-duo{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background-size: cover;
+      opacity: 1;
+      transition: opacity 0.5s;
+      &:hover{
+        display: none;
+        cursor: pointer;
+      }
+    }
+    .headline-article {
+      min-height: 312px;
+      @include media-md {
+        min-height: 600px;
+      }
+      width: 100%;
+      .learn-more {
+        @include highlight_link();
+        display: inline-block;
+        margin-top: 42px;
+        @include media-md {
+          margin-top: 48px;
+        }
+      }
+    }
+    @include media-xs-sm()  {
+      .slider-nav-left {
+        visibility: hidden;
+      }
+      .slider-nav-right {
+        bottom: 54px;
+        right: 12 - 36px;
+      }
+    }  
+  }
 }
 .news, .radar {
-	position: relative;
-	margin-right: -36px;
-	@include media-md() {margin-right: 0;}
-	.all{
-		@include highlight_link() ;
-		position: absolute;
-		bottom: 0; 
-		right: $gut-right;
-		@include media-md() {right: 0;}
-	}
-	.post-slider{
-		.slide-fg{
-			transform: translateX(-300px);
-		}
-		.slide-fg.active{
-			transform: translateX(0);
-		}
-		.slide-bg {
-			@include media-md() {min-height: 432px;}
-		}
-	}
+  position: relative;
+  margin-right: -36px;
+  @include media-md {margin-right: 0;}
+  .all{
+    @include highlight_link() ;
+    position: absolute;
+    bottom: 0; 
+    right: $gut-right;
+    @include media-md {right: 0;}
+  }
+  .post-slider{
+    .slide-fg{
+      transform: translateX(-300px);
+    }
+    .slide-fg.active{
+      transform: translateX(0);
+    }
+    .slide-bg {
+      @include media-md {min-height: 432px;}
+    }
+  }
 }
 .news{
-	margin-top: 54px;
-	@include media-md() {
-		margin-top: 90 + 54px;
-	}
+  margin-top: 54px;
+  @include media-md {
+    margin-top: 90 + 54px;
+  }
 }
 .radar{
-	margin-top: 54px;
-	@include media-md() {
-		margin-top: 54 + 54px;
-	}
+  margin-top: 54px;
+  @include media-md {
+    margin-top: 54 + 54px;
+  }
 }
 
 

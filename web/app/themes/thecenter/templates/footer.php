@@ -16,7 +16,7 @@
   
   <section class="contact">
     <div class="contact-info">
-    	<h1>Contact Us:</h1>
+      <h1>Contact Us:</h1>
       <address class="vcard">
         <span class="adr"><a href="https://goo.gl/maps/JMv1HDr6mAU2"><span class="street-address">1747 W Roosevelt Rd</span><br>
           <span class="locality">Chicago</span>, <span class="region">IL</span> <span class="postal-code">60608</span></a></span><br>

@@ -37,17 +37,17 @@ function get_page_blocks($post) {
  */
 function filter_pagination($links,$current,$buffer) {
   $n_display = $buffer * 2 + 1;
-    $n_links = count($links);
-    $display = array('');
-    if($n_links == 1) { return ''; }
-    if($n_links <= $n_display) { return $links; }
-    if( ($current-1)-$buffer < 0 ) {
-      return array_slice( $links, 0, $n_display );
-    }
-    if( ($current-1)+$buffer > ($n_links-1) ) {
-      return array_slice( $links, ($n_links)-$n_display, $n_display );
-    }
-    return array_slice( $links, ($current-1)-$buffer, $n_display );
+  $n_links = count($links);
+  $display = array('');
+  if($n_links == 1) { return ''; }
+  if($n_links <= $n_display) { return $links; }
+  if( ($current-1)-$buffer < 0 ) {
+    return array_slice( $links, 0, $n_display );
+  }
+  if( ($current-1)+$buffer > ($n_links-1) ) {
+    return array_slice( $links, ($n_links)-$n_display, $n_display );
+  }
+  return array_slice( $links, ($current-1)-$buffer, $n_display );
 }
 
 

@@ -4,15 +4,15 @@
 <?php endwhile; ?>
 
 <section class="staff content-block">
-	<div class="content">
-  		<h1 class="title">Staff</h1>    
-  		<?= \Firebelly\PostTypes\Person\get_people(); ?>
-  	</div>
+  <div class="content">
+      <h1 class="title">Staff</h1>    
+      <?= \Firebelly\PostTypes\Person\get_people(); ?>
+    </div>
 </section>
 
 <section class="partners content-block">
-	<div class="content">
-  		<h1 class="title">Partners</h1>    
-  		<?= \Firebelly\PostTypes\Partners\get_partners(); ?>
-	</div>
+  <div class="content">
+      <h1 class="title">Partners</h1>    
+      <?= \Firebelly\PostTypes\Partners\get_partners(); ?>
+  </div>
 </section>

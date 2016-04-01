@@ -39,7 +39,7 @@
     width: 100%;
     top: 96px;
     padding-right: 36px;
-    @include media-md() { 
+    @include media-md { 
       top: 114px; 
       padding-right: 72px; 
     }

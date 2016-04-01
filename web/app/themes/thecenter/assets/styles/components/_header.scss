@@ -24,7 +24,7 @@
     a{ 
       text-decoration: none; 
     }
-    @include media-md() {
+    @include media-md {
       position: fixed;
       top: 0px;
       width: $gut-left-md;

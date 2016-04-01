@@ -72,7 +72,7 @@
     margin: 0; 
     margin-top: 84px;
     margin-bottom: 64px;
-    @include media-md() {
+    @include media-md {
       margin: 0;
       margin-top: 120px;
     }
@@ -80,23 +80,23 @@
       max-width: 768px;
       background-color: $bg;
       margin-right: 36px;
-      @include media-md() {margin-right: 72px;}
+      @include media-md {margin-right: 72px;}
     }
   }
   .prev-post, .next-post {
       position: absolute;
       top: -48px;
-    @include media-md() {
+    @include media-md {
       top: 216px;
     }
     transform: translateY(-50%);
   }
   .next-post {
     left: 10px;
-    @include media-md() {left: 36px;}
+    @include media-md {left: 36px;}
   }
   .prev-post {
     right: 10px;
-    @include media-md() {right: 36px;}
+    @include media-md {right: 36px;}
   }
 }

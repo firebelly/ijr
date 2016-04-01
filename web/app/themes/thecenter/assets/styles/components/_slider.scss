@@ -31,7 +31,7 @@
 .slider-nav-right, .slider-nav-left {
     transform: translateY(-50%);
     top: calc(100% - 75px);
-    @include media-md() {
+    @include media-md {
       top: 50%;
     }
 }

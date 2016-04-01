@@ -42,10 +42,11 @@
 
 .nav-toggle{
   z-index: $z-nav-toggle-inactive;
-  position: fixed;
+  position: absolute;
   width: 36px;
-  top: -54px;
+  // top: -54px;
   @include media-md {
+  	position: fixed;
     width: 72px;
     top: 0;  
   }
@@ -57,10 +58,11 @@
     cursor: pointer;
   }
   .menu{
-    position: fixed;
+    position: absolute;
     bottom: calc(100% - 168px + 54px);
     left: calc(100% - 54px + 36px);
-    @include media-md () {
+    @include media-md {
+	  	position: fixed;
       bottom: calc(100% - 168px);
       left: calc(100% - 54px);
     }
@@ -96,11 +98,12 @@
 .nav-icon { //#nav-icon
   top: 78-54px; 
   right: $gut-right - 18px;
+  position: absolute;
   @include media-md {
+	  position: fixed;
     top: 78px; 
     right: $gut-right-md - 18px;
   }
-  position: fixed;
   margin: 0;
   transform: rotate(0deg) translateX(50%);
   cursor: pointer;
@@ -189,7 +192,7 @@
   top: 0; 
   bottom: 0;
   padding: 36px;
-  @include media-md() {
+  @include media-md {
     padding: 72px;
   }
   @include bg-color-cycle();
@@ -201,7 +204,7 @@
     list-style: none;
     li.menu-item {
       margin-top: 12px;
-      @include media-md() {margin-top: 24px;}
+      @include media-md {margin-top: 24px;}
       &:first-child { margin-top: 0; }
       padding-bottom: 12px;
       width: 100%;

@@ -1,15 +1,15 @@
 <?php
-	$recess = get_post_meta($post->ID, '_cmb2_recess', true)=='on';
-	$subtitle = get_post_meta( $post->ID, '_cmb2_subtitle', true );
+  $recess = get_post_meta($post->ID, '_cmb2_recess', true)=='on';
+  $subtitle = get_post_meta( $post->ID, '_cmb2_subtitle', true );
 ?>
 
 <section class="content-block <?= $recess ? 'recess' : '' ?>">
-	<div class="content">
-		<?= !empty($subtitle) ? '<h1 class="title">'.$subtitle.'</h1>' : ''; ?>
-		<div class="user-content">
-			<?php the_content(); ?>
-		</div>
-	</div>
+  <div class="content">
+    <?= !empty($subtitle) ? '<h1 class="title">'.$subtitle.'</h1>' : ''; ?>
+    <div class="user-content">
+      <?php the_content(); ?>
+    </div>
+  </div>
 </section>
 
 <!-- <?= $recess ? '</div>' : '' ; ?> -->
