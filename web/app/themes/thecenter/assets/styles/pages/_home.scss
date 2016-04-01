@@ -173,7 +173,7 @@
 				&:nth-child(n+2) {
 					margin-top: 24px;
 				}
-				@include media-md() { //468
+				@include min-screen(850px) { //468
 					width: calc(50% - 12px);
 					&:nth-child(n+2) {
 						margin-top: 0;
@@ -249,7 +249,7 @@
 				.wp-post-image{
 					position: absolute;
 					max-width: none;
-					@include media-md() {max-width: 372px;}
+					@include min-screen(850px) {max-width: 372px;}
 					height: auto;
 					top: 0;
 					left: 0;
@@ -310,14 +310,19 @@
 						overflow: hidden;
 						.modal-titles{
 							margin-top: 156px;
-							@include media-md() {
+							@include min-screen(850px) {
 								margin-top: 44px; 
 								min-height: 108px;	
 							}
-								
+						
 							h1,h2 {
 								margin: 0; padding: 0;
 								@include big_text();
+								@include min-screen(850px) { 
+									font-size:  24px;
+									line-height: 36px;
+								}
+								@include media-lg { @include big_text(); }							
 							}
 						}
 						.bio{

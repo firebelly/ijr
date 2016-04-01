@@ -8,7 +8,7 @@ var FBSage = (function($) {
       breakpoint_small = false,
       breakpoint_medium = false,
       breakpoint_large = false,
-      breakpoint_array = [750,750,1200],
+      breakpoint_array = [768,768,1092],
       $document,
       $sidebar,
       loadingTimer,
@@ -29,7 +29,7 @@ var FBSage = (function($) {
     _initSliders();
 
     //allow nav to push in on click of .nav-toggle
-    _navToggle();
+    _initNav();
 
     //remove duotone headline on mouseover, follow link on click
     _headlineMouseEvents();
@@ -66,8 +66,7 @@ var FBSage = (function($) {
     // Esc handlers
     $(document).keyup(function(e) {
       if (e.keyCode === 27) {
-        _hideSearch();
-        _hideMobileNav();
+        _closeNav();
       }
     });
 
@@ -100,13 +99,14 @@ var FBSage = (function($) {
 
   //position/resize staff modals (too hard with css)
   function _styleStaff() {
+
+    //reposition viewport, x icon
     $('.staff .viewport').each(function() {
       var currentTop = $(this).offset().top;
       var $person = $(this).closest('.person');
       var newTop = 0;
-
-      if($(window).width() >= breakpoint_array[1]) {
-        newTop = $person.offset().top + $person.height() - 144;
+      if(breakpoint_medium) {
+        newTop = $person.offset().top + $person.height() - 144; //+102;
         $(this).offset({top: newTop, left: 0 });
         $(this).find('.icon-x').offset({ top: $person.offset().top, left: 69});
       }else{
@@ -116,18 +116,23 @@ var FBSage = (function($) {
       }
     });
 
-    
-    if($(window).width() >= breakpoint_array[1]) {
-      $person = $('.person').first(); //match to size of person element (take #0, they're all the same)
-      var persW = $person.width();
-      $('.staff .modal .wp-post-image').width(persW);
+    $person = $('.person').first(); //match to size of person element (take #0, they're all the same)
+    var persW = $person.width();
+
+    //adjust size of title margin for large breakpoint
+    if(breakpoint_medium) {
       $('.modal-titles').css('max-width',persW);
       $('.staff li:nth-child(2n+1) .modal-titles').css('margin-left',24+persW);
     }else{ 
-      $('.staff .modal .wp-post-image').css('width',$(window).width()-72);
       $('.modal-titles').css('max-width','');
       $('.staff li:nth-child(2n+1) .modal-titles').css('margin-left','');
+    }
 
+    //adjust size of person image
+    if(breakpoint_medium) {
+      $('.staff .modal .wp-post-image').width(persW);
+    }else{ 
+      $('.staff .modal .wp-post-image').css('width',$(window).width()-72);
     }
 
   }
@@ -135,7 +140,7 @@ var FBSage = (function($) {
   //push down recessed page content if headline-title overlaps 
   //-- wish I could think of a way to do this with css
   function _pushPageRecess() {
-    if($(window).width() >= breakpoint_array[1]) {
+    if(breakpoint_medium) {
       var headerHeight = $('.page-header').height();
       var headlineHeight = $('.headline-title').height();
       var headlineOffset = $('.headline-title').offset().top;
@@ -177,27 +182,27 @@ var FBSage = (function($) {
     $('.search-form').removeClass('active');
   }
 
-  // Handles main nav
-  function _initNav() {
-    // SEO-useless nav toggler
-    $('<div class="menu-toggle"><div class="menu-bar"><span class="sr-only">Menu</span></div></div>')
-      .prependTo('header.banner')
-      .on('click', function(e) {
-        _showMobileNav();
-      });
-    var mobileSearch = $('.search-form').clone().addClass('mobile-search');
-    mobileSearch.prependTo('.site-nav');
-  }
+  // // Handles main nav
+  // function _initNav() {
+  //   // SEO-useless nav toggler
+  //   $('<div class="menu-toggle"><div class="menu-bar"><span class="sr-only">Menu</span></div></div>')
+  //     .prependTo('header.banner')
+  //     .on('click', function(e) {
+  //       _showMobileNav();
+  //     });
+  //   var mobileSearch = $('.search-form').clone().addClass('mobile-search');
+  //   mobileSearch.prependTo('.site-nav');
+  // }
 
-  function _showMobileNav() {
-    $('.menu-toggle').addClass('menu-open');
-    $('.site-nav').addClass('active');
-  }
+  // function _showMobileNav() {
+  //   $('.menu-toggle').addClass('menu-open');
+  //   $('.site-nav').addClass('active');
+  // }
 
-  function _hideMobileNav() {
-    $('.menu-toggle').removeClass('menu-open');
-    $('.site-nav').removeClass('active');
-  }
+  // function _hideMobileNav() {
+  //   $('.menu-toggle').removeClass('menu-open');
+  //   $('.site-nav').removeClass('active');
+  // }
 
   function _initLoadMore() {
     $document.on('click', '.load-more a', function(e) {
@@ -259,6 +264,7 @@ var FBSage = (function($) {
   function _openPerson($person) {
     _styleStaff();
     _closePeople();
+    _preventNav();
     $person.addClass('open');
     $('html, body').animate({
         scrollTop: $person.offset().top-64
@@ -266,6 +272,7 @@ var FBSage = (function($) {
   }
   function _closePeople() {
     $('.person').removeClass('open');
+    _allowNav();
   }
   function _numPeople() {
     return $('.person').length;
@@ -332,12 +339,34 @@ var FBSage = (function($) {
     }); 
   }
 
-  function _navToggle() {
-    $('.nav-toggle').on('click', function () {
-        $('.nav-toggle').toggleClass('active');
-        $('.nav-push-wrap').toggleClass('pushed');
-        $('.site-nav').toggleClass('active');
-    });
+  //functions to handle nav
+  function _toggleNav () {
+    if( $('.site-nav.active').length ) { 
+      _closeNav();
+    }else{
+      _openNav();
+    }
+  }
+  function _openNav () {
+    if( !$('.site-nav.prevent-open').length ){
+      $('.nav-toggle').addClass('active');
+      $('.nav-push-wrap').addClass('pushed');
+      $('.site-nav').addClass('active');
+    }
+  }
+  function _closeNav () {
+    $('.nav-toggle').removeClass('active');
+    $('.nav-push-wrap').removeClass('pushed');
+    $('.site-nav').removeClass('active');
+  }
+  function _preventNav() {
+    $('.site-nav').addClass('prevent-open');
+  }
+  function _allowNav() {
+    $('.site-nav').removeClass('prevent-open');
+  }
+  function _initNav() {
+    $('.nav-toggle').on('click', _toggleNav );
   }
 
   //remove duotone headline on mouseover, follow link on click
