@@ -28,6 +28,10 @@
     overflow: auto;
     position: relative;
     max-width: 768px;
+    margin-right: 36px;
+    @include media-md { 
+      margin-right: 72px;
+    }
   }
   .site-wrap {
     background-image: url('/app/themes/thecenter/assets/svgs/bg-dots-black.svg');
@@ -38,30 +42,27 @@
     position: absolute;
     width: 100%;
     top: 96px;
-    padding-right: 36px;
+    // padding-right: 36px;
     @include media-md { 
       top: 114px; 
-      padding-right: 72px; 
+      // padding-right: 72px; 
     }
     .search-field {
-      position: absolute;
-      max-width: 768px;
+      position: relative;
       width: 100%;
-      z-index: 1000;
       background: transparent;
       outline: none;
       border: none;
     }
     .search-highlight {
-      max-width: 768px;
-      z-index: 10;
       position: absolute;
       .gradient-highlight {
-      max-width: 768px;
         background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0) 3%, $bg 3%, $bg 87%, rgba(0,0,0,0) 87%);
         background-repeat: repeat-x;
+        white-space: nowrap;
       }
       color: rgba(0,0,0,0);
+      max-width: 768px;
     }
     .search-submit {
       display: none;

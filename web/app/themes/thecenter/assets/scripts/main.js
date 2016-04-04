@@ -57,7 +57,7 @@ var FBSage = (function($) {
     _pushPageRecess();
 
     //crazy hack to get the gray highlight to be the size of inputted text, not the input itself
-    _searchHighlight();
+    _searchHighlightInit();
 
     //fix the center to the top of the screen after it's scrolled 36px
     _fixBrand();
@@ -112,7 +112,8 @@ var FBSage = (function($) {
       $('.search-highlight .gradient-highlight').html(inputSoFar);
     }, 0);
   }
-  function _searchHighlight() {
+  function _searchHighlightInit() {
+    _replaceSearchHighlightText();
     $('.search-field').keydown(_replaceSearchHighlightText);
     $('.search-field').keypress(_replaceSearchHighlightText);
     $('.search-field').keyup(_replaceSearchHighlightText);

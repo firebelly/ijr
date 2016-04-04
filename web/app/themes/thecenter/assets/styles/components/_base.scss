@@ -52,7 +52,8 @@ img {
   text-align: left;
   margin-top: 162-36px;
   margin-bottom: 162px;
-  margin-right: 72px;
+  margin-right: 36px;
+  @include media-md {margin-right: 72px;}
   @include color-cycle();
   @include big_text();
   max-width: 768px;
