@@ -106,7 +106,7 @@ var FBSage = (function($) {
   //crazy hack to get the gray highlight to be the size of inputted text, not the input itself
   function _replaceSearchHighlightText() {
     window.setTimeout(function() {
-      var inputSoFar = $('.search-field')
+      var inputSoFar = $('.search-field');
       inputSoFar = inputSoFar.val().replace(/ /g, '&nbsp;'); //replace spaces so they are preserved like they will be in the textarea
       if (inputSoFar === '') { inputSoFar = 'Search'; }
       $('.search-highlight .gradient-highlight').html(inputSoFar);
