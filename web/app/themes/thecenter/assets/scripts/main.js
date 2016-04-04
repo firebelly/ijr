@@ -365,13 +365,19 @@ var FBSage = (function($) {
   //fix the center to the top of the screen after it's scrolled 36px
   function _fixBrand () {
     $( window ).scroll(function() {
-      $('.brand').each(function() {
-        var scrollTop = $(window).scrollTop();
-        // var currentOffset = $(this).offset();
+      var scrollTop = $(window).scrollTop();
+      $('.brand, .nav-toggle.outside').each(function() { 
         if(scrollTop>=36){
           $(this).css( 'margin-top', scrollTop-36 );
         } else {
           $(this).css( 'margin-top', 0 ); 
+        }
+      });
+      $('.nav-toggle.inside:not(.active)').each(function() {
+        if(scrollTop>=36){
+          $(this).css( 'margin-top', -36 );
+        } else {
+          $(this).css( 'margin-top', -scrollTop ); 
         }
       });
     });

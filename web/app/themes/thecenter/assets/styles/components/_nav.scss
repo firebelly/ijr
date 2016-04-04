@@ -46,7 +46,7 @@
   width: 36px;
   // top: -54px; --keep this in case you go back to fixed position
   @include media-md {
-  	position: fixed;
+  	// position: fixed;
     width: 72px;
     top: 0;  
   }
@@ -62,7 +62,7 @@
     bottom: calc(100% - 168px + 54px);
     left: calc(100% - 54px + 36px);
     @include media-md {
-	  	position: fixed;
+	  	// position: fixed;
       bottom: calc(100% - 168px);
       left: calc(100% - 54px);
     }
@@ -100,7 +100,7 @@
   right: $gut-right - 18px;
   position: absolute;
   @include media-md {
-	  position: fixed;
+	  // position: fixed;
     top: 78px; 
     right: $gut-right-md - 18px;
   }
@@ -188,11 +188,12 @@
   z-index: $z-nav;
   position: fixed;
   left: 100%;
-  width: 100%;
   top: 0; 
   bottom: 0;
   padding: 36px;
+  width: 100vw;
   @include media-md {
+    width: 50vw;
     padding: 72px;
   }
   @include bg-color-cycle();

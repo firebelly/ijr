@@ -5,7 +5,7 @@
     </a>
   </hgroup>
   <svg role="image" class="icon icon-ijr"><use xlink:href="#icon-ijr"></use></svg>
-  <div class="nav-toggle">
+  <div class="nav-toggle outside">
     <h2 class="menu">Menu</h2>
     <svg role="image" class="icon icon-burger nav-icon"><use xlink:href="#icon-burger"></use></svg>
   </div>
@@ -21,7 +21,7 @@
       wp_nav_menu($args);
     endif;
     ?>
-    <div class="nav-toggle">
+    <div class="nav-toggle inside">
       <h2 class="menu">Menu</h2>
       <svg role="image" class="icon icon-x nav-icon"><use xlink:href="#icon-x"></use></svg>
     </div>
