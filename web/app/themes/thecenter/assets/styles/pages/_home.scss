@@ -254,32 +254,33 @@
           top: 0;
           left: 0;
         }
-        .icon-x{
-          @include stroke-cycle();
-          height: 16px;
-          width: 16px;
-          top: -102px;
-          left: 18px;
-          stroke-width: 4px;
-          @include media-md {
-            height: 42px;
-            width: 42px;
-            top: -102px;
-            left: 90px;
-            stroke-width: 2px;
-          }
-          position: absolute;
-          
-          &:hover {
-            cursor: pointer;
-          }
-        }
         .viewport{
           position: absolute;
           top: 102px;
           left: 0;
           width: 100vw;
           background-color: #000;
+          .icon-x{
+            height: 16px;
+            width: 16px;
+            top: -102px;
+            left: 18px;
+            stroke-width: 4px;
+            @include media-md {
+              height: 42px;
+              width: 42px;
+              top: -102px;
+              left: 90px;
+              stroke-width: 2px;
+            }
+            position: absolute;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+          & > .icon-x {
+            @include stroke-cycle();
+          }
           .icon-arrow-right, .icon-arrow-left{
             position: absolute;
             top: 96px;
@@ -308,8 +309,15 @@
             color: $bg;
             @include bg-color-cycle();
             overflow: hidden;
+            .icon-x{
+              fill: $bg;
+              stroke: $bg;
+            }
             .modal-titles{
               margin-top: 156px;
+              @include media-md {
+                margin-top: 156+36px;
+              }
               @include min-screen(850px) {
                 margin-top: 44px; 
                 min-height: 108px;  
@@ -320,7 +328,7 @@
                 @include big_text();
                 @include min-screen(850px) { 
                   font-size:  24px;
-                  line-height: 36px;
+                  line-height: 30px;
                 }
                 @include media-lg { @include big_text(); }              
               }

@@ -26,9 +26,10 @@ $person_num = isset($i) ? "data-person-num=\"{$i}\"" : '';
   <div class="mask close-people"></div>
   <div class="modal">
     <div class="viewport">
-    <svg class="icon-x close-people" role="img"><use xlink:href="#icon-x"></use></svg>
+      <svg class="icon-x close-people" role="img"><use xlink:href="#icon-x"></use></svg>
       <svg class="icon-arrow-right next-person" role="img"><use xlink:href="#icon-arrow-right"></use></svg>
       <div class="content-wrapper">
+        <svg class="icon-x close-people" role="img"><use xlink:href="#icon-x"></use></svg>
         <hgroup class="modal-titles">
           <h1><?= $name ?></h1>
           <?= !empty($title) ? '<h2>'.$title.'</h2>' : ''; ?>

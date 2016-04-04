@@ -143,7 +143,7 @@ var FBSage = (function($) {
     var persW = $person.width();
 
     //adjust size of title margin for large breakpoint
-    if(breakpoint_medium) {
+    if(screenWidth >= 850) {
       $('.modal-titles').css('max-width',persW);
       $('.staff li:nth-child(2n+1) .modal-titles').css('margin-left',24+persW);
     }else{ 
