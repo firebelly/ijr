@@ -330,6 +330,26 @@ var FBSage = (function($) {
   }
 
 
+  //make sure that bg slider is at least tall enough to contain fg content
+  function _resizeSliders() {
+    //grab fg and bg sliders
+    var $bgs = $('.headline-slider.slider .slide-bg');
+    var $fgs = $('.headline-slider.slider .slide-fg');
+
+    //get height of tallest slide fg (+36 pix margin at bottom)
+    var tallest = 0;
+    $fgs.each(function() {
+      var height = $(this).height()+36;
+      tallest = Math.max(tallest,height);
+    });
+
+    //don't make this shorter than designs default height
+    var defaultHeight = breakpoint_medium ? 600 : 312;
+
+    //set the minHeight
+    var minHeight = Math.max(tallest,defaultHeight);
+    $bgs.css('min-height',minHeight);
+  }
   //Initialize Slick Sliders
   function _initSliders(){
     $('.headline-slider.slider').slick({
@@ -360,6 +380,9 @@ var FBSage = (function($) {
       $(this).find('.slide-fg.active').addClass('exiting').removeClass('active');
       $(this).find('.slide-fg[data-slick-index="'+nextSlide+'"]').addClass('active');
     }); 
+
+    //make sure that bg slider is at least tall enough to contain fg content
+    _resizeSliders();
   }
 
   //fix the center to the top of the screen after it's scrolled 36px
@@ -433,7 +456,6 @@ var FBSage = (function($) {
 
   function _injectSvgSprite() {
     boomsvgloader.load('/app/themes/thecenter/assets/svgs/build/svgs-defs.svg'); 
-    console.log('boom!');
   }
 
   // Called in quick succession as window is resized
@@ -449,6 +471,9 @@ var FBSage = (function($) {
     
     //position/resize staff modals (too hard with css)
     _styleStaff(); 
+
+    //make sure that bg slider is at least tall enough to contain fg content
+    _resizeSliders();
 
   }
 

@@ -473,10 +473,10 @@ button, input[type="submit"] {
       }
     }
     .headline-article {
-      min-height: 312px;
-      @include media-md {
-        min-height: 600px;
-      }
+      // min-height: 312px;
+      // @include media-md {
+      //   min-height: 600px;
+      // }
       width: 100%;
       .learn-more {
         @include highlight_link();

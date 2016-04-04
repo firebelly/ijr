@@ -151,6 +151,7 @@ HTML;
   if (!$headline_posts) return false;
 
   //bg divs
+  $i = 0;
   foreach ($headline_posts as $post):
     $thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'headline-thumb')[0];
     $duo_url = \Firebelly\Media\get_duo_url($thumb_url, '', [
@@ -158,10 +159,11 @@ HTML;
         'color2' => 'dddcd6',
       ]);
     $output .= <<<HTML
-    <div class="slide-item slide-bg" style="background-image: url('{$thumb_url}')">
+    <div class="slide-item slide-bg" style="background-image: url('{$thumb_url}')" data-slick-index="{$i}" >
       <div class="headline-duo" style="background-image: url('{$duo_url}')"> </div>
     </div>
 HTML;
+    $i++;
   endforeach;
 
   //add the goddamn dots :)
