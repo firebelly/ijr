@@ -2,9 +2,9 @@
   <hgroup class="brand">
     <a href="<?= esc_url(home_url('/')); ?>">
       <h1>the <span class="-center">Center</span></h1>
-      <svg role="image" class="icon icon-ijr"><use xlink:href="#icon-ijr"></use></svg>
     </a>
   </hgroup>
+  <svg role="image" class="icon icon-ijr"><use xlink:href="#icon-ijr"></use></svg>
   <div class="nav-toggle">
     <h2 class="menu">Menu</h2>
     <svg role="image" class="icon icon-burger nav-icon"><use xlink:href="#icon-burger"></use></svg>

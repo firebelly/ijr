@@ -14,6 +14,8 @@ body {
   font-family: $main-font;
   letter-spacing: .01em;
   background: $bg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .nav-push-wrap {

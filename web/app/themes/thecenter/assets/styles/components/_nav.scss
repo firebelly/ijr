@@ -27,8 +27,8 @@
       margin-left: -50vw;
       margin-right: 50vw;
     }
-    .brand {
-      transform: translateX(-50vw);
+    .brand, .icon-ijr {
+      margin-left: -50vw;
     }
     &::after{
       z-index: $z-nav-mask;
@@ -44,7 +44,7 @@
   z-index: $z-nav-toggle-inactive;
   position: absolute;
   width: 36px;
-  // top: -54px;
+  // top: -54px; --keep this in case you go back to fixed position
   @include media-md {
   	position: fixed;
     width: 72px;

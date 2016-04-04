@@ -56,6 +56,9 @@ var FBSage = (function($) {
     //-- wish I could think of a way to do this with css
     _pushPageRecess();
 
+    //fix the center to the top of the screen after it's scrolled 36px
+    _fixBrand();
+
     // Fit them vids!
     $('main').fitVids();
  
@@ -334,10 +337,26 @@ var FBSage = (function($) {
     $('.slider').find('.slide-fg[data-slick-index="0"]').addClass('active');
     //revise on slide change...
     $('.slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-      $(this).find('.slide-fg').removeClass('active');
+      $(this).find('.slide-fg.active').addClass('exiting').removeClass('active');
       $(this).find('.slide-fg[data-slick-index="'+nextSlide+'"]').addClass('active');
     }); 
   }
+
+  //fix the center to the top of the screen after it's scrolled 36px
+  function _fixBrand () {
+    $( window ).scroll(function() {
+      $('.brand').each(function() {
+        var scrollTop = $(window).scrollTop();
+        // var currentOffset = $(this).offset();
+        if(scrollTop>=36){
+          $(this).css( 'margin-top', scrollTop-36 );
+        } else {
+          $(this).css( 'margin-top', 0 ); 
+        }
+      });
+    });
+  }
+
 
   //functions to handle nav
   function _toggleNav () {
@@ -407,9 +426,9 @@ var FBSage = (function($) {
 
   }
 
-  // Called on scroll
-  // function _scroll(dir) {
-  //   var wintop = $(window).scrollTop();
+  //Called on scroll
+  //  function _scroll(dir) {
+  //    var wintop = $(window).scrollTop();
   // }
 
   // Public functions
