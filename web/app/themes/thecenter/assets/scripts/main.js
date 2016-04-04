@@ -56,6 +56,9 @@ var FBSage = (function($) {
     //-- wish I could think of a way to do this with css
     _pushPageRecess();
 
+    //crazy hack to get the gray highlight to be the size of inputted text, not the input itself
+    _searchHighlight();
+
     //fix the center to the top of the screen after it's scrolled 36px
     _fixBrand();
 
@@ -99,6 +102,22 @@ var FBSage = (function($) {
       $(this).html(replacement);
     });
   }
+
+  //crazy hack to get the gray highlight to be the size of inputted text, not the input itself
+  function _replaceSearchHighlightText() {
+    window.setTimeout(function() {
+      var inputSoFar = $('.search-field')
+      inputSoFar = inputSoFar.val().replace(/ /g, '&nbsp;'); //replace spaces so they are preserved like they will be in the textarea
+      if (inputSoFar === '') { inputSoFar = 'Search'; }
+      $('.search-highlight .gradient-highlight').html(inputSoFar);
+    }, 0);
+  }
+  function _searchHighlight() {
+    $('.search-field').keydown(_replaceSearchHighlightText);
+    $('.search-field').keypress(_replaceSearchHighlightText);
+    $('.search-field').keyup(_replaceSearchHighlightText);
+  }
+
 
   //position/resize staff modals (too hard with css)
   function _styleStaff() {

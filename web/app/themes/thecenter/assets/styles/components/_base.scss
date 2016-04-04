@@ -118,7 +118,7 @@ img {
       cursor: pointer;
     }
 }
-.headline-title, .search-field {
+.headline-title, .search-field, .search-highlight {
   font-size: 32px;
   line-height: 36px;
   @include media-md {

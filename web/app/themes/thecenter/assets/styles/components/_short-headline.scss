@@ -44,13 +44,24 @@
       padding-right: 72px; 
     }
     .search-field {
-      width: 100%;
+      position: absolute;
       max-width: 768px;
-        background: transparent;
+      width: 100%;
+      z-index: 1000;
+      background: transparent;
+      outline: none;
+      border: none;
+    }
+    .search-highlight {
+      max-width: 768px;
+      z-index: 10;
+      position: absolute;
+      .gradient-highlight {
+      max-width: 768px;
         background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0) 3%, $bg 3%, $bg 87%, rgba(0,0,0,0) 87%);
         background-repeat: repeat-x;
-        outline: none;
-        border: none;
+      }
+      color: rgba(0,0,0,0);
     }
     .search-submit {
       display: none;
