@@ -13,13 +13,21 @@ use Roots\Sage\Titles;
       <label for="sort-select">Sort:</label>
       <div class="select-wrap">
         <select id="sort-select">
-          <option data-href="<?= get_permalink( get_option( 'page_for_posts' ) ) ?>" selected>All Posts</option>
+          <option value="<?= get_permalink( get_option( 'page_for_posts' ) ) ?>">All Posts</option>
           <?php 
           $tags = get_tags();
           foreach ($tags as $tag) {
             $tag_link = get_tag_link( $tag->term_id );
             $tag_name = $tag->name;
-            echo'<option value="'.$tag_link.'">'.$tag_name.'</option>';
+            $selected = is_tag( $tag->term_id ) ? ' selected' : '';
+            echo'<option value="'.$tag_link.'"'.$selected.'>'.$tag_name.'</option>';
+          }
+          $cats = get_categories();
+          foreach ($cats as $cat) {
+            $cat_link = get_category_link( $cat->cat_ID );
+            $cat_name = $cat->name;
+            $selected = is_category( $cat->cat_ID ) ? ' selected' : '';
+            echo'<option value="'.$cat_link.'"'.$selected.'>'.$cat_name.'</option>';
           }
           ?>
         </select>
