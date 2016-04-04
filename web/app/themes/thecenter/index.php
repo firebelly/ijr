@@ -54,7 +54,9 @@
     $links = paginate_links( $args );
     $buffer = 2;
     $filtered_links = Firebelly\Utils\filter_pagination($links,$current,$buffer);
-    echo implode($filtered_links);
+    if ($filtered_links) {
+      echo implode($filtered_links);
+    }
   
 
     ?>
