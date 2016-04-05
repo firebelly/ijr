@@ -9,6 +9,7 @@
     top: 24px;
     left: $gut-left;
     background-color: $bg;
+    transition: margin-left $nav-push-speed;
     h1 {
       @include small_text(); 
       margin: 4px;
@@ -23,7 +24,6 @@
       height: 186px;
       left: 0px;
       background: linear-gradient( 0deg , rgba(221,220,215,0), $bg 24px);
-      transition: margin-left $nav-push-speed;
       h1 {
         position: absolute;
         top: 168px; left: 125px;

@@ -387,30 +387,39 @@ var FBSage = (function($) {
 
 
   function _handleStickies() {
-    whereIWas = typeof(whereIWas) === 'undefined' ? 'nowhere' : whereIWas; //set if doesn't exist;
-
-    $target = $('.brand, .nav-toggle.outside');
     var scrollTop = $(window).scrollTop();
     if(breakpoint_medium) {    
       if(scrollTop>=36 && whereIWas!=='below') { //if we change states
-        $target.css( 'position', 'fixed' );
-        $target.css( 'top', -36 );
+        $stickies.css( 'position', 'fixed' );
+        $stickies.css( 'top', -36 );
         whereIWas = 'below';
+        console.log('change to below');
       }
       if (scrollTop<36 && whereIWas!=='above') {
-        $target.css( 'position', 'absolute' ); 
-        $target.css( 'top', 0 );
+        $stickies.css( 'position', 'absolute' ); 
+        $stickies.css( 'top', 0 );
         whereIWas = 'above';
+        console.log('change to above');
       }
-    } else {
-      whereIWas = "mobile";
-      $target.css( 'position', '' ); 
-      $target.css( 'top', '' );
+    } 
+    if(!breakpoint_medium && whereIWas!=='mobile') { 
+      $stickies.css( 'position', '' ); 
+      $stickies.css( 'top', '' );
+      whereIWas = 'mobile';
+        console.log('change to mobile');
     }
   }
   //fix the center to the top of the screen after it's scrolled 36px
   function _initStickies () {
+    whereIWas = 'nowhere';
+    $stickies = $('.brand, .nav-toggle.outside');
+    
+    _handleStickies();
+
     $( window ).scroll(function() {
+      _handleStickies();
+    });
+    $( window ).resize(function() {
       _handleStickies();
     });
   }
@@ -483,9 +492,6 @@ var FBSage = (function($) {
 
     //make sure that bg slider is at least tall enough to contain fg content
     _resizeSliders();
-
-    //make sticky elements sticky or not
-    _handleStickies();
 
   }
 
