@@ -136,7 +136,7 @@ function get_people($options=[]) {
 
   $i = 0;
   foreach ( $person_posts as $post ):
-    $output .= '<li>';
+    $output .= '<li class="person-li">';
     ob_start();
     include(locate_template('templates/article-person.php'));
     $output .= ob_get_clean();

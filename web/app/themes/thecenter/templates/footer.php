@@ -28,23 +28,4 @@
       <svg role="image" class="icon icon-uic"><use xlink:href="#icon-uic"></use></svg>
     </div>
   </section>
-
-<!--   <section class="contact">
-    <div class="contact-info">
-      <h1>Contact Us:</h1>
-      <address class="vcard">
-        <span class="adr"><a href="https://goo.gl/maps/JMv1HDr6mAU2"><span class="street-address">1747 W Roosevelt Rd</span><br>
-          <span class="locality">Chicago</span>, <span class="region">IL</span> <span class="postal-code">60608</span></a></span><br>
-        <span class="tel">+1 312 996 7723</span><br>
-        <span class="email"><a href="mailto:info@ijrcenter.com">info@ijrcenter.com</a></span>
-      </address>
-    </div>
-    <div class="logo">
-      <svg role="image" class="icon icon-uic"><use xlink:href="#icon-uic"></use></svg>
-    </div>
-  </section> -->
-
-
-
-
 </footer>

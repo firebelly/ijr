@@ -145,10 +145,10 @@ var FBSage = (function($) {
     //adjust size of title margin for large breakpoint
     if(screenWidth >= 850) {
       $('.modal-titles').css('max-width',persW);
-      $('.staff li:nth-child(2n+1) .modal-titles').css('margin-left',24+persW);
+      $('.staff .person-li:nth-child(2n+1) .modal-titles').css('margin-left',24+persW);
     }else{ 
       $('.modal-titles').css('max-width','');
-      $('.staff li:nth-child(2n+1) .modal-titles').css('margin-left','');
+      $('.staff .person-li:nth-child(2n+1) .modal-titles').css('margin-left','');
     }
 
     //adjust size of person image
