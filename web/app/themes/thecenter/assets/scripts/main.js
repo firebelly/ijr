@@ -143,7 +143,7 @@ var FBSage = (function($) {
     var persW = $person.width();
 
     //adjust size of title margin for large breakpoint
-    if(screenWidth >= 850) {
+    if(screenWidth > 850) {
       $('.modal-titles').css('max-width',persW);
       $('.staff .person-li:nth-child(2n+1) .modal-titles').css('margin-left',24+persW);
     }else{ 
@@ -157,6 +157,8 @@ var FBSage = (function($) {
     }else{ 
       $('.staff .modal .wp-post-image').css('width',$(window).width()-72);
     }
+
+      $('.staff .no-thumb').height( persW * (246/372) );
 
   }
 

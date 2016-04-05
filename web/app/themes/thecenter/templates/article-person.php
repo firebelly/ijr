@@ -5,15 +5,20 @@ $duo_url = \Firebelly\Media\get_duo_url($thumb_url, '', [
     'color1' => '2f2d28',
     'color2' => 'dddcd6',
   ]);
-$photo_duo = '<img src="'.$duo_url.'" class="wp-post-image">';
-
-$photo_color = get_the_post_thumbnail($post->ID, array(372,246));
+if ($thumb_url) {
+  $photo_duo = '<img src="'.$duo_url.'" class="wp-post-image">';
+  $photo_color = get_the_post_thumbnail($post->ID, array(372,246));
+} else {
+  $photo_duo = '<div class="no-thumb wp-post-image" width="372" height="246"></div>';
+  $photo_color = $photo_duo;
+}
 $name = $post->post_title;
 $title = get_post_meta( $post->ID, '_cmb2_title', true );
 $show_title =  get_post_meta( $post->ID, '_cmb2_show_title', true )=='on';
 $body = apply_filters('the_content', $post->post_content);
 $person_num = isset($i) ? "data-person-num=\"{$i}\"" : '';
 ?>
+
 <div data-url="<?= get_permalink($post) ?>" id="<?= $post->post_name ?>" class="person" <?= $person_num ?>>
   <?= $photo_duo ?>
   <div class="read-bio open-person">

@@ -191,6 +191,9 @@
       width: 100%;
       height: auto;
       position: relative;
+      .no-thumb{
+        background-color: #2f2d28;
+      }
       .titles{
         position: absolute;
         top: 0;
