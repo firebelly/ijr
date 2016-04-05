@@ -18,6 +18,21 @@
     <div class="contact-info">
       <h1>Contact Us:</h1>
       <address class="vcard">
+        <span class="adr"><a href="<?= get_option( 'contact_gmaps' ); ?>" target="_blank"><span class="street-address"><?= get_option( 'contact_street' ); ?></span><br>
+          <span class="locality"><?= get_option( 'contact_city' ); ?></span>, <span class="region"><?= get_option( 'contact_state' ); ?></span> <span class="postal-code"><?= get_option( 'contact_zip' ); ?></span></a></span><br>
+        <span class="tel"><?= get_option( 'contact_phone' ); ?></span><br>
+        <span class="email"><a target="_blank" href="mailto:<?= get_option( 'contact_email' ); ?>"><?= get_option( 'contact_email' ); ?></a></span>
+      </address>
+    </div>
+    <div class="logo">
+      <svg role="image" class="icon icon-uic"><use xlink:href="#icon-uic"></use></svg>
+    </div>
+  </section>
+
+<!--   <section class="contact">
+    <div class="contact-info">
+      <h1>Contact Us:</h1>
+      <address class="vcard">
         <span class="adr"><a href="https://goo.gl/maps/JMv1HDr6mAU2"><span class="street-address">1747 W Roosevelt Rd</span><br>
           <span class="locality">Chicago</span>, <span class="region">IL</span> <span class="postal-code">60608</span></a></span><br>
         <span class="tel">+1 312 996 7723</span><br>
@@ -27,7 +42,9 @@
     <div class="logo">
       <svg role="image" class="icon icon-uic"><use xlink:href="#icon-uic"></use></svg>
     </div>
-  </section>
+  </section> -->
+
+
 
 
 </footer>
