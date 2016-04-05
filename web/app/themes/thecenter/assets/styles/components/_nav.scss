@@ -8,7 +8,7 @@
 
 .nav-push-wrap {
   transition: margin $nav-push-speed;    
-  &::after{
+  .nav-mask {
     content: '';
     z-index: $z-nav-mask;
     position: fixed;
@@ -30,11 +30,14 @@
     .brand, .icon-ijr {
       margin-left: -50vw;
     }
-    &::after{
+    .nav-mask {
       z-index: $z-nav-mask;
       height: 100%;
       opacity: .75;
       transition: opacity 0.5s 0.1s, height 0.1s;
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
 }

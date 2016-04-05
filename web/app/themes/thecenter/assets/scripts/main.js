@@ -163,14 +163,19 @@ var FBSage = (function($) {
   //push down recessed page content if headline-title overlaps 
   //-- wish I could think of a way to do this with css
   function _pushPageRecess() {
+    var $block = $('.content-block.recess');
+    var $content = $('.content-block.recess .content');
     if(breakpoint_medium) {
       var headerHeight = $('.page-header').height();
       var headlineHeight = $('.headline-title').height();
       var headlineOffset = $('.headline-title').offset().top;
       var margin = -(headerHeight-(headlineOffset+headlineHeight))+36;
-      $('.content-block.recess').css('margin-top',margin+'px');
+      var minHeight = -margin;
+      $block.css('margin-top',margin+'px');
+      $content.css('min-height',minHeight+'px');
     } else {
-      $('.content-block.recess').css('margin-top','');
+      $block.css('margin-top','');
+      $content.css('min-height','');
     }
   }
 
@@ -453,6 +458,7 @@ var FBSage = (function($) {
   }
   function _initNav() {
     $('.nav-toggle').on('click', _toggleNav );
+    $('.nav-mask').on('click', _closeNav );
   }
 
   //remove duotone headline on mouseover, follow link on click

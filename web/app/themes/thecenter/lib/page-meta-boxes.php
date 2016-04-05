@@ -46,7 +46,6 @@ namespace Firebelly\PostTypes\Pages;
           'name'     => 'yes',
           'id'       => $prefix . 'recess',
           'type'     => 'checkbox',
-          'default'  => 'on',
           'desc'     => 'Recess primary content block',
       ),
     ),
