@@ -60,7 +60,7 @@ var FBSage = (function($) {
     _searchHighlightInit();
 
     //fix the center to the top of the screen after it's scrolled 36px
-    _fixBrand();
+    _initStickies();
 
     // Fit them vids!
     $('main').fitVids();
@@ -385,24 +385,33 @@ var FBSage = (function($) {
     _resizeSliders();
   }
 
+
+  function _handleStickies() {
+    whereIWas = typeof(whereIWas) === 'undefined' ? 'nowhere' : whereIWas; //set if doesn't exist;
+
+    $target = $('.brand, .nav-toggle.outside');
+    var scrollTop = $(window).scrollTop();
+    if(breakpoint_medium) {    
+      if(scrollTop>=36 && whereIWas!=='below') { //if we change states
+        $target.css( 'position', 'fixed' );
+        $target.css( 'top', -36 );
+        whereIWas = 'below';
+      }
+      if (scrollTop<36 && whereIWas!=='above') {
+        $target.css( 'position', 'absolute' ); 
+        $target.css( 'top', 0 );
+        whereIWas = 'above';
+      }
+    } else {
+      whereIWas = "mobile";
+      $target.css( 'position', '' ); 
+      $target.css( 'top', '' );
+    }
+  }
   //fix the center to the top of the screen after it's scrolled 36px
-  function _fixBrand () {
+  function _initStickies () {
     $( window ).scroll(function() {
-      var scrollTop = $(window).scrollTop();
-      $('.brand, .nav-toggle.outside').each(function() { 
-        if(scrollTop>=36){
-          $(this).css( 'margin-top', scrollTop-36 );
-        } else {
-          $(this).css( 'margin-top', 0 ); 
-        }
-      });
-      $('.nav-toggle.inside:not(.active)').each(function() {
-        if(scrollTop>=36){
-          $(this).css( 'margin-top', -36 );
-        } else {
-          $(this).css( 'margin-top', -scrollTop ); 
-        }
-      });
+      _handleStickies();
     });
   }
 
@@ -474,6 +483,9 @@ var FBSage = (function($) {
 
     //make sure that bg slider is at least tall enough to contain fg content
     _resizeSliders();
+
+    //make sticky elements sticky or not
+    _handleStickies();
 
   }
 
