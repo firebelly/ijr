@@ -365,6 +365,7 @@ var FBSage = (function($) {
       autoplaySpeed: 6000,
       speed: 1200,
       draggable: false,
+      touchMove: false,
       prevArrow: '<svg class="slider-nav-left icon-arrow-left" role="img"><use xlink:href="#icon-arrow-left"></use></svg>',
       nextArrow: '<svg class="slider-nav-right icon-arrow-right" role="img"><use xlink:href="#icon-arrow-right"></use></svg>',   
     });
@@ -373,6 +374,7 @@ var FBSage = (function($) {
       slide: '.slide-item',
       speed: 1200,
       draggable: false,
+      touchMove: false,
       prevArrow: '<svg class="slider-nav-left icon-arrow-left" role="img"><use xlink:href="#icon-arrow-left"></use></svg>',
       nextArrow: '<svg class="slider-nav-right icon-arrow-right" role="img"><use xlink:href="#icon-arrow-right"></use></svg>',   
     });
