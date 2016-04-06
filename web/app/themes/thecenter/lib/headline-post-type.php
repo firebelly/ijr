@@ -114,7 +114,7 @@ function metaboxes( array $meta_boxes ) {
     	    'name'    => 'Links to',
     	    'id'      => $prefix . 'links_to',
     	    'type'    => 'select',
-    	    'options' => cmb2_get_post_options( array( 'post_type' => 'page', 'numberposts' => -1, 'post_parent' => 0	 ) ),
+    	    'options' => cmb2_get_post_options( array( 'post_type' => array('page','post'), 'numberposts' => -1, 'post_parent' => 0	 ) ),
     	),
     // 	array(
 	   //  'name'    => 'Order #',
