@@ -10,7 +10,7 @@ use Roots\Sage\Titles;
     <div class="search-toggle-wrap">
     <a class="search-toggle">Search</a>
     <form class="sort">
-      <label for="sort-select">Sort:</label>
+      <label for="sort-select">Post Type:</label>
       <div class="select-wrap">
         <select id="sort-select">
           <option value="<?= get_permalink( get_option( 'page_for_posts' ) ) ?>">All Posts</option>
