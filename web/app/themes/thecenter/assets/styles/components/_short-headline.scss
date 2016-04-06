@@ -34,9 +34,8 @@
     }
   }
   .site-wrap {
-    background-image: url('/app/themes/thecenter/assets/svgs/bg-dots-black.svg');
-      background-size: 12px;
-      overflow: auto;
+    @include dots-bg();
+    overflow: auto;
   }
   .search-form{
     position: absolute;

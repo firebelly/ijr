@@ -48,10 +48,20 @@
     top: 0;
     left: 0; right: 0;
     height: 100%;
-    background-image: url('/app/themes/thecenter/assets/svgs/bg-dots-black.svg');
-    background-size: 12px;
+    @include dots-bg();
   }
 }
+@mixin dots-bg() {
+  background-image: url('/app/themes/thecenter/assets/svgs/bg-dots-black.svg');
+  background-size: 6px;
+  @include media-md() {background-size: 12px;}
+}
+@mixin dots-bg-white() {
+  background-image: url('/app/themes/thecenter/assets/svgs/bg-dots-white.svg');
+  background-size: 6px;
+  @include media-md() {background-size: 12px;}
+}
+
 
 // Responsive mixins by Andy Richardson (@andimal): https://github.com/andimal/sass-responsive-mixin-madness
 

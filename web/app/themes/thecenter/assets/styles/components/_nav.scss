@@ -213,8 +213,7 @@
       &:first-child { margin-top: 0; }
       padding-bottom: 12px;
       width: 100%;
-      background-image: url('/app/themes/thecenter/assets/svgs/bg-dots-white.svg');
-        background-size: 12px;
+      @include dots-bg-white();
       @include big_text();
       color: $bg;
       a {
@@ -226,10 +225,8 @@
             padding-top: 2px;
             padding-bottom: 2px;
             @include bg-color-cycle()
-
             background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0) 86%, $bg 86%, $bg 92%, rgba(0,0,0,0) 92%);
             background-repeat: repeat-x;
-            //border-bottom: 2px solid;
           }
       }
     }
