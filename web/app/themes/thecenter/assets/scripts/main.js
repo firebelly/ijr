@@ -442,15 +442,13 @@ var FBSage = (function($) {
   }
   function _openNav () {
     if( !$('.site-nav.prevent-open').length ){
-      $('.nav-toggle').addClass('active');
+      $('.nav-toggle, .site-nav, .nav-mask, .nav-backup-bg').addClass('active');
       $('.nav-push-wrap').addClass('pushed');
-      $('.site-nav').addClass('active');
     }
   }
   function _closeNav () {
-    $('.nav-toggle').removeClass('active');
+    $('.nav-toggle, .site-nav, .nav-mask, .nav-backup-bg').removeClass('active');
     $('.nav-push-wrap').removeClass('pushed');
-    $('.site-nav').removeClass('active');
   }
   function _preventNav() {
     $('.site-nav').addClass('prevent-open');

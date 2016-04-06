@@ -6,38 +6,61 @@
 #menu-main-nav {
 }
 
-.nav-push-wrap {
-  transition: margin $nav-push-speed;    
-  .nav-mask {
-    content: '';
-    z-index: $z-nav-mask;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 0;
-    background-color: $bg;
-    opacity: 0;
-    transition: opacity 0.5s, height 0.1s 0.5s;
+.nav-mask {
+  content: '';
+  z-index: $z-nav-mask;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  background-color: $bg;
+  opacity: 0;
+  transition: opacity 0.5s, height 0.1s 0.5s;
+  &.active {
+    @include media-md { height: 100%; }
+    opacity: .75;
+    transition: opacity 0.5s 0.1s, height 0.1s;
+    &:hover{
+      cursor: pointer;
+    }
   }
+}
+.nav-backup-bg {
+  content: '';
+  z-index: 35;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  left: 100vw;
+  // margin-left: -50vw;
+  // margin-right: 50vw;
+  background-color: $black;
+  transition: margin $nav-push-speed, transform $nav-push-speed, left $nav-push-speed, visibility $nav-push-speed;
+  visibility: hidden;  
+  &.active {
+    // visibility: visible;
+    left: 60vw;
+    // margin-right: 50vw;
+  }
+}
+
+.nav-push-wrap {
+  transition: margin $nav-push-speed, transform $nav-push-speed;    
+
   &.pushed { 
-    margin-left: -100vw;
-    margin-right: 100vw;
+    transform: translateX(-100vw);
+    // margin-left: -100vw;
+    // margin-right: 100vw;
     @include media-md {
-      margin-left: -50vw;
-      margin-right: 50vw;
+    transform: translateX(-50vw);
+      // margin-left: -50vw;
+      // margin-right: 50vw;
     }
     .brand, .icon-ijr {
-      margin-left: -50vw;
-    }
-    .nav-mask {
-      z-index: $z-nav-mask;
-      height: 100%;
-      opacity: .75;
-      transition: opacity 0.5s 0.1s, height 0.1s;
-      &:hover{
-        cursor: pointer;
-      }
+      // transform: translateX(-50vw);
+      // margin-left: -50vw;
     }
   }
 }
@@ -80,6 +103,7 @@
 }
 
 .site-nav {
+  // visibility: hidden;
   .nav-toggle {
     z-index: $z-nav-toggle-active;
     opacity: 0;
@@ -181,14 +205,6 @@
 
 
 .site-nav {
-  &.active{
-    margin-left: -100vw;
-    margin-right: 100vw;
-    @include media-md {
-      margin-left: -50vw;
-      margin-right: 50vw;
-    }
-  }
   z-index: $z-nav;
   position: fixed;
   left: 100%;
@@ -196,13 +212,24 @@
   bottom: 0;
   padding: 36px;
   width: 100vw;
+  // background-color: transparent;
+  @include bg-color-cycle();
+  transition: margin $nav-push-speed, transform $nav-push-speed;
   @include media-md {
     width: 50vw;
     padding: 72px;
   }
-  @include bg-color-cycle();
-  transition: margin $nav-push-speed;
-
+  &.active{
+    transform: translateX(-100vw);
+    // margin-left: -100vw;
+    // margin-right: 100vw;
+    @include media-md {
+      transform: translateX(-50vw);
+      // animation: none;
+      // margin-left: -50vw;
+      // margin-right: 50vw;
+    }
+  }
   ul.nav {
     margin: 0;
     padding: 0;
