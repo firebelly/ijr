@@ -18,9 +18,10 @@
     margin-bottom: 72px;
   }
   .category{
-  position: relative;
+    position: relative;
     @include highlight_link();
-    line-height: 24px;
+    padding: 1px 3px;
+    line-height: 18px;
     margin-top: 20px;
   }
   .title, .excerpt {
@@ -29,7 +30,7 @@
   }
   h1.title { 
     margin: 0; 
-    margin-top: 22px;
+    margin-top: 26px;
   }
   .excerpt p { 
     margin: 0; 

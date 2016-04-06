@@ -79,7 +79,7 @@
   position: absolute;
   .month {
     position: absolute;
-    top: .2em;
+    // top: .2em;
     left: -90px;
     transform: translateX(-50%);
     @include small_text();
@@ -87,7 +87,7 @@
   .day {
     position: absolute;
     left: -126px;
-    top: 22px;
+    top: 32px;
     font-size: 135px;
     letter-spacing: -.01em;
     .icon-number {
