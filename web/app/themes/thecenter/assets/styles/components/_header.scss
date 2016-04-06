@@ -9,7 +9,6 @@
     top: 24px;
     left: $gut-left;
     background-color: $bg;
-    transition: margin-left $nav-push-speed;
     h1 {
       @include small_text(); 
       margin: 4px;
@@ -44,7 +43,6 @@
     top: 186px; left: 90px;
     transform: translateX(-50%);
     height: 48px; width: 48px;
-    transition: margin-left $nav-push-speed;
     @include fill-cycle();
     @include media-md {
       visibility: visible;

@@ -377,8 +377,6 @@ var FBSage = (function($) {
       nextArrow: '<svg class="slider-nav-right icon-arrow-right" role="img"><use xlink:href="#icon-arrow-right"></use></svg>',   
     });
 
-
-
     //things got complicated with animations/overlays, needed to make each slide multiple, seperate divs
     //when slick makes a slide active, we want to throw a .active class on every div that's associated associated (via data-slick-index)
     //start with first one
@@ -419,7 +417,7 @@ var FBSage = (function($) {
   }
   //fix the center to the top of the screen after it's scrolled 36px
   function _initStickies () {
-    whereIWas = 'nowhere';
+    whereIWas = 'nothingness';
     $stickies = $('.brand, .nav-toggle.outside');
     
     _handleStickies();
@@ -444,12 +442,13 @@ var FBSage = (function($) {
   function _openNav () {
     if( !$('.site-nav.prevent-open').length ){
       $('.nav-toggle, .site-nav, .nav-mask, .nav-backup-bg').addClass('active');
-      $('.nav-push-wrap').addClass('pushed');
+      $('.nav-push-wrap, .site-header').addClass('pushed');
+      console.log($('.nav-push-wrap, .brand, .icon-ijr'));
     }
   }
   function _closeNav () {
     $('.nav-toggle, .site-nav, .nav-mask, .nav-backup-bg').removeClass('active');
-    $('.nav-push-wrap').removeClass('pushed');
+    $('.nav-push-wrap, .site-header').removeClass('pushed');
   }
   function _preventNav() {
     $('.site-nav').addClass('prevent-open');
