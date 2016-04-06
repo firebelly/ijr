@@ -218,10 +218,17 @@
       color: $bg;
       a {
         display: block;
-        text-decoration: underline;
+        text-decoration: none;
         max-width: 261px;
+            
           .gradient-highlight {
+            padding-top: 2px;
+            padding-bottom: 2px;
             @include bg-color-cycle()
+
+            background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0) 86%, $bg 86%, $bg 90%, rgba(0,0,0,0) 90%);
+            background-repeat: repeat-x;
+            //border-bottom: 2px solid;
           }
       }
     }
