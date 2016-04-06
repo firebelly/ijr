@@ -26,25 +26,25 @@
     }
   }
 }
-.nav-backup-bg {
-  content: '';
-  z-index: 35;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  height: 100%;
-  left: 100vw;
-  // margin-left: -50vw;
-  // margin-right: 50vw;
-  background-color: $black;
-  transition: margin $nav-push-speed, transform $nav-push-speed, left $nav-push-speed, visibility $nav-push-speed;
-  visibility: hidden;  
-  &.active {
-    // visibility: visible;
-    left: 60vw;
-    // margin-right: 50vw;
-  }
-}
+// .nav-backup-bg {
+//   content: '';
+//   z-index: 35;
+//   position: fixed;
+//   top: 0;
+//   width: 100vw;
+//   height: 100%;
+//   left: 100vw;
+//   // margin-left: -50vw;
+//   // margin-right: 50vw;
+//   background-color: $black;
+//   transition: margin $nav-push-speed, transform $nav-push-speed, left $nav-push-speed, visibility $nav-push-speed;
+//   visibility: hidden;  
+//   &.active {
+//     // visibility: visible;
+//     left: 50vw;
+//     // margin-right: 50vw;
+//   }
+// }
 
 .nav-push-wrap {
   transition: margin $nav-push-speed, transform $nav-push-speed;    

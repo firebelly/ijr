@@ -12,7 +12,7 @@ use Roots\Sage\Wrapper;
   <?php get_template_part('templates/head'); ?>
   <body <?php body_class(); ?>>
     <div class="nav-mask"></div>
-    <div class="nav-backup-bg"></div>
+    <!-- <div class="nav-backup-bg"></div> -->
     <nav class="site-nav" role="navigation">
       <?php
       if (has_nav_menu('primary_navigation')) :
