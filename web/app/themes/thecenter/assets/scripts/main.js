@@ -198,11 +198,11 @@ var FBSage = (function($) {
   function _initSearch() {
     $('.search-toggle').on('click', function() {
       if($('.search-form').hasClass('searching')){
-        console.log('submit!');
         $('.search-form').submit();
       }else{
         $('.search-form').addClass('searching');
         $('.headline-title').addClass('searching');
+        $('.nav-forms').addClass('searching');
         $('.search-field').focus();
       }
     });

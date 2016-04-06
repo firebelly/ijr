@@ -6,7 +6,7 @@ use Roots\Sage\Titles;
   <h1 class="headline-title"><span class="gradient-highlight"><?= Titles\title(); ?></span></h1>
   <?php get_search_form(); ?>
 
-  <div class="nav-forms">
+  <div class="nav-forms up">
     <div class="search-toggle-wrap">
     <a class="search-toggle">Search</a>
     <form class="sort">
