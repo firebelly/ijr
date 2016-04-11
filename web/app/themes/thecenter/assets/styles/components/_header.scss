@@ -37,15 +37,16 @@
       }  
     }
   }
-  .icon-ijr {
-    visibility: hidden;
-    position: absolute;
-    top: 186px; left: 90px;
-    transform: translateX(-50%);
-    height: 48px; width: 48px;
-    @include fill-cycle();
-    @include media-md {
-      visibility: visible;
-    }
+}
+
+.icon-ijr {
+  visibility: hidden;
+  position: absolute;
+  top: 186px; left: 90px;
+  transform: translateX(-50%);
+  height: 48px; width: 48px;
+  @include fill-cycle();
+  @include media-md {
+    visibility: visible;
   }
 }

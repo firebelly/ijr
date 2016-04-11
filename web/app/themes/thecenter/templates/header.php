@@ -6,7 +6,6 @@
       <h1>the <span class="-center">Center</span></h1>
     </a>
   </hgroup>
-  <a href="<?= esc_url(home_url('/')); ?>"><svg role="image" class="icon icon-ijr"><use xlink:href="#icon-ijr"></use></svg></a>
 </header>
 
 <div class="nav-toggle outside">

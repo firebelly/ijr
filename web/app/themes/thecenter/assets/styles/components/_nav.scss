@@ -38,12 +38,12 @@
 //   }
 // }
 
-.nav-push-wrap, .site-header {
+.nav-push-wrap, .site-header, .brand, .icon-ijr-wrap {
   transition: margin $nav-push-speed, transform $nav-push-speed;
 }   
 
 .pushed { 
-  &.nav-push-wrap, &.site-header  { 
+  &.nav-push-wrap, &.site-header .brand, &.site-header .icon-ijr-wrap { 
     transform: translateX(-100vw);
     @include media-md {
       transform: translateX(-50vw);
