@@ -17,8 +17,8 @@ use Roots\Sage\Wrapper;
       ?>
     <div class="nav-push-wrap">
       <a href="<?= esc_url(home_url('/')); ?>" class="icon-ijr-wrap">
-    <svg role="image" class="icon icon-ijr"><use xlink:href="#icon-ijr"></use></svg>
-  </a>
+        <svg role="image" class="icon icon-ijr"><use xlink:href="#icon-ijr"></use></svg>
+      </a>
       <!--[if lt IE 9]>
         <div class="alert alert-warning">
           <?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'sage'); ?>
