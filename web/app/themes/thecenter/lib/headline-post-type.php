@@ -167,6 +167,7 @@ HTML;
   $output .= '<div class="bg-dots"></div>';
 
   $output .= '<div class="overflow-wrapper">';
+  // $output .= '<div class="slide-fg-track">';
 
   //article divs
   $i = 0;

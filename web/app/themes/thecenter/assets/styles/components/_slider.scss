@@ -3,21 +3,20 @@
 .slider {
   // @include dots();
 
+      
   .slide-fg {
-    transition: transform 0.5s, opacity 0.5s;
+    // transition: transform 0.5s, opacity 0.5s;
     position: absolute;
     transform: translateX(-100%);
     top: 0; left: 0;
-    opacity: 0;
-
+    // opacity: 0;
+    //transition: transform 1.2s;
     &.active{
-    transition: transform 0.5s 0.5s, opacity 0.5s 0.5s;
+    // transition: transform 0.5s 0.5s, opacity 0.5s 0.5s;
       opacity: 1;
-      transform: translateX(0%);
+      // transform: translateX(0%);
     }
-    &.exiting{
-      // transform: translateX(calc(100% - 180px -72px));
-    }
+
   }
 
   .slide-item {
@@ -54,6 +53,9 @@
 }
 
 
+.slide-fg-track{
+  position: absolute;
+}
 
 
 

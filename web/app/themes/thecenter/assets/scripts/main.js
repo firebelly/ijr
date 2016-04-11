@@ -357,42 +357,117 @@ var FBSage = (function($) {
     var minHeight = Math.max(tallest,defaultHeight);
     $bgs.css('min-height',minHeight);
   }
+
+
+
+
   //Initialize Slick Sliders
   function _initSliders(){
+
     $('.headline-slider.slider').slick({
       slide: '.slide-item',
       autoplay: true,
-      autoplaySpeed: 6000,
-      speed: 1200,
+      autoplaySpeed: 5000,
+      speed: 500,
       draggable: false,
       touchMove: false,
       prevArrow: '<svg class="slider-nav-left icon-arrow-left" role="img"><use xlink:href="#icon-arrow-left"></use></svg>',
       nextArrow: '<svg class="slider-nav-right icon-arrow-right" role="img"><use xlink:href="#icon-arrow-right"></use></svg>',   
-    });
+    }).on('beforeChange', function(event, slick, currentSlide, nextSlide){  //handle animations of foreground text on slide change
+
+      //what direction are we going, prev or next?
+      var last = $(this).find('.slide-fg').length - 1;
+      var dir = '';
+      if( currentSlide === last && nextSlide === 0) {
+        dir = 'next';
+      }
+      if( currentSlide === 0 && nextSlide === last) {
+        dir = 'prev';
+      }
+      if (!dir ) { //neither of the above cases
+        dir = nextSlide > currentSlide ? 'next' : 'prev';
+      }
+
+      //ok so what position should the entering and exiting slides go to?
+      var width = $(this).width();
+      var exitPos = 0;
+      if (dir === 'next') { exitPos = -width; }
+      if (dir === 'prev') { exitPos = width; }
+      var enterPos = -width;
+
+      //grab our slides
+      var $current = $(this).find('.slide-fg[data-slick-index="'+currentSlide+'"]');
+      var $next = $(this).find('.slide-fg[data-slick-index="'+nextSlide+'"]');
+
+      //exit current slide
+      $current.css('transition','transform .5s');
+      $current.css('transform','translateX('+exitPos+'px)');
+
+      //reset next slide
+      $next.css('transition','transform 0s');
+      $next.css('transform','translateX(-100%)');
+
+      //slide in next slide
+      setTimeout(function($next) {
+        //transition in
+        $next.css('transition','transform 0.35s');
+        $next.css('transform','translateX(0px)');
+      }, 500, $next);
+       
+    }).find('.slide-fg[data-slick-index="0"]').addClass('active').css('transition','transform .35s 0.5s').css('transform','translateX(0px)'); //tell first slide to slide in
+
+
+
+
 
     $('.post-slider.slider').slick({
       slide: '.slide-item',
-      speed: 1200,
+      speed: 500,
       draggable: false,
       touchMove: false,
       prevArrow: '<svg class="slider-nav-left icon-arrow-left" role="img"><use xlink:href="#icon-arrow-left"></use></svg>',
       nextArrow: '<svg class="slider-nav-right icon-arrow-right" role="img"><use xlink:href="#icon-arrow-right"></use></svg>',   
+    }).on('beforeChange', function(event, slick, currentSlide, nextSlide){  //handle animations of foreground text on slide change
+
+      //grab our slides
+      var $current = $(this).find('.slide-fg[data-slick-index="'+currentSlide+'"]');
+      var $next = $(this).find('.slide-fg[data-slick-index="'+nextSlide+'"]');
+
+      //ok so what position should the entering and exiting slides go to?
+      var exitPos = -$(this).width();
+      var enterPos = -300; //$current.width();
+
+      //exit current slide
+      $current.css('transition','transform .5s');
+      $current.css('transform','translateX('+exitPos+'px)');
+
+      //reset next slide
+      $next.css('transition','transform 0s');
+      $next.css('transform','translateX('+enterPos+'px)');
+
+      //slide in next slide
+      setTimeout(function($next) {
+        //transition in
+        $next.css('transition','transform 0.35s');
+        $next.css('transform','translateX(0px)');
+      }, 500, $next);
+       
     });
 
-    //things got complicated with animations/overlays, needed to make each slide multiple, seperate divs
-    //when slick makes a slide active, we want to throw a .active class on every div that's associated associated (via data-slick-index)
-    //start with first one
-    $('.slider').find('.slide-fg[data-slick-index="0"]').addClass('active');
-    //revise on slide change...
-    $('.slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-      $(this).find('.slide-fg.active').addClass('exiting').removeClass('active');
-      $(this).find('.slide-fg[data-slick-index="'+nextSlide+'"]').addClass('active');
-    }); 
+    $('.news .post-slider.slider').find('.slide-fg[data-slick-index="0"]').addClass('active').css('transition','transform .35s 0.8s').css('transform','translateX(0px)'); //tell first slide to slide in
+    $('.radar .post-slider.slider').find('.slide-fg[data-slick-index="0"]').addClass('active').css('transition','transform .35s 1.1s').css('transform','translateX(0px)'); //tell first slide to slide in
+
 
     //make sure that bg slider is at least tall enough to contain fg content
     _resizeSliders();
   }
 
+
+  // function _initFgSliders(){
+  //   $('.slider').each(function() {
+
+  //   });
+  // }
 
   function _handleStickies() {
     var scrollTop = $(window).scrollTop();

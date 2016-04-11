@@ -516,9 +516,6 @@ button, input[type="submit"] {
     .slide-fg{
       transform: translateX(-300px);
     }
-    .slide-fg.active{
-      transform: translateX(0);
-    }
     .slide-bg {
       @include media-md {min-height: 432px;}
     }
