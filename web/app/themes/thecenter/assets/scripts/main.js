@@ -337,8 +337,16 @@ var FBSage = (function($) {
   }
 
 
-  //make sure that bg slider is at least tall enough to contain fg content
+  
   function _resizeSliders() {
+
+  //make sure inactive slides are well hidden
+    $inactive = $('.headline-slider.slider .slide-fg:not(.active)');
+    $inactive.css('transition','transform 0s');
+    $inactive.css('transform','translateX(-3000px)');
+
+
+  //make sure that bg slider is at least tall enough to contain fg content
     //grab fg and bg sliders
     var $bgs = $('.headline-slider.slider .slide-bg');
     var $fgs = $('.headline-slider.slider .slide-fg');
@@ -399,6 +407,10 @@ var FBSage = (function($) {
       var $current = $(this).find('.slide-fg[data-slick-index="'+currentSlide+'"]');
       var $next = $(this).find('.slide-fg[data-slick-index="'+nextSlide+'"]');
 
+      //label w/ classes
+      $current.removeClass('active');
+      $next.addClass('active');
+
       //exit current slide
       $current.css('transition','transform .5s');
       $current.css('transform','translateX('+exitPos+'px)');
@@ -436,6 +448,10 @@ var FBSage = (function($) {
       //ok so what position should the entering and exiting slides go to?
       var exitPos = -$(this).width();
       var enterPos = -300; //$current.width();
+
+      //label w/ classes
+      $current.removeClass('active');
+      $next.addClass('active');
 
       //exit current slide
       $current.css('transition','transform .5s');
