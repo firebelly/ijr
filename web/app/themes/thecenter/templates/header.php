@@ -1,14 +1,14 @@
 
 
 <header class="site-header" role="banner">
-  <hgroup class="brand">
+  <hgroup class="brand sticky">
     <a href="<?= esc_url(home_url('/')); ?>">
       <h1>the <span class="-center">Center</span></h1>
     </a>
   </hgroup>
 </header>
 
-<div class="nav-toggle outside">
+<div class="nav-toggle outside sticky">
   <h2 class="menu">Menu</h2>
   <svg role="image" class="icon icon-burger nav-icon"><use xlink:href="#icon-burger"></use></svg>
 </div>

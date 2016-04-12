@@ -17,16 +17,18 @@
       text-decoration: none; 
     }
     @include media-md {
-      position: absolute;
-      top: 0px;
       width: $gut-left-md;
       height: 186px;
       left: 0px;
       background: linear-gradient( 0deg , rgba(221,220,215,0), $bg 24px);
-      // &.stuck {
-      //   position: fixed;
-      //   top: -36px;
-      // }
+      &.sticky-abs {
+        position: absolute;
+        top: 0px;
+      }
+      &.sticky-fix {
+        position: fixed;
+        top: -36px;
+      }
       h1 {
         position: absolute;
         top: 168px; left: 125px;

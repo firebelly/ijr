@@ -18,25 +18,6 @@
     }
   }
 }
-// .nav-backup-bg {
-//   content: '';
-//   z-index: 35;
-//   position: fixed;
-//   top: 0;
-//   width: 100vw;
-//   height: 100%;
-//   left: 100vw;
-//   // margin-left: -50vw;
-//   // margin-right: 50vw;
-//   background-color: $black;
-//   transition: margin $nav-push-speed, transform $nav-push-speed, left $nav-push-speed, visibility $nav-push-speed;
-//   visibility: hidden;  
-//   &.active {
-//     // visibility: visible;
-//     left: 50vw;
-//     // margin-right: 50vw;
-//   }
-// }
 
 .nav-push-wrap, .site-header, .brand, .icon-ijr-wrap {
   transition: margin $nav-push-speed, transform $nav-push-speed;
@@ -61,7 +42,14 @@
   background: linear-gradient( 0deg , rgba(221,220,215,0), $bg 48px);
   @include media-md {
     width: 72px;
-    top: 0;  
+     &.sticky-abs {
+      position: absolute;
+      top: 0px;
+    }
+    &.sticky-fix {
+      position: fixed;
+      top: -36px;
+    }
   }
   &:hover{
     cursor: pointer;

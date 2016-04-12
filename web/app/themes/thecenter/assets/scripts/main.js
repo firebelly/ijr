@@ -28,6 +28,9 @@ var FBSage = (function($) {
     //initialize sliders
     _initSliders();
 
+    //fix the center to the top of the screen after it's scrolled 36px
+    _initStickies();
+
     //allow nav to push in on click of .nav-toggle
     _initNav();
 
@@ -58,9 +61,6 @@ var FBSage = (function($) {
 
     //crazy hack to get the gray highlight to be the size of inputted text, not the input itself
     _searchHighlightInit();
-
-    //fix the center to the top of the screen after it's scrolled 36px
-    _initStickies();
 
     // Fit them vids!
     $('main').fitVids();
@@ -472,39 +472,29 @@ var FBSage = (function($) {
   function _handleStickies() {
     var scrollTop = $(window).scrollTop();
     if(breakpoint_medium) {    
-      if(scrollTop>=36 && whereIWas!=='below') { //if we change states
-        $stickies.css( 'position', 'fixed' );
-        $stickies.css( 'top', -36 );
-        whereIWas = 'below';
-        console.log('change to below');
+      if(scrollTop>=36) {
+        $('.sticky-abs').removeClass('sticky-active');
+        $('.sticky-fix').addClass('sticky-active');
       }
-      if (scrollTop<36 && whereIWas!=='above') {
-        $stickies.css( 'position', 'absolute' ); 
-        $stickies.css( 'top', 0 );
-        whereIWas = 'above';
-        console.log('change to above');
+      if (scrollTop<36) {
+        $('.sticky-fix').removeClass('sticky-active');
+        $('.sticky-abs').addClass('sticky-active');
       }
     } 
-    if(!breakpoint_medium && whereIWas!=='mobile') { 
-      $stickies.css( 'position', '' ); 
-      $stickies.css( 'top', '' );
-      whereIWas = 'mobile';
-        console.log('change to mobile');
-    }
   }
   //fix the center to the top of the screen after it's scrolled 36px
   function _initStickies () {
-    whereIWas = 'nothingness';
-    $stickies = $('.brand, .nav-toggle.outside');
-    
+
+    //clone stickies
+    $abs = $('.sticky');
+    $abs.each(function() {
+      $(this).after( $(this).clone().removeClass('sticky').addClass('sticky-fix') );
+    }).removeClass('sticky').addClass('sticky-abs');
+
     _handleStickies();
 
-    $( window ).scroll(function() {
-      _handleStickies();
-    });
-    $( window ).resize(function() {
-      _handleStickies();
-    });
+    $( window ).scroll(_handleStickies);
+    $( window ).resize(_handleStickies);
   }
 
 
