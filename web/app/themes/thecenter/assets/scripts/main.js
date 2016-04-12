@@ -463,38 +463,24 @@ var FBSage = (function($) {
   }
 
 
-  // function _initFgSliders(){
-  //   $('.slider').each(function() {
-
-  //   });
-  // }
-
-  function _handleStickies() {
-    var scrollTop = $(window).scrollTop();
-    if(breakpoint_medium) {    
-      if(scrollTop>=36) {
-        $('.sticky-abs').removeClass('sticky-active');
-        $('.sticky-fix').addClass('sticky-active');
-      }
-      if (scrollTop<36) {
-        $('.sticky-fix').removeClass('sticky-active');
-        $('.sticky-abs').addClass('sticky-active');
-      }
-    } 
-  }
   //fix the center to the top of the screen after it's scrolled 36px
   function _initStickies () {
 
-    //clone stickies
-    $abs = $('.sticky');
-    $abs.each(function() {
-      $(this).after( $(this).clone().removeClass('sticky').addClass('sticky-fix') );
-    }).removeClass('sticky').addClass('sticky-abs');
+    $('.sticky').each(function() {
+      var waypoint = new Waypoint({
+        element: $(this),
+        handler: function(direction) {
+          if(direction==='down') {
+            $('.sticky').addClass('stuck');
+          }
+          if(direction==='up') {
+            $('.sticky').removeClass('stuck');
+          }
+        },
+        offset: -36 
+      });
+    });
 
-    _handleStickies();
-
-    $( window ).scroll(_handleStickies);
-    $( window ).resize(_handleStickies);
   }
 
 
