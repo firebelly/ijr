@@ -90,9 +90,10 @@
     @include small_text();
   }
   .day {
-    position: absolute;
+    position: relative;
     left: -126px;
     top: 32px;
+    // width: 100px;
     font-size: 135px;
     letter-spacing: -.01em;
     .icon-number {
