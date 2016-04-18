@@ -17,23 +17,23 @@
 //amimations
  //cycle from blue to red (every thing in the site does this)
 @mixin color-cycle() { 
+    color: $blue;
     animation: blue-red-color $cycle-speed infinite alternate;
 }
 @mixin bg-color-cycle() {
+    background-color: $blue;
     animation: blue-red-bg-color $cycle-speed infinite alternate;
 }
 @mixin fill-cycle() { 
-    fill: #000; //this makes the animation work in safari.  I dont know why;
+    fill: $blue; 
     animation: blue-red-fill $cycle-speed infinite alternate;
 }
 @mixin stroke-cycle() { 
-    stroke: #000;
+    stroke: $blue;
     animation: blue-red-stroke $cycle-speed infinite alternate;
 }
-@mixin text-stroke-cycle() { 
-    animation: blue-red-text-stroke $cycle-speed infinite alternate;
-}
 @mixin gradient-highlight-cycle() { 
+    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0) 3%, $blue 3%, $blue 87%, rgba(0,0,0,0) 87%);
     animation: blue-red-gradient-highlight $cycle-speed infinite alternate;
 }
 
