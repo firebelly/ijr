@@ -90,8 +90,8 @@
     @include small_text();
   }
   .day {
-    position: relative;
-    left: -126px;
+    position: absolute;
+    left: -212px;
     top: 32px;
     // width: 100px;
     font-size: 135px;
@@ -101,13 +101,13 @@
       @include stroke-cycle();
       stroke-width: 2px;
       width: 80px;
-      position: absolute;
-      &:first-child{
-        right: 2px;
-      }
-      &:last-child{
-        left: -6px;
-      }
+      // position: relative;
+      // &:first-child{
+      //   right: 2px;
+      // }
+      // &:last-child{
+      //   left: -6px;
+      // }
     }
   }
 }
