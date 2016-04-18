@@ -71,8 +71,13 @@
   }
 }
 
+
+.slide-fg .time-big {
+  left: 0;
+}
 .time-big {
   visibility: hidden;
+  left: 180px;
   @include media-md {
     visibility: visible;
   }
