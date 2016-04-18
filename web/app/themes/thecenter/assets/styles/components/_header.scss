@@ -20,6 +20,7 @@
       width: $gut-left-md;
       height: 186px;
       left: 0px;
+      background: $bg;
       background: linear-gradient( 0deg , rgba(221,220,215,0), $bg 24px);
       &.sticky-abs {
         position: absolute;

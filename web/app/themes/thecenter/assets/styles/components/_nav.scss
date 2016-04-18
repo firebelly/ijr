@@ -39,6 +39,7 @@
   // top: -54px; --keep this in case you go back to fixed position
   height: 170+48px;
   right: 0px;
+  background: $bg;
   background: linear-gradient( 0deg , rgba(221,220,215,0), $bg 48px);
   @include media-md {
     width: 72px;
