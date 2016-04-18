@@ -107,9 +107,9 @@ img {
   }
   font-weight: normal;
   .gradient-highlight {
-    background: $bg;
     background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0) 3%, $bg 3%, $bg 87%, rgba(0,0,0,0) 87%);
     background-repeat: repeat-x;
+    behavior: url(/app/themes/thecenter/assets/scripts/pie/PIE.htc);
   }
 }
 .next-post, .prev-post, .slider-nav-right, .slider-nav-left {
