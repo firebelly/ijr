@@ -128,9 +128,15 @@ img {
   }
 }
 
-.sticky-wrapper {
-  position: absolute;
+.sticky-abs, .sticky-fix {
+  @include media-md {
+    visibility: hidden;
+    &.sticky-active {
+      visibility: visible;
+    }
+  }
 }
+
 
 
 

@@ -42,9 +42,11 @@
   background: linear-gradient( 0deg , rgba(221,220,215,0), $bg 48px);
   @include media-md {
     width: 72px;
-    position: absolute;
-    top: 0px;
-    &.stuck {
+     &.sticky-abs {
+      position: absolute;
+      top: 0px;
+    }
+    &.sticky-fix {
       position: fixed;
       top: -36px;
     }
