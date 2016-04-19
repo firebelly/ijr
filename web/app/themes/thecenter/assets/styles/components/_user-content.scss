@@ -24,6 +24,12 @@
     
   }
 
+  img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
 
   ol {
   }
@@ -39,6 +45,11 @@
 
       }
     }
+  }
+
+  blockquote {
+    margin-right: 0;
+    margin-left: 0;
   }
 
   hr {

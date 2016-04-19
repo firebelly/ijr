@@ -22,6 +22,9 @@ var FBSage = (function($) {
     $document = $(document);
     $('body').addClass('loaded');
 
+    //add ie10 class
+    _ie10();
+
     // Set screen size vars
     _resize();
 
@@ -91,6 +94,11 @@ var FBSage = (function($) {
     });
 
   } // end init()
+
+  function _ie10() {
+    if(Function('/*@cc_on return document.documentMode===10@*/')()){ $("html").addClass("ie10"); }
+  }
+
 
   //replace date with svg numbers
   function _replaceDate() {

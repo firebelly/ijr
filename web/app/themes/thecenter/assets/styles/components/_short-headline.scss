@@ -56,7 +56,9 @@
     .search-highlight {
       position: absolute;
       .gradient-highlight {
-        background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0) 3%, $bg 3%, $bg 87%, rgba(0,0,0,0) 87%);
+        background: $bg;
+        background: url('/app/themes/thecenter/assets/svgs/gray-highlight-fallback.svg');
+        background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0) 3%, $bg 3%, $bg 87%, rgba(0,0,0,0) 87%);
         background-repeat: repeat-x;
         white-space: nowrap;
       }
@@ -106,9 +108,13 @@
           appearance: none;
           overflow: auto;
           border-radius: 0;
-          padding: 4px;
+          padding-left: 4px;
+          vertical-align: center;
           &:hover {
             cursor: pointer;
+          }
+          &::-ms-expand {
+            display: none;
           }
         }
         .darr {
