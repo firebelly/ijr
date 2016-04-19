@@ -162,8 +162,28 @@ img {
   stroke-width: 2px;
 }
 
-//ie10
+//disable animation in ie (cant do svg anims, so other stuff animating looks whack)
+// html[data-useragent*='MSIE 10.0'] * {
+//   animation: none !important;
+// }
 
-.ie10 *{
-  animation: none !important;
+//internet explorer
+.ie { 
+  body {
+    background-color: red !important;
+  }
+  * {
+    animation: none !important;
+  }
+  .site-nav {
+    ul.nav {
+      li.menu-item {
+        a {
+          .gradient-highlight {
+            background-image: none;
+          }
+        }
+      }
+    }
+  }
 }

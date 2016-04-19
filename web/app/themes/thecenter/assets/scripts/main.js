@@ -22,8 +22,8 @@ var FBSage = (function($) {
     $document = $(document);
     $('body').addClass('loaded');
 
-    //add ie10 class
-    _ie10();
+    //inject user agent into data attr in html so we can grab it in css and target ie10/11
+    _ieDetect(); 
 
     // Set screen size vars
     _resize();
@@ -95,8 +95,11 @@ var FBSage = (function($) {
 
   } // end init()
 
-  function _ie10() {
-    if(Function('/*@cc_on return document.documentMode===10@*/')()){ $("html").addClass("ie10"); }
+  //inject user agent into data attr in html so we can grab it in css and target ie10/11
+  function _ieDetect() {  //http://stackoverflow.com/a/19868056
+    if( "ActiveXObject" in window ) {
+      $('html').addClass('ie');
+    }
   }
 
 
