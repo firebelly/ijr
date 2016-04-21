@@ -6,10 +6,15 @@
 namespace Firebelly\PostTypes\Person;
 use Firebelly\Utils;
 
+
+  // Custom image size for post type?
+  add_image_size( 'person-thumb', 800, 800, true );
+
 /**
  * Register Custom Post Type
  */
 function post_type() {
+
 
   $labels = array(
     'name'                => 'People',

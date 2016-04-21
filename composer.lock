@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dd627ada674edbc150ab259552878be1",
-    "content-hash": "56ebbcaf64d4c7c37a287082d6497f62",
+    "hash": "fddb01607e5366dac59802543a99a56c",
+    "content-hash": "d5cb1810316d669b4de4a7113b6a01b9",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v1.0.23",
+            "version": "v1.0.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "6213d900e92647831f7a406d5c530ea1f3d4360e"
+                "reference": "36e5b5843203d7f1cf6ffb0305a97e014387bd8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/6213d900e92647831f7a406d5c530ea1f3d4360e",
-                "reference": "6213d900e92647831f7a406d5c530ea1f3d4360e",
+                "url": "https://api.github.com/repos/composer/installers/zipball/36e5b5843203d7f1cf6ffb0305a97e014387bd8e",
+                "reference": "36e5b5843203d7f1cf6ffb0305a97e014387bd8e",
                 "shasum": ""
             },
             "require": {
@@ -40,8 +40,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Composer\\Installers\\": "src/"
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -56,12 +56,14 @@
                 }
             ],
             "description": "A multi-framework Composer library installer",
-            "homepage": "http://composer.github.com/installers/",
+            "homepage": "https://composer.github.io/installers/",
             "keywords": [
                 "Craft",
                 "Dolibarr",
                 "Hurad",
+                "ImageCMS",
                 "MODX Evo",
+                "Mautic",
                 "OXID",
                 "SMF",
                 "Thelia",
@@ -103,7 +105,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2016-01-27 12:54:22"
+            "time": "2016-04-13 19:46:30"
         },
         {
             "name": "johnpbloch/wordpress",
@@ -246,7 +248,7 @@
             "version": "3.1.1",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/akismet/",
+                "url": "https://plugins.svn.wordpress.org/akismet/",
                 "reference": "tags/3.1.1"
             },
             "dist": {
@@ -263,10 +265,10 @@
         },
         {
             "name": "wpackagist-plugin/cmb2",
-            "version": "2.1.2",
+            "version": "2.2.1",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/cmb2/",
+                "url": "https://plugins.svn.wordpress.org/cmb2/",
                 "reference": "trunk"
             },
             "dist": {
@@ -286,7 +288,7 @@
             "version": "2.6",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/duplicate-post/",
+                "url": "https://plugins.svn.wordpress.org/duplicate-post/",
                 "reference": "tags/2.6"
             },
             "dist": {
@@ -306,7 +308,7 @@
             "version": "3.0.7",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/intuitive-custom-post-order/",
+                "url": "https://plugins.svn.wordpress.org/intuitive-custom-post-order/",
                 "reference": "tags/3.0.7"
             },
             "dist": {
@@ -326,7 +328,7 @@
             "version": "1.7.1",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/limit-login-attempts/",
+                "url": "https://plugins.svn.wordpress.org/limit-login-attempts/",
                 "reference": "tags/1.7.1"
             },
             "dist": {
@@ -346,7 +348,7 @@
             "version": "3.2.2",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/multiple-content-blocks/",
+                "url": "https://plugins.svn.wordpress.org/multiple-content-blocks/",
                 "reference": "trunk"
             },
             "dist": {
@@ -362,11 +364,31 @@
             "homepage": "https://wordpress.org/plugins/multiple-content-blocks/"
         },
         {
+            "name": "wpackagist-plugin/regenerate-thumbnails",
+            "version": "2.2.6",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/regenerate-thumbnails/",
+                "reference": "tags/2.2.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/regenerate-thumbnails.2.2.6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/regenerate-thumbnails/"
+        },
+        {
             "name": "wpackagist-plugin/wordpress-importer",
             "version": "0.6.1",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/wordpress-importer/",
+                "url": "https://plugins.svn.wordpress.org/wordpress-importer/",
                 "reference": "tags/0.6.1"
             },
             "dist": {
@@ -386,7 +408,7 @@
             "version": "2.0.13",
             "source": {
                 "type": "svn",
-                "url": "http://plugins.svn.wordpress.org/wp-facebook-open-graph-protocol/",
+                "url": "https://plugins.svn.wordpress.org/wp-facebook-open-graph-protocol/",
                 "reference": "tags/2.0.13"
             },
             "dist": {

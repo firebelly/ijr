@@ -5,6 +5,9 @@
 
 namespace Firebelly\PostTypes\Headline;
 
+// Custom image size for post type?
+add_image_size( 'headline-thumb', 1200, 1200, true );
+
 // Register Custom Post Type
 function post_type() {
 
@@ -150,7 +153,7 @@ HTML;
   //bg divs
   $i = 0;
   foreach ($headline_posts as $post):
-    $thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array(1200,1200))[0];
+    $thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'headline-thumb')[0];
     $duo_url = \Firebelly\Media\get_duo_url($thumb_url, '', [
         'color1' => '2f2d28',
         'color2' => 'dddcd6',
