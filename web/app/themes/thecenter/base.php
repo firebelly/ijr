@@ -6,9 +6,9 @@ use Roots\Sage\Wrapper;
 ?>
 
 <!doctype html>
-<!--[if IE 8]> <html class="no-js ie8 lt-ie9 lt-ie10" lang="en"> <![endif]-->
-<!--[if IE 9 ]> <html class="no-js ie9 lt-ie10" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
+<!--[if IE 8]> <html class="ie8 lt-ie9 lt-ie10" lang="en"> <![endif]-->
+<!--[if IE 9 ]> <html class="ie9 lt-ie10" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="" <?php language_attributes(); ?>> <!--<![endif]-->
   <?php get_template_part('templates/head'); ?>
   <body <?php body_class(); ?>>
       <?php
