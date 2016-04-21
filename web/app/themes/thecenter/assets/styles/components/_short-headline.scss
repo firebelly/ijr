@@ -87,8 +87,8 @@
       position: relative;
       display: inline-block;
       margin: 0; margin-top: 24px;
-      @include min-screen(354px) {
-        // margin: 0;
+      @include media-md {
+        margin: 0;
       }
       label {
         display: inline-block;
