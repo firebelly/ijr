@@ -1,7 +1,10 @@
 .post-list{
-  margin: 0; margin-top: 162-36px;
-  &:first-child{
+  margin: 0; margin-top: 60px;
+  @include media-md {
     margin-top: 120px;
+  }
+  &:first-child{
+    // margin-top: 120px;
   }
   &:last-child{
     margin-bottom: 120px;

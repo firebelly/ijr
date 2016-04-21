@@ -465,6 +465,7 @@ button, input[type="submit"] {
         min-height: 600px;
       }
       background-size: cover;
+      background-position: center center;
       position: relative;
     }
     .headline-duo{
@@ -474,6 +475,7 @@ button, input[type="submit"] {
       right: 0;
       height: 100%;
       background-size: cover;
+      background-position: center center;
       opacity: 1;
       transition: opacity 0.5s;
       &:hover{

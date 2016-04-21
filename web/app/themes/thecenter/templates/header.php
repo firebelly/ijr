@@ -1,11 +1,11 @@
 
 
 <header class="site-header" role="banner">
-  <hgroup class="brand sticky">
+  <div class="brand sticky">
     <a href="<?= esc_url(home_url('/')); ?>">
       <h1>the <span class="-center">Center</span></h1>
     </a>
-  </hgroup>
+  </div>
 </header>
 
 <div class="nav-toggle outside sticky">

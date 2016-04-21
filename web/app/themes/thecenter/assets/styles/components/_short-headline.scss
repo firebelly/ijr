@@ -88,7 +88,7 @@
       display: inline-block;
       margin: 0; margin-top: 24px;
       @include min-screen(354px) {
-        margin: 0;
+        // margin: 0;
       }
       label {
         display: inline-block;
@@ -99,7 +99,7 @@
         display: inline;
         position: relative;
         #sort-select {
-          width: 156px;
+          // width: 156px;
           height: 24px;
           margin: 0; margin-left: -3px; //a better way?
           border: 0;
@@ -109,6 +109,7 @@
           overflow: auto;
           border-radius: 0;
           padding-left: 4px;
+          padding-right: 20px;
           vertical-align: center;
           &:hover {
             cursor: pointer;
@@ -130,11 +131,10 @@
 
 .blog {
   .nav-forms:not(.searching) {
-    @include min-screen(850px) {
+    @include min-screen(900px) {
       position: absolute;
       top: 118px;
       right: 0;
     }
   }
-
 }
