@@ -1,7 +1,10 @@
 set :stage, :production
-set :domain, 'vestedworld.com'
-set :php, 'php70'
-set :login, 'vestedworld'
+set :domain, '128.248.41.8'
+set :php, 'php'
+set :login, 'firebelly'
+
+set :deploy_to, -> { "/var/www/#{fetch(:application)}" }
+set :tmp_dir, -> { "/home/#{fetch(:login)}/tmp" }
 
 # Simple Role Syntax
 # ==================
