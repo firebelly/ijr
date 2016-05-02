@@ -4,19 +4,10 @@
  */
 ?>
 
-<?php 
-// Main page data
-// echo $post->post_title;
-// echo apply_filters('the_content', $post->post_content);
-?>
-
-
-
 <?= \Firebelly\PostTypes\Headline\get_headlines(); ?>
 
-
 <section class="news">
-    <?php 
+    <?php
     // news posts
     $posts = get_posts(
       array(
@@ -32,7 +23,7 @@
 </section>
 
 <section class="radar">
-    <?php 
+    <?php
     // radar posts
     $posts = get_posts(
       array(
