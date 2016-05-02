@@ -363,6 +363,9 @@ var FBSage = (function($) {
     var $bgs = $('.headline-slider.slider .slide-bg');
     var $fgs = $('.headline-slider.slider .slide-fg');
 
+    //reset heights so we can figure out how tall these guys wanna be naturally.
+    $fgs.css('height','');
+
     //get height of tallest slide fg (+36 pix margin at bottom)
     var tallest = 0;
     $fgs.each(function() {
@@ -375,7 +378,9 @@ var FBSage = (function($) {
 
     //set the minHeight
     var minHeight = Math.max(tallest,defaultHeight);
-    $bgs.css('min-height',minHeight);
+    $bgs.css('height',minHeight);
+    //we need the fg sliders to be this tall too as that defines the clickable area for the link
+    $fgs.css('height',minHeight);
   }
 
 
