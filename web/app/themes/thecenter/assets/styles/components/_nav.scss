@@ -109,6 +109,7 @@
   bottom: 0;
   padding: 36px;
   width: 100vw;
+  overflow: scroll;
   @include bg-color-cycle();
   transition: margin $nav-push-speed, transform $nav-push-speed, opacity $nav-push-speed;
   @include media-md {
