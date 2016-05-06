@@ -6,7 +6,7 @@
 namespace Firebelly\PostTypes\Headline;
 
 // Custom image size for post type?
-add_image_size( 'headline-thumb', 1200, 1200, true );
+add_image_size( 'headline-thumb', 1200, 0, true );
 
 // Register Custom Post Type
 function post_type() {
@@ -116,13 +116,6 @@ function metaboxes( array $meta_boxes ) {
     	    'type'    => 'select',
     	    'options' => cmb2_get_post_options( array( 'post_type' => array('page','post'), 'numberposts' => -1, 'post_parent' => 0	 ) ),
     	),
-    // 	array(
-	   //  'name'    => 'Order #',
-    // 	    'desc'    => '1 is the first headline, 2 is second and so forth',
-	   //  'default' => '1',
-	   //  'id'      => $prefix . 'order_num',
-	   //  'type'    => 'text_small'
-  		// ), 
     ),
   );
 
@@ -154,10 +147,7 @@ HTML;
   $i = 0;
   foreach ($headline_posts as $post):
     $thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'headline-thumb')[0];
-    $duo_url = \Firebelly\Media\get_duo_url($thumb_url, '', [
-        'color1' => '2f2d28',
-        'color2' => 'dddcd6',
-      ]);
+    $duo_url = \Firebelly\Media\get_duo_url($post, [ 'size' => 'headline-thumb' ]);
     $output .= <<<HTML
     <div class="slide-item slide-bg" style="background-image: url('{$thumb_url}')" data-slick-index="{$i}" >
       <div class="headline-duo" style="background-image: url('{$duo_url}')"> </div>
@@ -170,7 +160,6 @@ HTML;
   $output .= '<div class="bg-dots"></div>';
 
   $output .= '<div class="overflow-wrapper">';
-  // $output .= '<div class="slide-fg-track">';
 
   //article divs
   $i = 0;

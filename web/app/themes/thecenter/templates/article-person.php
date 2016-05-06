@@ -1,10 +1,7 @@
 <?php 
 
 $thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'person-thumb')[0];
-$duo_url = \Firebelly\Media\get_duo_url($thumb_url, '', [
-    'color1' => '2f2d28',
-    'color2' => 'dddcd6',
-  ]);
+$duo_url = \Firebelly\Media\get_duo_url($post, [ 'size' => 'person-thumb' ]);
 if ($thumb_url) {
   $photo_duo = '<img src="'.$duo_url.'" class="wp-post-image">';
   $photo_color = get_the_post_thumbnail($post->ID, 'person-thumb');
