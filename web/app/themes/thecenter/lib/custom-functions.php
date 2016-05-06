@@ -172,3 +172,10 @@ function get_total_pages($category, $per_page) {
   return $num_pages;
 }
 
+
+/**
+ * Log to the JS console
+ */
+function js_console_log($message) {
+  echo '<script>console.log("MESSAGE FROM PHP:'.$message.'");</script>';
+}
