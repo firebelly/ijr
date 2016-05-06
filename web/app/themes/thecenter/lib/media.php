@@ -111,6 +111,7 @@ function get_duo_url($post_or_id, $options=[]) {
     $convert_command = (WP_ENV==='development') ? '/usr/local/bin/convert' : '/usr/bin/convert';
     $full_command = $convert_command.' '.$image_to_convert.' +profile "*" -quality 65 -colorspace gray -level +10% +level-colors "#'.$color1.'","#'.$color2.'" '.$treated_image;
     exec($full_command);
+    Firebelly\Utils\js_console_log("command:  ".$full_command);
   }
 
   // Finally, get the URL
