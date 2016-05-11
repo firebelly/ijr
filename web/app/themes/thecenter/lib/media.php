@@ -112,7 +112,7 @@ function get_duo_url($post_or_id, $options=[]) {
     $full_command = $convert_command.' '.$image_to_convert.' +profile "*" -quality 65 -colorspace gray -level +10% +level-colors "#'.$color1.'","#'.$color2.'" '.$treated_image;
     exec($full_command);
 
-  echo '<script>console.log(\'MESSAGE FROM PHP:'.$full_command.'\');</script>';
+  //echo '<script>console.log(\'MESSAGE FROM PHP:'.$full_command.'\');</script>';
   }
 
   // Finally, get the URL
